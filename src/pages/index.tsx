@@ -35,7 +35,11 @@ export default function Home() {
         ></Box>
 
         <Flex w='100%' bgColor={"#070525"} position={"absolute"}>
-          <Img w='100vw' h='100vh' src={gradient1.src} />
+          <Img
+            w='100vw'
+            h={isMobileDevice ? "70vh" : "100vh"}
+            src={gradient1.src}
+          />
         </Flex>
         <Flex
           w='100%'
@@ -58,15 +62,16 @@ export default function Home() {
           </Text>
 
           <Flex
-            mt={isMobileDevice ? 0 : 10}
+            mt={isMobileDevice ? 5 : 10}
             px={32}
             w='100%'
             justifyContent={isMobileDevice ? "center" : "flex-start"}
             flexDirection={isMobileDevice ? "row" : "column"}
+            alignItems={isMobileDevice ? "center" : undefined}
           >
             <a href='https://t.me/Multi_ChainZ' target='_blank'>
               <Img
-                my={4}
+                my={isMobileDevice ? 0 : 4}
                 mx={isMobileDevice ? 4 : 0}
                 w='24px'
                 src={telegram.src}
