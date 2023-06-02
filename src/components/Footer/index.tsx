@@ -7,13 +7,15 @@ import {
   Text,
   Button,
   InputGroup,
+  useMediaQuery,
 } from "@chakra-ui/react";
 import { FaDiscord, FaTwitter, FaLinkedin } from "react-icons/fa";
 import { IoMdMail } from "react-icons/io";
 import multichainz from "../../assets/svg/multichainzlogo.svg";
 
 export default function Footer() {
-  const isMobileDevice = false;
+  const [isMobileDevice] = useMediaQuery("(max-width: 750px)");
+
   return (
     <Flex
       alignItems={"center"}

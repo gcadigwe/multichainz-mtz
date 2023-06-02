@@ -12,7 +12,7 @@ export default function LendingInfoCards({
       <Img borderTopRadius='10px' w='300px' h='150px' src={img} />
       <Flex
         w='300px'
-        px={4}
+        px={6}
         py={4}
         bgColor={"#D3E7F7"}
         flexDirection={"column"}

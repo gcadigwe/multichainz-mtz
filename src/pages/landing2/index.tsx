@@ -1,8 +1,9 @@
 import BorrowLend from "@/components/Landing2/Cards/BorrowPools";
 import LendingInfoCards from "@/components/Landing2/Cards/LendingInfoCards";
 import Navbar from "@/components/Landing2/Navbar";
-import { Box, Button, Flex, Img, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, Img, Text, useMediaQuery } from "@chakra-ui/react";
 import lendingbg from "../../assets/lendingbg.png";
+import mobilelendingbg from "../../assets/mobilelendingbg.png";
 import underline from "../../assets/svg/underline.svg";
 import capitalefficient from "../../assets/capitalefficient.png";
 import crosschainintegration from "../../assets/crosschainintegration.png";
@@ -25,8 +26,45 @@ import inactiveavalanche from "../../assets/svg/inactiveavalance.svg";
 import inactiveoptimism from "../../assets/svg/inactiveoptimism.svg";
 import quillhash from "../../assets/svg/quickshill.svg";
 import Footer from "@/components/Footer";
+import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
+import { useRef, useState } from "react";
 
 export default function Landing2() {
+  const [isMobileDevice] = useMediaQuery("(max-width: 750px)");
+  const [currentCard, setcurrentCard] = useState(0);
+  const lendingInfocard1 = useRef(null);
+  const lendingInfocard2 = useRef(null);
+  const lendingInfocard3 = useRef(null);
+
+  const cardsToRef = {
+    "1": lendingInfocard1,
+    "2": lendingInfocard2,
+    "3": lendingInfocard3,
+  };
+
+  const handleScrollForward = () => {
+    if (currentCard !== 3) {
+      cardsToRef[currentCard + 1]?.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+        inline: "center",
+      });
+
+      setcurrentCard((prev) => prev + 1);
+    }
+  };
+
+  const handleScrollBack = () => {
+    if (currentCard !== 0) {
+      cardsToRef[currentCard - 1]?.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+        inline: "center",
+      });
+
+      setcurrentCard((prev) => prev - 1);
+    }
+  };
   return (
     <Box>
       <Box position={"relative"}>
@@ -40,20 +78,27 @@ export default function Landing2() {
           position={"absolute"}
           alignItems='center'
           flexDirection={"column"}
+          //   h={isMobileDevice ? "100vh" : undefined}
+          //   border='1px solid red'
         >
           <Text
             // lineHeight={"1"}
             textAlign={"center"}
             fontWeight={"900"}
-            fontSize='60px'
+            fontSize={isMobileDevice ? "40px" : "60px"}
           >
             The Institutional Cross-Chain <br /> Lending Solution
           </Text>
-          <Text fontSize={"20px"}>
+          <Text
+            textAlign={isMobileDevice ? "center" : undefined}
+            mt={isMobileDevice ? 10 : undefined}
+            fontSize={"20px"}
+          >
             Bringing real-life use cases to on-chain lending
           </Text>
 
           <Flex
+            mx={isMobileDevice ? 5 : 0}
             mt={20}
             px={5}
             border={"1px solid white"}
@@ -61,58 +106,105 @@ export default function Landing2() {
             backdropFilter={"blur(76px)"}
           >
             <Flex flexDirection={"column"} alignItems='center'>
-              <Text fontSize='60px' fontWeight={"500"}>
+              <Text
+                fontSize={isMobileDevice ? "40px" : "60px"}
+                fontWeight={"500"}
+              >
                 $X
               </Text>
-              <Text fontSize={"30px"}>Total Collateral</Text>
+              <Text fontSize={isMobileDevice ? "20px" : "30px"}>
+                Total Collateral
+              </Text>
             </Flex>
 
             <Flex mx={10} flexDirection={"column"} alignItems='center'>
-              <Text fontSize='60px' fontWeight={"500"}>
+              <Text
+                fontSize={isMobileDevice ? "40px" : "60px"}
+                fontWeight={"500"}
+              >
                 $X
               </Text>
-              <Text fontSize={"30px"}>Total Borrowing</Text>
+              <Text fontSize={isMobileDevice ? "20px" : "30px"}>
+                Total Borrowing
+              </Text>
             </Flex>
 
             <Flex flexDirection={"column"} alignItems='center'>
-              <Text fontSize='60px' fontWeight={"500"}>
+              <Text
+                fontSize={isMobileDevice ? "40px" : "60px"}
+                fontWeight={"500"}
+              >
                 $X
               </Text>
-              <Text fontSize={"30px"}>Total Loans</Text>
+              <Text fontSize={isMobileDevice ? "20px" : "30px"}>
+                Total Loans
+              </Text>
             </Flex>
           </Flex>
         </Flex>
-        <Img w='100vw' src={lendingbg.src} />
+        <Img
+          w='100vw'
+          h={isMobileDevice ? "100vh" : undefined}
+          src={isMobileDevice ? mobilelendingbg.src : lendingbg.src}
+
+          //   h={isMobileDevice ? "100vh" : undefined}
+        />
       </Box>
       <Box
         backdropFilter={"blur(157)"}
         background='linear-gradient(90deg, rgba(241,247,252,1) 0%, rgba(218,237,253,1) 40%)'
       >
         <Flex justifyContent={"center"}>
-          <Box w='70vw'>
+          <Box w={isMobileDevice ? "80vw" : "70vw"}>
             <Flex flexDirection={"column"}>
-              <Text fontSize={"40px"} fontWeight='700'>
+              <Text
+                fontSize={isMobileDevice ? "30px" : "40px"}
+                fontWeight='700'
+              >
                 Lend and Borrow{" "}
               </Text>
-              <Img src={underline.src} w='350px' />
-              <Text fontSize={"40px"} fontWeight='700'>
+              <Img
+                display={isMobileDevice ? "none" : undefined}
+                src={underline.src}
+                w='350px'
+              />
+              <Text
+                fontSize={isMobileDevice ? "30px" : "40px"}
+                fontWeight='700'
+              >
                 in Multiple Chains
               </Text>
             </Flex>
 
-            <Flex mt={10} justifyContent='space-between'>
+            <Flex
+              mt={10}
+              flexDirection={isMobileDevice ? "column" : undefined}
+              justifyContent={isMobileDevice ? "center" : "space-between"}
+            >
               <BorrowLend />
-              <Flex mx={5}>
+              {isMobileDevice ? (
                 <BorrowLend />
-              </Flex>
+              ) : (
+                <Flex mx={5}>
+                  <BorrowLend />
+                </Flex>
+              )}
               <BorrowLend />
             </Flex>
 
-            <Flex mt={5} justifyContent='space-between'>
+            <Flex
+              mt={5}
+              flexDirection={isMobileDevice ? "column" : undefined}
+              justifyContent={isMobileDevice ? "center" : "space-between"}
+            >
               <BorrowLend />
-              <Flex mx={5}>
+              {isMobileDevice ? (
                 <BorrowLend />
-              </Flex>
+              ) : (
+                <Flex mx={5}>
+                  <BorrowLend />
+                </Flex>
+              )}
               <BorrowLend />
             </Flex>
           </Box>
@@ -120,20 +212,61 @@ export default function Landing2() {
 
         <Flex justifyContent={"center"}>
           <Box w='70vw'>
-            <Text pt={32} fontSize={"40px"} fontWeight='700' textAlign='center'>
+            <Text
+              pt={32}
+              fontSize={isMobileDevice ? "30px" : "40px"}
+              fontWeight='700'
+              textAlign='center'
+            >
               On-Chain lending available for all Institutions
             </Text>
-            <Flex mt={10} justifyContent={"space-between"}>
-              <LendingInfoCards
-                img={crosschainintegration.src}
-                text={
-                  <Text fontSize={"20px"} fontWeight='600'>
-                    Secure Cross-chain <br /> Integration
-                  </Text>
-                }
-              />
+            <Flex
+              mt={20}
+              w={isMobileDevice ? "80vw" : "70vw"}
+              flexDirection={"column"}
+              display={isMobileDevice ? undefined : "none"}
+            >
+              <Flex mb={10} justifyContent={"flex-end"}>
+                <Flex
+                  cursor={"pointer"}
+                  bgColor={"#F5F5F5"}
+                  p={2}
+                  borderRadius='6px'
+                  mr={4}
+                  onClick={() => handleScrollBack()}
+                >
+                  <ChevronLeftIcon />
+                </Flex>
 
-              <Flex mx={5}>
+                <Flex
+                  cursor={"pointer"}
+                  bgColor={"#F5F5F5"}
+                  p={2}
+                  borderRadius='6px'
+                  onClick={() => handleScrollForward()}
+                >
+                  <ChevronRightIcon />
+                </Flex>
+              </Flex>
+            </Flex>
+            <Flex
+              w={isMobileDevice ? "100%" : undefined}
+              overflowX={"hidden"}
+              mt={isMobileDevice ? 0 : 10}
+              justifyContent={"space-between"}
+            >
+              <Flex ref={lendingInfocard1}>
+                <LendingInfoCards
+                  img={crosschainintegration.src}
+                  text={
+                    <Text fontSize={"20px"} fontWeight='600'>
+                      Secure Cross-chain <br /> Integration
+                    </Text>
+                  }
+                />
+              </Flex>
+
+              <Flex mx={5} ref={lendingInfocard2}>
                 <LendingInfoCards
                   img={riskmanagement.src}
                   text={
@@ -144,28 +277,40 @@ export default function Landing2() {
                 />
               </Flex>
 
-              <LendingInfoCards
-                img={capitalefficient.src}
-                text={
-                  <Text fontSize={"20px"} fontWeight='600'>
-                    Capital-Efficient <br /> Lending Pools
-                  </Text>
-                }
-              />
+              <Flex ref={lendingInfocard3}>
+                <LendingInfoCards
+                  img={capitalefficient.src}
+                  text={
+                    <Text fontSize={"20px"} fontWeight='600'>
+                      Capital-Efficient <br /> Lending Pools
+                    </Text>
+                  }
+                />
+              </Flex>
             </Flex>
           </Box>
         </Flex>
 
         <Flex justifyContent={"center"}>
-          <Box w='70vw'>
-            <Text pt={32} fontSize={"40px"} fontWeight='700' textAlign='center'>
+          <Box w={isMobileDevice ? "80vw" : "70vw"}>
+            <Text
+              pt={32}
+              fontSize={isMobileDevice ? "30px" : "40px"}
+              fontWeight='700'
+              textAlign='center'
+            >
               Safe and Efficient Interoperable Lending
             </Text>
-            <Flex mt={10} flex={1} justifyContent={"space-between"}>
+            <Flex
+              mt={10}
+              flex={isMobileDevice ? undefined : 1}
+              flexDirection={isMobileDevice ? "column" : undefined}
+              justifyContent={isMobileDevice ? "center" : "space-between"}
+            >
               <Flex
                 position='relative'
                 border='1px solid white'
-                flex={6}
+                flex={isMobileDevice ? undefined : 6}
                 flexDirection='column'
                 alignItems={"center"}
                 pt={5}
@@ -182,7 +327,7 @@ export default function Landing2() {
                 </Text>
 
                 <Img
-                  w='50%'
+                  w={isMobileDevice ? "80%" : "50%"}
                   src={compliance.src}
                   mt={5}
                   //   position='absolute'
@@ -191,14 +336,15 @@ export default function Landing2() {
               </Flex>
 
               <Flex
-                ml={5}
-                flex={4}
+                ml={isMobileDevice ? undefined : 5}
+                flex={isMobileDevice ? undefined : 4}
                 border='1px solid white'
                 flexDirection={"column"}
                 alignItems='center'
                 pt={5}
                 bgColor={"#D3E7F7"}
                 borderRadius='12px'
+                mt={isMobileDevice ? 10 : undefined}
               >
                 <Text fontWeight={"700"} fontSize={"20px"}>
                   Custody
@@ -213,10 +359,15 @@ export default function Landing2() {
               </Flex>
             </Flex>
 
-            <Flex mt={10} flex={1} justifyContent={"space-between"}>
+            <Flex
+              mt={10}
+              flex={isMobileDevice ? undefined : 1}
+              flexDirection={isMobileDevice ? "column" : undefined}
+              justifyContent={isMobileDevice ? "center" : "space-between"}
+            >
               <Flex
-                mr={5}
-                flex={4}
+                mr={isMobileDevice ? undefined : 5}
+                flex={isMobileDevice ? undefined : 4}
                 border='1px solid white'
                 flexDirection={"column"}
                 alignItems='center'
@@ -233,7 +384,7 @@ export default function Landing2() {
                   risk
                 </Text>
 
-                <Flex mt={5}>
+                <Flex mt={5} px={isMobileDevice ? 5 : undefined}>
                   <Flex borderRadius={"10px"} py={4} bgColor={"#0C1120"}>
                     <Img src={halborn.src} />
                   </Flex>
@@ -247,12 +398,13 @@ export default function Landing2() {
               <Flex
                 position='relative'
                 border='1px solid white'
-                flex={6}
+                flex={isMobileDevice ? undefined : 6}
                 flexDirection='column'
                 alignItems={"center"}
                 pt={5}
                 bgColor={"#D3E7F7"}
                 borderRadius='12px'
+                mt={isMobileDevice ? 10 : undefined}
               >
                 <Text fontWeight={"700"} fontSize={"20px"}>
                   Efficiency
@@ -264,7 +416,7 @@ export default function Landing2() {
                 </Text>
 
                 <Img
-                  w='50%'
+                  w={isMobileDevice ? "80%" : "50%"}
                   src={efficiency.src}
                   mt={5}
                   //   position='absolute'
@@ -294,7 +446,7 @@ export default function Landing2() {
               </Text>
 
               <Img
-                w='50%'
+                w={isMobileDevice ? "80%" : "50%"}
                 src={transparency.src}
                 mt={5}
                 //   position='absolute'
@@ -312,7 +464,7 @@ export default function Landing2() {
           }
           position='relative'
         >
-          <Flex h={"90vh"}>
+          <Flex h={"90vh"} w={isMobileDevice ? "100%" : undefined}>
             <Text
               // backgroundClip={"text"}
               // fill='transparent'
@@ -330,19 +482,25 @@ export default function Landing2() {
               position={"absolute"}
               flexDirection='column'
               alignItems={"center"}
-              w='100%'
+              w={isMobileDevice ? "100vw" : "100%"}
               pt={10}
             >
-              <Text fontSize={"36px"} fontWeight='700' color='white'>
+              <Text
+                textAlign={isMobileDevice ? "center" : undefined}
+                fontSize={isMobileDevice ? "30px" : "40px"}
+                fontWeight='700'
+                color='white'
+              >
                 Instant Support for Institutions
               </Text>
 
               <Text
-                fontSize={"26px"}
+                fontSize={isMobileDevice ? "20px" : "26px"}
                 fontWeight='700'
                 color='white'
                 textAlign={"center"}
                 my={10}
+                px={isMobileDevice ? 2 : undefined}
               >
                 If your institution wants support to lend  off-chain,
                 <br /> Multichainz offers multiple deposit alternatives aside
@@ -369,9 +527,10 @@ export default function Landing2() {
                 py={5}
                 mt={10}
                 borderRadius='6px'
+                mx={isMobileDevice ? 10 : undefined}
               >
                 <Text
-                  fontSize={"26px"}
+                  fontSize={isMobileDevice ? "20px" : "26px"}
                   fontWeight='700'
                   color='white'
                   textAlign={"center"}
@@ -381,24 +540,74 @@ export default function Landing2() {
                   with Multichainz continue to grow
                 </Text>
 
-                <Flex justifyContent={"center"}>
-                  <Flex alignItems='center' flexDirection={"column"}>
+                <Flex
+                  justifyContent={"center"}
+                  flexDirection={isMobileDevice ? "column" : undefined}
+                >
+                  <Flex
+                    alignItems='center'
+                    flexDirection={isMobileDevice ? "row" : "column"}
+                  >
                     <Img w='30px' h='30px' src={chainlinklogo.src} />
-                    <Text fontWeight={"700"} color='white'>
+                    <Text
+                      fontSize={isMobileDevice ? "24px" : undefined}
+                      ml={isMobileDevice ? 2 : undefined}
+                      fontWeight={"700"}
+                      color='white'
+                    >
                       Chainlink
                     </Text>
                   </Flex>
-                  <Flex mx={20} alignItems='center' flexDirection={"column"}>
+                  <Flex
+                    mx={isMobileDevice ? undefined : 20}
+                    alignItems='center'
+                    flexDirection={isMobileDevice ? "row" : "column"}
+                  >
                     <Img w='30px' h='30px' src={gemini.src} />
-                    <Text textAlign={"center"} fontWeight={"700"} color='white'>
-                      Gemini <br /> Finance
-                    </Text>
+                    {isMobileDevice ? (
+                      <Text
+                        textAlign={"center"}
+                        fontWeight={"700"}
+                        color='white'
+                        fontSize={"24px"}
+                        ml={2}
+                      >
+                        Gemini Finance
+                      </Text>
+                    ) : (
+                      <Text
+                        textAlign={"center"}
+                        fontWeight={"700"}
+                        color='white'
+                      >
+                        Gemini <br /> Finance
+                      </Text>
+                    )}
                   </Flex>
-                  <Flex flexDirection={"column"} alignItems='center'>
+                  <Flex
+                    flexDirection={isMobileDevice ? "row" : "column"}
+                    alignItems='center'
+                  >
                     <Img w='30px' h='30px' src={supra.src} />
-                    <Text textAlign={"center"} fontWeight={"700"} color='white'>
-                      Supra <br /> Oracles
-                    </Text>
+                    {isMobileDevice ? (
+                      <Text
+                        textAlign={"center"}
+                        fontWeight={"700"}
+                        color='white'
+                        fontSize={"24px"}
+                        ml={2}
+                      >
+                        Supra Oracles
+                      </Text>
+                    ) : (
+                      <Text
+                        textAlign={"center"}
+                        fontWeight={"700"}
+                        color='white'
+                      >
+                        Supra <br /> Oracles
+                      </Text>
+                    )}
                   </Flex>
                 </Flex>
               </Box>
@@ -411,28 +620,51 @@ export default function Landing2() {
             "linear-gradient(90deg, rgba(73,168,252,1) 0%, rgba(12,86,219,1) 100%)"
           }
           justifyContent={"center"}
+          pt={isMobileDevice ? 20 : 10}
         >
-          <Box pb={10} w='70vw'>
-            <Text fontWeight='700' color={"#ffffff"} mb={4}>
+          <Box pb={10} w={isMobileDevice ? "80vw" : "70vw"}>
+            <Text
+              textAlign={isMobileDevice ? "center" : undefined}
+              fontWeight='700'
+              color={"#ffffff"}
+              mb={4}
+            >
               Supported Networks
             </Text>
 
-            <Flex flexWrap={"wrap"} justifyContent='center'>
-              <Img w='150px' mr={4} src={activebinance.src} />
+            <Flex
+              flexWrap={isMobileDevice ? "nowrap" : "wrap"}
+              justifyContent='center'
+              flexDirection={isMobileDevice ? "column" : undefined}
+              alignItems={isMobileDevice ? "center" : undefined}
+              my={isMobileDevice ? 5 : 10}
+            >
+              <Img
+                w='150px'
+                mr={isMobileDevice ? undefined : 4}
+                src={activebinance.src}
+              />
               <Img w='150px' src={inactiveethereum.src} />
-              <Img w='150px' mx={4} src={inactivefantom.src} />
+              <Img
+                w='150px'
+                mx={isMobileDevice ? undefined : 4}
+                src={inactivefantom.src}
+              />
               <Img w='150px' src={inactivepolygon.src} />
-              <Img w='150px' mx={4} src={inactiveavalanche.src} />
+              <Img
+                w='150px'
+                mx={isMobileDevice ? undefined : 4}
+                src={inactiveavalanche.src}
+              />
               <Img w='150px' src={inactiveoptimism.src} />
             </Flex>
 
             <Flex
               py={10}
-              mt={20}
               justifyContent={"space-between"}
-              w={"70vw"}
+              w={isMobileDevice ? "80vw" : "70vw"}
               backdropFilter={"blur(20px)"}
-              //   flexDirection={isMobileDevice ? "column" : undefined}
+              flexDirection={isMobileDevice ? "column" : undefined}
               alignItems='center'
               border='1px solid rgba(255, 255, 255, 0.12)'
               px={5}
@@ -441,7 +673,7 @@ export default function Landing2() {
                 Audited and <br /> Verified by
               </Text>
               <Flex
-                // flexDirection={isMobileDevice ? "column" : undefined}
+                flexDirection={isMobileDevice ? "column" : undefined}
                 border='1px solid rgba(255, 255, 255, 0.12)'
                 py={2}
                 px={2}
@@ -449,7 +681,7 @@ export default function Landing2() {
                 <Flex
                   alignItems={"center"}
                   justifyContent='center'
-                  //   w={isMobileDevice ? "200px" : undefined}
+                  w={isMobileDevice ? "200px" : undefined}
                   // py={1}
                   h='60px'
                   px={2}
@@ -462,13 +694,13 @@ export default function Landing2() {
                   alignItems={"center"}
                   justifyContent='center'
                   // py={1}
-                  //   w={isMobileDevice ? "200px" : undefined}
+                  w={isMobileDevice ? "200px" : undefined}
                   h='60px'
                   px={2}
                   bgColor='black'
                   borderRadius={"18px"}
-                  mx={5}
-                  //   my={isMobileDevice ? 5 : 0}
+                  mx={isMobileDevice ? 0 : 5}
+                  my={isMobileDevice ? 5 : 0}
                 >
                   <Img w='150px' h='40px' src={peckshield.src} />
                 </Flex>
@@ -476,7 +708,7 @@ export default function Landing2() {
                   alignItems={"center"}
                   justifyContent='center'
                   // py={1}
-                  //   w={isMobileDevice ? "200px" : undefined}
+                  w={isMobileDevice ? "200px" : undefined}
                   h='60px'
                   px={2}
                   bgColor='black'
