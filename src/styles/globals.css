@@ -86,7 +86,7 @@ body {
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
+  color: black;
   background: linear-gradient(
       to bottom,
       transparent,
@@ -104,4 +104,9 @@ a {
   html {
     color-scheme: dark;
   }
+}
+
+html {
+  scroll-behavior: smooth;
+  color: "black";
 }
