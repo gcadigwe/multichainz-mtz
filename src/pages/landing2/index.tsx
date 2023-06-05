@@ -36,7 +36,7 @@ export default function Landing2() {
   const lendingInfocard2 = useRef(null);
   const lendingInfocard3 = useRef(null);
 
-  const cardsToRef = {
+  const cardsToRef: any = {
     "1": lendingInfocard1,
     "2": lendingInfocard2,
     "3": lendingInfocard3,

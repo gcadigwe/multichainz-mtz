@@ -22,6 +22,7 @@ const Navbar = () => {
         backdropFilter={"blur(76px)"}
         justifyContent={"center"}
         zIndex={199999}
+        background='linear-gradient(90deg, rgba(223,216,255,1) 0%, rgba(204,211,255,1) 40%, rgba(175,202,255,1) 100%)'
       >
         <Flex
           w={isMobileDevice ? "100vw" : "70vw"}

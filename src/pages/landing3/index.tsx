@@ -1,8 +1,18 @@
 import Navbar from "@/components/Landing2/Navbar";
 import PoolCard from "@/components/Landing3/PoolCard";
 import YieldFarmInfoCard from "@/components/Landing3/YieldFarmInfoCard";
-import { Flex, Img, Box, Text, Button, Input, Select } from "@chakra-ui/react";
+import {
+  Flex,
+  Img,
+  Box,
+  Text,
+  Button,
+  Input,
+  Select,
+  useMediaQuery,
+} from "@chakra-ui/react";
 import flowerbg from "../../assets/flowerbg.png";
+import mobileflowerbg from "../../assets/mobileflowerbg.png";
 import underline from "../../assets/svg/underline.svg";
 import security from "../../assets/svg/security.svg";
 import efficiency from "../../assets/svg/landing3efficiency.svg";
@@ -10,6 +20,7 @@ import flexibility from "../../assets/svg/flexibility.svg";
 import diversification from "../../assets/svg/diversification.svg";
 import colorbar from "../../assets/svg/colorbar.svg";
 import calculator from "../../assets/calculator.png";
+import calculatormobile from "../../assets/calculatormobile.png";
 import activebinance from "../../assets/svg/activebinance.svg";
 import inactiveethereum from "../../assets/svg/inactiveethereum.svg";
 import inactivefantom from "../../assets/svg/inactivefantom.svg";
@@ -22,6 +33,7 @@ import peckshield from "../../assets/svg/peckshield.svg";
 import Footer from "@/components/Footer";
 
 export default function Landing3() {
+  const [isMobileDevice] = useMediaQuery("(max-width: 750px)");
   return (
     <Box bgColor={"#CDE6FA"}>
       <Box bgColor={"#CDE6FA"} position={"relative"}>
@@ -31,18 +43,36 @@ export default function Landing3() {
 
         <Flex justifyContent={"space-between"}>
           <Flex position={"absolute"} justifyContent={"center"} w='100vw'>
-            <Box w='70vw' mt={20}>
-              <Text fontSize={"60px"} fontWeight='700'>
-                Earn <br /> In Multiple Chains
-              </Text>
+            <Box w='70vw' mt={isMobileDevice ? 40 : 20}>
+              {isMobileDevice ? (
+                <Text
+                  textAlign={"center"}
+                  opacity={1}
+                  fontSize={"40px"}
+                  fontWeight='800'
+                >
+                  Earn Interest In Multiple Chains
+                </Text>
+              ) : (
+                <Text opacity={1} fontSize={"60px"} fontWeight='700'>
+                  Earn <br /> In Multiple Chains
+                </Text>
+              )}
 
-              <Text my={10}>
+              <Text
+                my={10}
+                textAlign={isMobileDevice ? "center" : undefined}
+                fontWeight={isMobileDevice ? "700" : underline}
+              >
                 The protocol that allows you to earn interest
                 <br />
                 in an easy and interoperable way
               </Text>
 
-              <Flex mt={20} justifyContent={"flex-start"}>
+              <Flex
+                mt={20}
+                justifyContent={isMobileDevice ? "center" : "flex-start"}
+              >
                 <Flex flexDirection={"column"} alignItems='center'>
                   <Flex>
                     <Box>
@@ -94,17 +124,27 @@ export default function Landing3() {
               </Flex>
             </Box>
           </Flex>
-          <Flex w='100%' justifyContent={"flex-end"}>
-            <Img w='60%' src={flowerbg.src} />
+          <Flex
+            // h={isMobileDevice ? "50vh" : undefined}
+            w='100%'
+            justifyContent={"flex-end"}
+          >
+            <Img
+              w={isMobileDevice ? undefined : "60%"}
+              src={isMobileDevice ? mobileflowerbg.src : flowerbg.src}
+            />
           </Flex>
         </Flex>
       </Box>
 
       <Flex justifyContent={"center"}>
-        <Box w='70vw'>
+        <Box w={isMobileDevice ? "80vw" : "70vw"}>
           <Flex flexDirection={"column"} alignItems={"center"}>
             <Flex alignItems={"center"} flexDirection={"column"}>
-              <Text fontSize={"40px"} fontWeight='700'>
+              <Text
+                fontSize={isMobileDevice ? "30px" : "40px"}
+                fontWeight='700'
+              >
                 Our Pools
               </Text>
               <Img w='200px' src={underline.src} />
@@ -114,33 +154,50 @@ export default function Landing3() {
             </Flex>
           </Flex>
 
-          <Flex mt={20} mb={10} justifyContent={"space-between"}>
+          <Flex
+            mt={20}
+            mb={isMobileDevice ? 4 : 10}
+            flexDirection={isMobileDevice ? "column" : undefined}
+            justifyContent={"space-between"}
+          >
             <PoolCard />
 
-            <Flex mx={5}>
+            <Box mx={isMobileDevice ? undefined : 5}>
               <PoolCard />
-            </Flex>
+            </Box>
 
             <PoolCard />
           </Flex>
 
-          <Flex justifyContent={"space-between"}>
+          <Flex
+            flexDirection={isMobileDevice ? "column" : undefined}
+            justifyContent={"space-between"}
+          >
             <PoolCard />
 
-            <Flex mx={5}>
+            <Box mx={isMobileDevice ? undefined : 5}>
               <PoolCard />
-            </Flex>
+            </Box>
 
             <PoolCard />
           </Flex>
 
           <Flex mt={40} justifyContent='center'>
-            <Text fontSize={"40px"} fontWeight='700'>
+            <Text
+              textAlign={isMobileDevice ? "center" : undefined}
+              fontSize={isMobileDevice ? "30px" : "40px"}
+              mb={isMobileDevice ? 20 : undefined}
+              fontWeight='700'
+            >
               Yield Farming Made Safer and Easier
             </Text>
           </Flex>
 
-          <Flex mt={10} justifyContent='space-between'>
+          <Flex
+            mt={10}
+            flexDirection={isMobileDevice ? "column" : undefined}
+            justifyContent='space-between'
+          >
             <YieldFarmInfoCard
               number={1}
               title={"Get Verified"}
@@ -151,7 +208,10 @@ export default function Landing3() {
               }
             />
 
-            <Flex mx={2}>
+            <Box
+              mx={isMobileDevice ? undefined : 2}
+              mt={isMobileDevice ? 10 : undefined}
+            >
               <YieldFarmInfoCard
                 number={2}
                 title={"Add Liquidity"}
@@ -162,9 +222,12 @@ export default function Landing3() {
                   </Text>
                 }
               />
-            </Flex>
+            </Box>
 
-            <Flex mr={2}>
+            <Box
+              mr={isMobileDevice ? undefined : 2}
+              my={isMobileDevice ? 10 : undefined}
+            >
               <YieldFarmInfoCard
                 number={3}
                 title={"Choose Terms"}
@@ -174,7 +237,7 @@ export default function Landing3() {
                   </Text>
                 }
               />
-            </Flex>
+            </Box>
 
             <YieldFarmInfoCard
               number={4}
@@ -196,12 +259,21 @@ export default function Landing3() {
       </Flex>
 
       <Flex mt={40} justifyContent={"center"}>
-        <Box w='70vw'>
-          <Text fontSize={"40px"} fontWeight='700'>
+        <Box w={isMobileDevice ? "80vw" : "70vw"}>
+          <Text
+            fontSize={isMobileDevice ? "30px" : "40px"}
+            textAlign={isMobileDevice ? "center" : undefined}
+            fontWeight='700'
+          >
             Why Farm <br />
             With Multichainz:
           </Text>
-          <Flex flex={1} mt={10} justifyContent={"space-between"}>
+          <Flex
+            flex={1}
+            mt={10}
+            flexDirection={isMobileDevice ? "column" : undefined}
+            justifyContent={"space-between"}
+          >
             <Flex flex={0.4}>
               <Box w='100%' px={8} py={6} bgColor={"white"}>
                 <Img w='50px' h='50px' src={security.src} />
@@ -217,7 +289,7 @@ export default function Landing3() {
               </Box>
             </Flex>
 
-            <Flex flex={0.4}>
+            <Flex flex={0.4} mt={isMobileDevice ? 10 : undefined}>
               <Box w='100%' px={8} py={6} bgColor={"white"}>
                 <Img w='50px' h='50px' src={efficiency.src} />
                 <Text my={3} fontWeight={"700"} fontSize={"24px"}>
@@ -233,7 +305,12 @@ export default function Landing3() {
             </Flex>
           </Flex>
 
-          <Flex flex={1} mt={10} justifyContent={"space-between"}>
+          <Flex
+            flex={1}
+            mt={10}
+            flexDirection={isMobileDevice ? "column" : undefined}
+            justifyContent={"space-between"}
+          >
             <Flex flex={0.4}>
               <Box w='100%' px={8} py={6} bgColor={"white"}>
                 <Img w='50px' h='50px' src={flexibility.src} />
@@ -249,7 +326,7 @@ export default function Landing3() {
               </Box>
             </Flex>
 
-            <Flex flex={0.4}>
+            <Flex flex={0.4} mt={isMobileDevice ? 10 : undefined}>
               <Box w='100%' px={8} py={6} bgColor={"white"}>
                 <Img w='50px' h='50px' src={diversification.src} />
                 <Text my={3} fontWeight={"700"} fontSize={"24px"}>
@@ -268,48 +345,118 @@ export default function Landing3() {
       </Flex>
 
       <Flex mt={40} justifyContent={"center"}>
-        <Box w='70vw'>
-          <Text fontSize={"40px"} fontWeight='700'>
+        <Box
+          w={isMobileDevice ? "100vw" : "70vw"}
+          h={isMobileDevice ? "80vh" : undefined}
+        >
+          <Text
+            fontSize={isMobileDevice ? "30px" : "40px"}
+            textAlign={isMobileDevice ? "center" : undefined}
+            fontWeight='700'
+          >
             Calculate Your Potential Rewards
           </Text>
 
-          <Flex mt={10} justifyContent={"space-between"}>
-            <Img src={calculator.src} />
-            <Flex pt={5} flexDirection={"column"}>
-              <Flex flexDirection={"column"}>
-                <Text>Amount to lock, USD</Text>
-                <Input bgColor='white' />
-              </Flex>
+          <Flex
+            mt={10}
+            // flexDirection={isMobileDevice ? "column" : undefined}
+            justifyContent={"space-between"}
+            position={isMobileDevice ? "relative" : undefined}
+          >
+            <Img src={isMobileDevice ? calculatormobile.src : calculator.src} />
 
-              <Flex mt={5} flexDirection={"column"}>
-                <Text>Your Return</Text>
-                <Input bgColor='white' />
-              </Flex>
+            {isMobileDevice ? (
+              <>
+                <Box position={"absolute"} right={0}>
+                  <Flex pt={5} flexDirection={"column"}>
+                    <Flex flexDirection={"column"}>
+                      <Text>Amount to lock, USD</Text>
+                      <Input bgColor='white' />
+                    </Flex>
 
-              <Button mt={5} color='white' fontSize={"14px"} bgColor='#49A8FC'>
-                Earn Now
-              </Button>
-            </Flex>
+                    <Flex mt={5} flexDirection={"column"}>
+                      <Text>Your Return</Text>
+                      <Input bgColor='white' />
+                    </Flex>
+                  </Flex>
 
-            <Flex pt={5} flexDirection={"column"}>
-              <Text>Select Farming Pool</Text>
-              <Select
-                fontSize={"14px"}
-                background='linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(148,178,228,1) 100%)'
-              >
-                <option>Farming Pool name</option>
-              </Select>
-            </Flex>
+                  <Flex pt={5} flexDirection={"column"}>
+                    <Text>Select Farming Pool</Text>
+                    <Select
+                      fontSize={"14px"}
+                      background='linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(148,178,228,1) 100%)'
+                    >
+                      <option>Farming Pool name</option>
+                    </Select>
+                  </Flex>
 
-            <Flex pt={5} flexDirection={"column"}>
-              <Text>Time Period</Text>
-              <Select
-                fontSize={"14px"}
-                background='linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(148,178,228,1) 100%)'
-              >
-                <option>1 week</option>
-              </Select>
-            </Flex>
+                  <Flex pt={5} flexDirection={"column"}>
+                    <Text>Time Period</Text>
+                    <Select
+                      fontSize={"14px"}
+                      background='linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(148,178,228,1) 100%)'
+                    >
+                      <option>1 week</option>
+                    </Select>
+                  </Flex>
+
+                  <Flex position={"absolute"} mt={10} left={-100}>
+                    <Button
+                      w='250px'
+                      mt={5}
+                      color='white'
+                      fontSize={"14px"}
+                      bgColor='#49A8FC'
+                    >
+                      Earn Now
+                    </Button>
+                  </Flex>
+                </Box>
+              </>
+            ) : (
+              <>
+                <Flex pt={5} flexDirection={"column"}>
+                  <Flex flexDirection={"column"}>
+                    <Text>Amount to lock, USD</Text>
+                    <Input bgColor='white' />
+                  </Flex>
+
+                  <Flex mt={5} flexDirection={"column"}>
+                    <Text>Your Return</Text>
+                    <Input bgColor='white' />
+                  </Flex>
+
+                  <Button
+                    mt={5}
+                    color='white'
+                    fontSize={"14px"}
+                    bgColor='#49A8FC'
+                  >
+                    Earn Now
+                  </Button>
+                </Flex>
+
+                <Flex pt={5} flexDirection={"column"}>
+                  <Text>Select Farming Pool</Text>
+                  <Select
+                    fontSize={"14px"}
+                    background='linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(148,178,228,1) 100%)'
+                  >
+                    <option>Farming Pool name</option>
+                  </Select>
+                </Flex>
+
+                <Flex pt={5} flexDirection={"column"}>
+                  <Text>Time Period</Text>
+                  <Select
+                    fontSize={"14px"}
+                    background='linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(148,178,228,1) 100%)'
+                  >
+                    <option>1 week</option>
+                  </Select>
+                </Flex>
+              </>
+            )}
           </Flex>
         </Box>
       </Flex>
@@ -319,10 +466,11 @@ export default function Landing3() {
         alignItems={"center"}
         flexDirection='column'
         py={10}
+        px={isMobileDevice ? 5 : undefined}
       >
         <Text
           textAlign={"center"}
-          fontSize={"40px"}
+          fontSize={isMobileDevice ? "30px" : "40px"}
           fontWeight='700'
           color='white'
         >
@@ -333,7 +481,7 @@ export default function Landing3() {
           color='white'
           mt={10}
           textAlign={"center"}
-          fontSize='20px'
+          fontSize={isMobileDevice ? "16px" : "20px"}
           fontWeight={"700"}
         >
           Multichainz Yield Farming solution is the perfect alternative to
@@ -353,7 +501,107 @@ export default function Landing3() {
           </Button>
         </Flex>
 
-        <Box pb={10} w='70vw'>
+        <Box pb={10} w={isMobileDevice ? "80vw" : "70vw"}>
+          <Text
+            textAlign={isMobileDevice ? "center" : undefined}
+            fontWeight='700'
+            color={"#ffffff"}
+            mb={4}
+          >
+            Supported Networks
+          </Text>
+
+          <Flex
+            flexWrap={isMobileDevice ? "nowrap" : "wrap"}
+            justifyContent='center'
+            flexDirection={isMobileDevice ? "column" : undefined}
+            alignItems={isMobileDevice ? "center" : undefined}
+            my={isMobileDevice ? 5 : 10}
+          >
+            <Img
+              w='150px'
+              mr={isMobileDevice ? undefined : 4}
+              src={activebinance.src}
+            />
+            <Img w='150px' src={inactiveethereum.src} />
+            <Img
+              w='150px'
+              mx={isMobileDevice ? undefined : 4}
+              src={inactivefantom.src}
+            />
+            <Img w='150px' src={inactivepolygon.src} />
+            <Img
+              w='150px'
+              mx={isMobileDevice ? undefined : 4}
+              src={inactiveavalanche.src}
+            />
+            <Img w='150px' src={inactiveoptimism.src} />
+          </Flex>
+
+          <Flex
+            py={10}
+            justifyContent={"space-between"}
+            w={isMobileDevice ? "80vw" : "70vw"}
+            backdropFilter={"blur(20px)"}
+            flexDirection={isMobileDevice ? "column" : undefined}
+            alignItems='center'
+            border='1px solid rgba(255, 255, 255, 0.12)'
+            px={5}
+          >
+            <Text fontSize={"30px"} fontWeight='bold' color='white'>
+              Audited and <br /> Verified by
+            </Text>
+            <Flex
+              flexDirection={isMobileDevice ? "column" : undefined}
+              border='1px solid rgba(255, 255, 255, 0.12)'
+              py={2}
+              px={2}
+            >
+              <Flex
+                alignItems={"center"}
+                justifyContent='center'
+                w={isMobileDevice ? "200px" : undefined}
+                // py={1}
+                h='60px'
+                px={2}
+                bgColor='black'
+                borderRadius={"18px"}
+              >
+                <Img w='150px' h='30px' src={halborn.src} />
+              </Flex>
+              <Flex
+                alignItems={"center"}
+                justifyContent='center'
+                // py={1}
+                w={isMobileDevice ? "200px" : undefined}
+                h='60px'
+                px={2}
+                bgColor='black'
+                borderRadius={"18px"}
+                mx={isMobileDevice ? 0 : 5}
+                my={isMobileDevice ? 5 : 0}
+              >
+                <Img w='150px' h='40px' src={peckshield.src} />
+              </Flex>
+              <Flex
+                alignItems={"center"}
+                justifyContent='center'
+                // py={1}
+                w={isMobileDevice ? "200px" : undefined}
+                h='60px'
+                px={2}
+                bgColor='black'
+                borderRadius={"18px"}
+              >
+                <Img w='150px' h='30px' src={quillhash.src} />
+              </Flex>
+              {/* <Img src={peckshield.src} />
+                <Img src={quillhash.src} /> */}
+            </Flex>
+          </Flex>
+        </Box>
+
+        {/* <Box pb={10} w='70vw'>
           <Text fontWeight='700' color={"#ffffff"} mb={4}>
             Supported Networks
           </Text>
@@ -427,7 +675,7 @@ export default function Landing3() {
               </Flex>
             </Flex>
           </Flex>
-        </Box>
+        </Box> */}
       </Flex>
 
       <Footer />

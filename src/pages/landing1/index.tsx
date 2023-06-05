@@ -69,7 +69,7 @@ const Landing1 = () => {
   const fourthcardref = useRef<any>(null);
   const fifthcardref = useRef<any>(null);
 
-  const cardsToRef = {
+  const cardsToRef: any = {
     "1": firstcardref,
     "2": secondcardref,
     "3": thirdcardref,
