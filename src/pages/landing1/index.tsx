@@ -10,6 +10,7 @@ import {
   InputGroup,
   InputRightAddon,
   useMediaQuery,
+  Heading,
 } from "@chakra-ui/react";
 import eclipsebg from "../../assets/svg/elipsebg.svg";
 import wallet from "../../assets/svg/wallet.svg";
@@ -57,6 +58,9 @@ import blurelipsemobile from "../../assets/svg/blurelipsemobile.svg";
 import blurelipse from "../../assets/svg/blurelipse.svg";
 import FixedMenu from "@/components/Landing1/Menu/FixedMenu";
 import { useEffect, useState } from "react";
+import Footer from "@/components/Footer";
+import AnimatedPolygon from "@/components/Landing1/AnimatedPolygons";
+import web3label from "../../assets/svg/web3label.svg";
 
 const Landing1 = () => {
   const firstpageRef = useRef<any>(null);
@@ -95,10 +99,14 @@ const Landing1 = () => {
         setcurrentCard((prev) => prev + 1);
       }
     } else {
+      console.log(secondpageRef.current.getBoundingClientRect());
+      console.log(firstpageRef.current.getBoundingClientRect());
+
       secondpageRef.current?.scrollIntoView({
         behavior: "smooth",
+        // block: "end",
         block: "nearest",
-        inline: "start",
+        // inline: "start",
       });
     }
   };
@@ -115,10 +123,10 @@ const Landing1 = () => {
         setcurrentCard((prev) => prev - 1);
       }
     } else {
-      firstpageRef.current?.scrollIntoView({
+      firstcardref.current?.scrollIntoView({
         behavior: "smooth",
         block: "nearest",
-        inline: "start",
+        inline: "end",
       });
     }
   };
@@ -163,6 +171,9 @@ const Landing1 = () => {
             h={isMobileDevice ? "70vh" : undefined}
             src={eclipsebg.src}
           />
+
+          <AnimatedPolygon />
+
           <Flex
             w='100%'
             top={isMobileDevice ? "10%" : "30%"}
@@ -171,34 +182,45 @@ const Landing1 = () => {
             alignItems={"center"}
           >
             {isMobileDevice ? (
-              <Text fontSize={"50px"} textAlign='center' fontWeight='bold'>
+              <Heading fontSize={"50px"} textAlign='center' fontWeight='bold'>
                 MultichainZ <br /> Protocol
-              </Text>
+              </Heading>
             ) : (
-              <Text fontSize={"70px"} fontWeight='bold'>
-                MultichainZ Protocol
-              </Text>
+              <Heading fontSize={{ lg: "80px", xl: "100px" }} fontWeight='900'>
+                MultiChainZ Protocol
+              </Heading>
             )}
 
             {isMobileDevice ? (
               <Text
+                px={10}
+                fontFamily={"Roboto"}
                 my={5}
                 textAlign='center'
-                fontSize={"24px"}
+                fontSize={"20px"}
                 fontWeight='400'
               >
                 Lend, borrow, and stake crypto, NFT, and tokenized real-world
                 assets in any chain
               </Text>
             ) : (
-              <Text my={5} fontSize={"30px"} fontWeight='400'>
+              <Text
+                my={5}
+                fontFamily={"Roboto"}
+                fontSize={"30px"}
+                fontWeight='400'
+              >
                 Lend, borrow, and stake crypto, NFT, and
                 <br /> tokenized real-world assets in any chain
               </Text>
             )}
 
-            <Flex justifyContent={"center"}>
+            <Flex
+              justifyContent={"center"}
+              w={{ base: undefined, sm: "100%", lg: "150px", xl: "150px" }}
+            >
               <Button
+                w={{ sm: "80%", lg: undefined, xl: undefined }}
                 color='white'
                 fontSize={"14px"}
                 background={
@@ -214,36 +236,28 @@ const Landing1 = () => {
               w={isMobileDevice ? "100vw" : "70vw"}
               px={isMobileDevice ? 5 : 0}
               fontWeight={"bold"}
-              fontSize={"14px"}
               flexDirection={isMobileDevice ? "column" : undefined}
               justifyContent={isMobileDevice ? undefined : "space-between"}
+              fontSize='18px'
             >
               <Flex alignItems={"center"}>
                 <Img mr={2} src={wallet.src} />
-                <Text fontWeight={"bold"} fontSize={"14px"}>
-                  NFT/RWA Lending
-                </Text>
+                <Text fontWeight={"bold"}>NFT/RWA Lending</Text>
               </Flex>
 
               <Flex mt={isMobileDevice ? 4 : 0} alignItems={"center"}>
                 <Img mr={2} src={crosschain.src} />
-                <Text fontWeight={"bold"} fontSize={"14px"}>
-                  Cross-chain infrastructure
-                </Text>
+                <Text fontWeight={"bold"}>Cross-chain infrastructure</Text>
               </Flex>
 
               <Flex mt={isMobileDevice ? 4 : 0} alignItems={"center"}>
                 <Img mr={2} src={institution.src} />
-                <Text fontWeight={"bold"} fontSize={"14px"}>
-                  Institutional Compliance
-                </Text>
+                <Text fontWeight={"bold"}>Institutional Compliance</Text>
               </Flex>
 
               <Flex mt={isMobileDevice ? 4 : 0} alignItems={"center"}>
                 <Img mr={2} src={dao.src} />
-                <Text fontWeight={"bold"} fontSize={"14px"}>
-                  DAO Governance
-                </Text>
+                <Text fontWeight={"bold"}>DAO Governance</Text>
               </Flex>
             </Flex>
           </Flex>
@@ -261,11 +275,12 @@ const Landing1 = () => {
           <Flex
             justifyContent={isMobileDevice ? "center" : undefined}
             w={isMobileDevice ? "100vw" : "70vw"}
+            mb={10}
           >
             <Text
               textAlign={isMobileDevice ? "center" : undefined}
-              fontSize={isMobileDevice ? "20px" : "30px"}
-              fontWeight='500'
+              fontSize={isMobileDevice ? "20px" : "24px"}
+              fontWeight='600'
             >
               $X locked in collateral to back the loans
             </Text>
@@ -276,6 +291,7 @@ const Landing1 = () => {
             mt={5}
             justifyContent={"space-between"}
             px={isMobileDevice ? 5 : undefined}
+            alignItems='center'
           >
             <Flex
               textAlign={"center"}
@@ -283,13 +299,13 @@ const Landing1 = () => {
               justifyContent={"center"}
               alignItems={isMobileDevice ? "center" : undefined}
             >
-              <Text
-                fontWeight={"700"}
+              <Heading
+                // fontWeight={"700"}
                 fontSize={isMobileDevice ? "20px" : "40px"}
               >
                 $xx Million+
-              </Text>
-              <Text fontSize={isMobileDevice ? "14px" : "16px"}>
+              </Heading>
+              <Text fontSize={isMobileDevice ? "14px" : "18px"}>
                 Processed Loans
               </Text>
             </Flex>
@@ -299,13 +315,13 @@ const Landing1 = () => {
               flexDirection={"column"}
               justifyContent={"center"}
             >
-              <Text
+              <Heading
                 fontWeight={"700"}
                 fontSize={isMobileDevice ? "20px" : "40px"}
               >
                 $M+
-              </Text>
-              <Text fontSize={isMobileDevice ? "14px" : "16px"}>
+              </Heading>
+              <Text fontSize={isMobileDevice ? "14px" : "18px"}>
                 World Users
               </Text>
             </Flex>
@@ -315,13 +331,13 @@ const Landing1 = () => {
               alignItems={isMobileDevice ? "center" : undefined}
               justifyContent={"center"}
             >
-              <Text
+              <Heading
                 fontWeight={"700"}
                 fontSize={isMobileDevice ? "20px" : "40px"}
               >
                 20+
-              </Text>
-              <Text fontSize={isMobileDevice ? "14px" : "16px"}>
+              </Heading>
+              <Text fontSize={isMobileDevice ? "14px" : "18px"}>
                 Reached Countries
               </Text>
             </Flex>
@@ -331,65 +347,107 @@ const Landing1 = () => {
           <Flex
             w={isMobileDevice ? "100vw" : "70vw"}
             px={isMobileDevice ? 5 : undefined}
-            mt={10}
+            mt={40}
             flexDirection={"column"}
           >
-            <Text
+            <Heading
               fontWeight={"700"}
               color='#8F979C'
               fontSize={isMobileDevice ? "24px" : "40px"}
             >
               Explore MultichainZ
-            </Text>
-            <Text
+            </Heading>
+            <Heading
               lineHeight={"1.2"}
               fontWeight={"700"}
               fontSize={isMobileDevice ? "24px" : "38px"}
             >
               Community Pools <br /> across Multiple Chains
-            </Text>
+            </Heading>
           </Flex>
         </Flex>
-        <Flex justifyContent={"center"}>
-          <Flex
-            w={isMobileDevice ? "100vw" : "70vw"}
-            mt={10}
-            flexDirection={isMobileDevice ? "column" : undefined}
-            justifyContent={isMobileDevice ? undefined : "space-between"}
-            alignItems={isMobileDevice ? "center" : undefined}
-          >
-            <Cards
-              img={ethereum.src}
-              text={
-                <Text mb={5} fontSize={"14px"}>
-                  Access 450k+ tokens through the <br /> largest chain for dApps
-                </Text>
-              }
-            />
+        <Flex mt={20} justifyContent={"center"}>
+          <Box w={{ sm: "80vw", lg: "70vw", xl: "70vw" }}>
+            <Flex
+              h={isMobileDevice ? undefined : "250px"}
+              flex={1}
+              flexDirection={{ sm: "column", lg: "row", xl: "row" }}
+              justifyContent='space-between'
+            >
+              <Cards
+                img={ethereum.src}
+                text={
+                  <Text mb={5} fontSize={{ lg: "16px", xl: "20px" }}>
+                    Access 450k+ tokens through the largest chain for dApps
+                  </Text>
+                }
+              />
 
-            <Flex mx={isMobileDevice ? 0 : 5}>
               <Cards
                 img={fantom.src}
                 text={
-                  <Text mb={5} fontSize={"14px"}>
-                    Access speed and security in your <br /> loan transactions.
+                  <Text mb={5} fontSize={{ lg: "16px", xl: "20px" }}>
+                    Access speed and security in your loan transactions.
+                  </Text>
+                }
+              />
+
+              <Cards
+                img={binance.src}
+                text={
+                  <Text mb={5} fontSize={{ lg: "16px", xl: "20px" }}>
+                    Lend your assets in a cheaper and faster way through this
+                    leading chain
                   </Text>
                 }
               />
             </Flex>
-
-            <Cards
-              img={binance.src}
-              text={
-                <Text mb={5} fontSize={"14px"}>
-                  Lend your assets in a cheaper and <br />
-                  faster way through this leading <br /> chain
-                </Text>
-              }
-            />
-          </Flex>
+          </Box>
         </Flex>
-        <Flex justifyContent={"center"}>
+
+        <Flex mt={6} justifyContent={"center"}>
+          <Box
+            w={{ sm: "80vw", lg: "70vw", xl: "70vw" }}
+            // border='1px solid red'
+          >
+            <Flex
+              h={isMobileDevice ? undefined : "250px"}
+              flexDirection={{ sm: "column", lg: "row", xl: "row" }}
+              flex={1}
+              justifyContent='space-between'
+            >
+              <Cards
+                img={polygon.src}
+                text={
+                  <Text mb={5} fontSize={{ lg: "16px", xl: "20px" }}>
+                    Unlock lower fees and higher scalability with this scaling
+                    technology
+                  </Text>
+                }
+              />
+
+              <Cards
+                img={avalanche.src}
+                text={
+                  <Text mb={5} fontSize={{ lg: "16px", xl: "20px" }}>
+                    Enjoy efficiency and security robustness in your loans
+                  </Text>
+                }
+              />
+
+              <Cards
+                img={optimism.src}
+                text={
+                  <Text mb={5} fontSize={{ lg: "16px", xl: "20px" }}>
+                    Lend and borrow with the fastest and cheapest L2 benefits
+                  </Text>
+                }
+              />
+            </Flex>
+          </Box>
+        </Flex>
+
+        {/* <Flex justifyContent={"center"}>
           <Flex
             w={isMobileDevice ? "100vw" : "70vw"}
             mt={isMobileDevice ? 0 : 10}
@@ -406,7 +464,7 @@ const Landing1 = () => {
                 </Text>
               }
             />
-            <Flex mx={isMobileDevice ? 0 : 5}>
+            <Flex w='100%' mx={isMobileDevice ? 0 : 5}>
               <Cards
                 img={avalanche.src}
                 text={
@@ -427,10 +485,13 @@ const Landing1 = () => {
               }
             />
           </Flex>
-        </Flex>
+        </Flex> */}
+
         <Flex mt={4} justifyContent={"center"}>
           <Flex w='70vw'>
-            <Text fontWeight={"bold"}>More chains coming soon…</Text>
+            <Heading fontSize={"16px"} fontWeight={"bold"}>
+              More chains coming soon…
+            </Heading>
           </Flex>
         </Flex>
         <Flex
@@ -438,9 +499,12 @@ const Landing1 = () => {
           alignItems={"center"}
           flexDirection={"column"}
         >
-          <Text fontSize={isMobileDevice ? "18px" : "24px"} fontWeight={"bold"}>
+          <Heading
+            fontSize={isMobileDevice ? "18px" : "24px"}
+            fontWeight={"bold"}
+          >
             Enabling Institutional Lending
-          </Text>
+          </Heading>
           {isMobileDevice ? (
             <Text
               fontSize={isMobileDevice ? "14px" : undefined}
@@ -456,6 +520,7 @@ const Landing1 = () => {
             </Text>
           )}
         </Flex>
+
         <Flex justifyContent={"center"}>
           <Flex
             mt={20}
@@ -484,13 +549,17 @@ const Landing1 = () => {
                 <ChevronRightIcon />
               </Flex>
             </Flex>
-            <Flex overflowX={"hidden"}>
+            <Flex
+              overflowX={"hidden"}
+
+              // width='200%'
+            >
               <Flex ref={firstpageRef}>
                 <Flex ref={firstcardref}>
                   <SlideCard
                     title='Compliant with Regulations'
                     text={
-                      <Text mb={2} fontSize={"14px"}>
+                      <Text mb={2} fontSize={{ lg: "14px", xl: "18px" }}>
                         Multichainz has on-chain Know- Your-Customer (KYC)
                         verification for users
                       </Text>
@@ -501,7 +570,7 @@ const Landing1 = () => {
                   <SlideCard
                     title='Extra Secure Asset Custody'
                     text={
-                      <Text mb={2} fontSize={"14px"}>
+                      <Text mb={2} fontSize={{ lg: "14px", xl: "18px" }}>
                         MultichainZ has top-industry asset custody partners to
                         increase asset protection
                       </Text>
@@ -512,7 +581,7 @@ const Landing1 = () => {
                   <SlideCard
                     title='Increased Transparency'
                     text={
-                      <Text mb={2} fontSize={"14px"}>
+                      <Text mb={2} fontSize={{ lg: "14px", xl: "18px" }}>
                         MultichainZ enhances protocol transparency through open
                         access of proof of reserves and funds
                       </Text>
@@ -525,7 +594,7 @@ const Landing1 = () => {
                   <SlideCard
                     title='Constantly Improved Security'
                     text={
-                      <Text fontSize={"14px"} mb={2}>
+                      <Text mb={2} fontSize={{ lg: "14px", xl: "18px" }}>
                         MultichainZ partners with audit leaders of the
                         blockchain industry to improve its smart contract
                         robustness
@@ -537,7 +606,7 @@ const Landing1 = () => {
                   <SlideCard
                     title='Building the blocks of banking 2.0 by bringing NFT and Real-World Asset Lending on chain'
                     text={
-                      <Text fontSize={"14px"} mb={2}>
+                      <Text mb={2} fontSize={{ lg: "14px", xl: "18px" }}>
                         Multichainz enables lending of tokenized real-world
                         assets by partnering with oracle leaders
                       </Text>
@@ -548,104 +617,290 @@ const Landing1 = () => {
             </Flex>
           </Flex>
         </Flex>
-        <Text
+
+        {/* <Flex justifyContent={"center"}>
+          <Flex
+            mt={20}
+            w={isMobileDevice ? "80vw" : "70vw"}
+            flexDirection={"column"}
+          >
+            <Flex mb={10} justifyContent={"flex-end"}>
+              <Flex
+                cursor={"pointer"}
+                bgColor={"#F5F5F5"}
+                p={2}
+                borderRadius='6px'
+                mr={4}
+                onClick={() => handleScrollBack()}
+              >
+                <ChevronLeftIcon />
+              </Flex>
+
+              <Flex
+                cursor={"pointer"}
+                bgColor={"#F5F5F5"}
+                p={2}
+                borderRadius='6px'
+                onClick={() => handleScrollForward()}
+              >
+                <ChevronRightIcon />
+              </Flex>
+            </Flex>
+            <Flex
+              // w='200%'
+
+              // w='70vw'
+
+              h='250px'
+              overflowX={"hidden"}
+            >
+              <Flex w='100%' ref={firstpageRef} justifyContent='space-between'>
+                <SlideCard
+                  title={
+                    <Text
+                      fontSize={"18px"}
+                      top={6}
+                      mb={2}
+                      fontWeight={"bold"}
+                      whiteSpace='nowrap'
+                    >
+                      Compliant with Regulations
+                    </Text>
+                  }
+                  text={
+                    <Text mb={2} fontSize={"14px"}>
+                      Multichainz has on-chain Know- Your-Customer (KYC)
+                      verification for users
+                    </Text>
+                  }
+                />
+
+                <SlideCard
+                  title={
+                    <Text
+                      fontSize={"18px"}
+                      // position={"absolute"}
+                      top={6}
+                      mb={2}
+                      fontWeight={"bold"}
+                      whiteSpace='nowrap'
+                    >
+                      Extra Secure Asset Custody
+                    </Text>
+                  }
+                  text={
+                    <Text mb={2} fontSize={"14px"}>
+                      MultichainZ has top-industry asset custody partners to
+                      increase asset protection
+                    </Text>
+                  }
+                />
+
+                <SlideCard
+                  title={
+                    <Text
+                      fontSize={"18px"}
+                      top={6}
+                      mb={2}
+                      fontWeight={"bold"}
+                      whiteSpace='nowrap'
+                    >
+                      Increased Transparency
+                    </Text>
+                  }
+                  text={
+                    <Text mb={2} fontSize={"14px"}>
+                      MultichainZ enhances protocol transparency through open
+                      access of proof of reserves and funds
+                    </Text>
+                  }
+                />
+              </Flex>
+
+              <Flex
+                border='1px solid red'
+                ref={secondpageRef}
+                justifyContent='space-between'
+              >
+                <SlideCard
+                  title={
+                    <Text
+                      fontSize={"18px"}
+                      top={6}
+                      mb={2}
+                      fontWeight={"bold"}
+                      whiteSpace='nowrap'
+                    >
+                      Compliant with Regulations
+                    </Text>
+                  }
+                  text={
+                    <Text mb={2} fontSize={"14px"}>
+                      Multichainz has on-chain Know- Your-Customer (KYC)
+                      verification for users
+                    </Text>
+                  }
+                />
+
+                <SlideCard
+                  title={
+                    <Text
+                      fontSize={"18px"}
+                      // position={"absolute"}
+                      top={6}
+                      mb={2}
+                      fontWeight={"bold"}
+                      whiteSpace='nowrap'
+                    >
+                      Extra Secure Asset Custody
+                    </Text>
+                  }
+                  text={
+                    <Text mb={2} fontSize={"14px"}>
+                      MultichainZ has top-industry asset custody partners to
+                      increase asset protection
+                    </Text>
+                  }
+                />
+
+                <SlideCard
+                  title={
+                    <Text
+                      fontSize={"18px"}
+                      top={6}
+                      mb={2}
+                      fontWeight={"bold"}
+                      whiteSpace='nowrap'
+                    >
+                      Increased Transparency
+                    </Text>
+                  }
+                  text={
+                    <Text mb={2} fontSize={"14px"}>
+                      MultichainZ enhances protocol transparency through open
+                      access of proof of reserves and funds
+                    </Text>
+                  }
+                />
+              </Flex>
+            </Flex>
+          </Flex>
+        </Flex> */}
+
+        <Heading
           my={20}
           textAlign={"center"}
           fontSize={isMobileDevice ? "24px" : "44px"}
           fontWeight={"700"}
         >
           NFT Lending
-        </Text>
+        </Heading>
         <Flex justifyContent={"center"}>
-          <Flex
-            w={isMobileDevice ? "80vw" : "70vw"}
-            borderRadius={"12px"}
-            border={"1.5px solid white"}
-            boxShadow={"0px 0px 40px -14px rgba(0,0,0,0.75)"}
-            alignItems={"center"}
-            flexDirection={isMobileDevice ? "column" : undefined}
-            py={isMobileDevice ? 5 : 0}
-          >
-            {isMobileDevice ? (
-              <Flex alignItems={"center"}>
-                <Img w='100px' h='100px' src={droid.src} />
+          <Box w={{ sm: "80vw", lg: "60vw", xl: "50vw" }}>
+            <Flex
+              borderRadius={"12px"}
+              border={"1.5px solid white"}
+              boxShadow={"0px 0px 40px -14px rgba(0,0,0,0.75)"}
+              alignItems={"center"}
+              flexDirection={isMobileDevice ? "column" : undefined}
+              py={isMobileDevice ? 5 : 0}
+              flex={1}
+              justifyContent={isMobileDevice ? undefined : "center"}
+            >
+              {isMobileDevice ? (
+                <Flex alignItems={"center"}>
+                  <Img w='100px' h='100px' src={droid.src} />
 
-                <Img w='100px' h='100px' src={bayc.src} />
-                <Img w='100px' h='100px' src={azuki.src} />
-              </Flex>
-            ) : (
-              <Flex alignItems={"center"}>
-                <Img w='200px' h='200px' src={droid.src} />
-                <Flex flexDirection={"column"}>
-                  <Img w='200px' h='200px' src={bayc.src} />
-                  <Img w='200px' h='200px' src={azuki.src} />
+                  <Img w='100px' h='100px' src={bayc.src} />
+                  <Img w='100px' h='100px' src={azuki.src} />
                 </Flex>
+              ) : (
+                <Flex alignItems={"center"}>
+                  <Img w='200px' h='200px' src={droid.src} />
+                  <Flex flexDirection={"column"}>
+                    <Img w='200px' h='200px' src={bayc.src} />
+                    <Img w='200px' h='200px' src={azuki.src} />
+                  </Flex>
+                </Flex>
+              )}
+
+              <Flex
+                // flex={0.3}
+
+                ml={isMobileDevice ? 5 : 10}
+                alignItems={"flex-start"}
+                flexDirection={"column"}
+              >
+                <Text
+                  fontWeight={"600"}
+                  fontSize={isMobileDevice ? "16px" : "20px"}
+                >
+                  Unlock instant liquidity using your NFTs <br /> as collateral
+                </Text>
+
+                <Text
+                  my={isMobileDevice ? 5 : 10}
+                  fontWeight={"600"}
+                  fontSize={isMobileDevice ? "16px" : "20px"}
+                >
+                  Access more favorable collateral terms with <br /> more
+                  valuable NFTs
+                </Text>
+
+                <Text
+                  fontWeight={"600"}
+                  fontSize={isMobileDevice ? "16px" : "20px"}
+                >
+                  Turn illiquid NFTs into valuable liquid crypto <br />
+                  funds to increase your leverage
+                </Text>
               </Flex>
-            )}
-
-            <Flex ml={10} alignItems={"flex-start"} flexDirection={"column"}>
-              <Text
-                fontWeight={"600"}
-                fontSize={isMobileDevice ? "16px" : "20px"}
-              >
-                Unlock instant liquidity using your NFTs <br /> as collateral
-              </Text>
-
-              <Text
-                my={isMobileDevice ? 5 : 10}
-                fontWeight={"600"}
-                fontSize={isMobileDevice ? "16px" : "20px"}
-              >
-                Access more favorable collateral terms with <br /> more valuable
-                NFTs
-              </Text>
-
-              <Text
-                fontWeight={"600"}
-                fontSize={isMobileDevice ? "16px" : "20px"}
-              >
-                Turn illiquid NFTs into valuable liquid crypto <br />
-                funds to increase your leverage
-              </Text>
             </Flex>
-          </Flex>
+          </Box>
         </Flex>
-        <Flex my={20} flexDirection='column'>
-          <Text
+        <Flex mt={40} flexDirection='column'>
+          <Heading
             textAlign={"center"}
             fontSize={isMobileDevice ? "24px" : "44px"}
             fontWeight={"700"}
           >
             Real-World Asset Lending
-          </Text>
-          <Text fontSize={"14px"} textAlign='center'>
+          </Heading>
+          <Text
+            textAlign='center'
+            px={{ sm: 5 }}
+            fontSize={{ base: "16px", xl: "20px" }}
+          >
             Multichainz will expand the on-chain RWA lending potential through
             tailored mechanisms for borrowers and lenders.
           </Text>
         </Flex>
         <Flex my={20} justifyContent={"center"}>
           <Flex
-            w={isMobileDevice ? "80vw" : "70vw"}
+            // flex={1}
+            w={{ sm: "80vw", lg: "60vw", xl: "50vw" }}
             py={6}
+            px={3}
             borderRadius={"12px"}
             border={"1.5px solid white"}
             boxShadow={"0px 0px 40px -14px rgba(0,0,0,0.75)"}
             alignItems={"center"}
             flexDirection={isMobileDevice ? "column" : undefined}
+            justifyContent={isMobileDevice ? undefined : "center"}
           >
             {isMobileDevice ? (
               <Flex flexDirection={"column"}>
                 <Flex mr={20}>
-                  <Img w='100px' mx={5} h='100px' src={dollar.src} />
-                  <Img w='100px' h='100px' src={phone.src} />
+                  <Img w='80px' mx={5} h='100px' src={dollar.src} />
+                  <Img w='80px' h='100px' src={phone.src} />
                 </Flex>
                 <Flex ml={20}>
-                  <Img w='100px' h='100px' mx={5} src={woods.src} />
-                  <Img w='100px' h='100px' src={buildings.src} />
+                  <Img w='80px' h='100px' mx={5} src={woods.src} />
+                  <Img w='80px' h='100px' src={buildings.src} />
                 </Flex>
               </Flex>
             ) : (
-              <Flex alignItems={"center"}>
+              <Flex alignItems={"center"} flex={0.5}>
                 <Flex mb={24} mr={-10} flexDirection={"column"}>
                   <Img w='200px' h='200px' src={buildings.src} />
                   <Img w='200px' h='200px' src={woods.src} />
@@ -663,42 +918,48 @@ const Landing1 = () => {
               mb={22}
               ml={isMobileDevice ? 0 : 10}
               mt={isMobileDevice ? 5 : 0}
-              px={isMobileDevice ? 10 : 0}
+              px={isMobileDevice ? 5 : 0}
               alignItems={"flex-start"}
               flexDirection={"column"}
+              flex={0.4}
             >
               <Flex mb={10} flexDirection={"column"}>
-                <Text fontWeight={"bold"} fontSize='24px'>
+                <Heading
+                  mb={2}
+                  fontWeight={"bold"}
+                  fontSize={{ sm: "24px", lg: "24px", xl: "30px" }}
+                >
                   For borrowers
-                </Text>
-                <Text fontWeight={"600"}>
-                  Access permissionless liquidity across multiple
-                  <br /> blockchains for your fund, startup, real estate or
-                  other
-                  <br /> financial needs
+                </Heading>
+                <Text fontWeight={"600"} fontSize={{ lg: "16px", xl: "18px" }}>
+                  Access permissionless liquidity across multiple blockchains
+                  for your fund, startup, real estate or other financial needs
                 </Text>
               </Flex>
 
               <Flex mb={10} flexDirection={"column"}>
-                <Text fontWeight={"bold"} fontSize='24px'>
+                <Heading
+                  fontWeight={"bold"}
+                  fontSize={{ sm: "24px", lg: "24px", xl: "30px" }}
+                >
                   For lenders
-                </Text>
-                <Text fontWeight={"600"}>
+                </Heading>
+                <Text fontWeight={"600"} fontSize={{ lg: "16px", xl: "18px" }}>
                   Lend any tokenized asset to verified counter-parties to
-                  <br />
                   support their real-life causes and initiatives
                 </Text>
               </Flex>
 
               <Flex flexDirection={"column"}>
-                <Text fontWeight={"bold"} fontSize='24px'>
+                <Heading
+                  fontWeight={"bold"}
+                  fontSize={{ sm: "24px", lg: "24px", xl: "30px" }}
+                >
                   For institutions
-                </Text>
-                <Text fontWeight={"600"}>
+                </Heading>
+                <Text fontWeight={"600"} fontSize={{ lg: "16px", xl: "18px" }}>
                   Borrow or lend liquid tokenized assets with institutional-
-                  <br />
-                  grade security to meet your company financial needs and <br />{" "}
-                  goals
+                  grade security to meet your company financial needs and goals
                 </Text>
               </Flex>
             </Flex>
@@ -722,12 +983,16 @@ const Landing1 = () => {
             alignItems='center'
             flexDirection='column'
           >
-            <Text fontSize={isMobileDevice ? "24px" : "44px"} fontWeight='700'>
+            <Heading
+              fontSize={isMobileDevice ? "24px" : "44px"}
+              fontWeight='700'
+            >
               Community Led DAO
-            </Text>
+            </Heading>
             <Text
               px={isMobileDevice ? 5 : 0}
               textAlign={isMobileDevice ? "center" : undefined}
+              fontSize={{ lg: "16px", xl: "18px" }}
             >
               Propose protocol suggestions and improvements within seconds
               through our community forum.
@@ -735,7 +1000,7 @@ const Landing1 = () => {
 
             <Flex
               mt={isMobileDevice ? 5 : 20}
-              minW={isMobileDevice ? "80vw" : "70vw"}
+              w={isMobileDevice ? "80vw" : "70vw"}
               justifyContent={"space-between"}
               alignItems={isMobileDevice ? "center" : undefined}
               flexDirection={isMobileDevice ? "column" : "row"}
@@ -743,9 +1008,8 @@ const Landing1 = () => {
               <DaoCard
                 title='Engage'
                 text={
-                  <Text fontSize={"14px"}>
-                    Learn more about initiatives <br />
-                    proposed by community <br /> members
+                  <Text fontSize={{ lg: "16px", xl: "20px" }}>
+                    Learn more about initiatives proposed by community members
                   </Text>
                 }
               />
@@ -754,9 +1018,9 @@ const Landing1 = () => {
               <DaoCard
                 title='Propose'
                 text={
-                  <Text fontSize={"14px"}>
-                    Publish your own suggestions
-                    <br /> or improvements for the <br /> protocol
+                  <Text fontSize={{ lg: "16px", xl: "20px" }}>
+                    Publish your own suggestions or improvements for the
+                    protocol
                   </Text>
                 }
               />
@@ -765,7 +1029,7 @@ const Landing1 = () => {
               <DaoCard
                 title='Vote'
                 text={
-                  <Text fontSize={"14px"}>
+                  <Text fontSize={{ lg: "16px", xl: "20px" }}>
                     Support proposals that you agree with
                   </Text>
                 }
@@ -787,7 +1051,7 @@ const Landing1 = () => {
 
         <Flex
           mt={10}
-          // border='1px solid red'
+          pb={20}
           alignItems={isMobileDevice ? undefined : "center"}
           // justifyContent={"center"}
           flexDirection={isMobileDevice ? "column" : "column"}
@@ -806,220 +1070,543 @@ const Landing1 = () => {
             </>
           ) : (
             <>
-              <Text textAlign={"center"} fontSize={"44px"} fontWeight='700'>
+              <Heading textAlign={"center"} fontSize={"44px"} fontWeight='700'>
                 Treasury balance
-              </Text>
+              </Heading>
 
-              <Text px={isMobileDevice ? 5 : 0} textAlign={"center"}>
+              <Text
+                px={isMobileDevice ? 5 : 0}
+                fontSize={{ lg: "16px", xl: "20px" }}
+                textAlign={"center"}
+              >
                 Multichainz has a robust ecosystem treasury reserve composed by
                 foundation tokens and protocol fees and interests
               </Text>
             </>
           )}
-          <Img
-            w={isMobileDevice ? undefined : "50%"}
-            src={isMobileDevice ? blurelipsemobile.src : blurelipse.src}
-          />
 
-          <RadialMenu />
+          <Flex
+            position={"relative"}
+            alignItems='center'
+            justifyContent={"center"}
+            my={10}
+            h='600px'
+          >
+            <Img
+              w={isMobileDevice ? undefined : "600px"}
+              src={isMobileDevice ? blurelipsemobile.src : blurelipse.src}
+            />
 
-          <Flex pb={10} alignItems={"center"} flexDirection={"column"}>
-            <Text fontSize={"24px"} fontWeight='700'>
-              $X
-            </Text>
-            <Text>Total Ecosystem Reserve</Text>
+            <RadialMenu />
+
+            <Flex
+              w='100%'
+              position={"absolute"}
+              bottom={-20}
+              right={{ lg: 10, xl: 10 }}
+              pb={10}
+              alignItems={"center"}
+              flexDirection={"column"}
+              justifyContent='center'
+            >
+              <Text fontSize={"44px"} fontWeight='700'>
+                $X
+              </Text>
+              <Text fontSize={{ lg: "16px", xl: "18px" }}>
+                Total Ecosystem Reserve
+              </Text>
+            </Flex>
           </Flex>
         </Flex>
-        <Flex
-          background={
-            "linear-gradient(90deg, rgba(73,168,252,1) 0%, rgba(12,86,219,1) 100%)"
-          }
-          position='relative'
-        >
-          <Flex h={isMobileDevice ? "130vh" : "100vh"}>
-            <Text
-              // backgroundClip={"text"}
-              // fill='transparent'
 
-              className={styles.text}
-              fontSize={"120px"}
-              fontWeight='bold'
-              textAlign={"center"}
-            >
-              WEB3 CRYPTO WALLET <br /> LENDING STAKING <br /> NFT CONTRACT
-              TOKENS SECURITY
-            </Text>
-          </Flex>
+        {isMobileDevice ? (
           <Flex
-            w='100%'
-            mt={5}
-            py={10}
+            h='150vh'
+            bg='linear-gradient(90deg, rgba(65,156,247,1) 0%, rgba(42,126,235,1) 100%)'
             flexDirection='column'
-            alignItems={"center"}
-            position='absolute'
+            position='relative'
           >
             <Flex
+              w='100%'
+              mt={5}
               py={10}
-              justifyContent={"space-between"}
-              w={isMobileDevice ? "80vw" : "70vw"}
-              backdropFilter={"blur(20px)"}
-              flexDirection={isMobileDevice ? "column" : undefined}
-              alignItems='center'
-              border='1px solid rgba(255, 255, 255, 0.12)'
-              px={5}
-            >
-              <Text fontSize={"30px"} fontWeight='bold' color='white'>
-                Audited and <br /> Verified by
-              </Text>
-              <Flex
-                flexDirection={isMobileDevice ? "column" : undefined}
-                border='1px solid rgba(255, 255, 255, 0.12)'
-                py={2}
-                px={2}
-              >
-                <Flex
-                  alignItems={"center"}
-                  justifyContent='center'
-                  w={isMobileDevice ? "200px" : undefined}
-                  // py={1}
-                  h='60px'
-                  px={2}
-                  bgColor='black'
-                  borderRadius={"18px"}
-                >
-                  <Img w='150px' h='30px' src={halborn.src} />
-                </Flex>
-                <Flex
-                  alignItems={"center"}
-                  justifyContent='center'
-                  // py={1}
-                  w={isMobileDevice ? "200px" : undefined}
-                  h='60px'
-                  px={2}
-                  bgColor='black'
-                  borderRadius={"18px"}
-                  mx={isMobileDevice ? 0 : 5}
-                  my={isMobileDevice ? 5 : 0}
-                >
-                  <Img w='150px' h='40px' src={peckshield.src} />
-                </Flex>
-                <Flex
-                  alignItems={"center"}
-                  justifyContent='center'
-                  // py={1}
-                  w={isMobileDevice ? "200px" : undefined}
-                  h='60px'
-                  px={2}
-                  bgColor='black'
-                  borderRadius={"18px"}
-                >
-                  <Img w='150px' h='30px' src={quillhash.src} />
-                </Flex>
-                {/* <Img src={peckshield.src} />
-                <Img src={quillhash.src} /> */}
-              </Flex>
-            </Flex>
-
-            <Flex
-              py={10}
-              // position='absolute'
               flexDirection='column'
-              justifyContent={"space-between"}
-              w={isMobileDevice ? "80vw" : "70vw"}
-              mt={isMobileDevice ? 5 : 0}
-              my={isMobileDevice ? 0 : 10}
-              backdropFilter={"blur(20px)"}
-              alignItems='center'
-              border='1px solid rgba(255, 255, 255, 0.12)'
-              px={5}
+              alignItems={"center"}
+              position='absolute'
             >
-              <Text fontSize={"30px"} fontWeight='bold' color='white'>
-                Ecosystem Integration partners
-              </Text>
               <Flex
-                py={2}
-                px={2}
+                py={10}
+                justifyContent={"space-between"}
+                w={{ sm: "80vw", lg: "70vw", xl: "60vw" }}
+                backdropFilter={"blur(20px)"}
                 flexDirection={isMobileDevice ? "column" : undefined}
-                // alignItems='center'
-                justifyContent='space-between'
-                alignItems={isMobileDevice ? "flex-start" : undefined}
-                w='100%'
-                mt={10}
+                alignItems='center'
+                border='1px solid rgba(255, 255, 255, 0.12)'
+                px={5}
               >
-                <Flex
-                  alignItems={"center"}
-                  justifyContent='center'
-                  px={2}
-                  borderRadius={"18px"}
+                <Heading
+                  fontSize={{ lg: "30px", xl: "40px" }}
+                  fontWeight='bold'
+                  color='white'
                 >
-                  <Img src={spherium.src} />
+                  Audited and <br /> Verified by
+                </Heading>
+                <Flex
+                  flexDirection={isMobileDevice ? "column" : undefined}
+                  border='1px solid rgba(255, 255, 255, 0.12)'
+                  py={2}
+                  px={2}
+                >
+                  <Flex
+                    _hover={{
+                      border: "1px solid white",
+                    }}
+                    cursor='pointer'
+                    alignItems={"center"}
+                    justifyContent='center'
+                    w={isMobileDevice ? "200px" : undefined}
+                    // py={1}
+                    h='60px'
+                    px={2}
+                    bgColor='black'
+                    borderRadius={"18px"}
+                  >
+                    <Img w='150px' h='30px' src={halborn.src} />
+                  </Flex>
+                  <Flex
+                    _hover={{
+                      border: "1px solid white",
+                    }}
+                    cursor='pointer'
+                    alignItems={"center"}
+                    justifyContent='center'
+                    // py={1}
+                    w={isMobileDevice ? "200px" : undefined}
+                    h='60px'
+                    px={2}
+                    bgColor='black'
+                    borderRadius={"18px"}
+                    mx={isMobileDevice ? 0 : 5}
+                    my={isMobileDevice ? 5 : 0}
+                  >
+                    <Img w='150px' h='40px' src={peckshield.src} />
+                  </Flex>
+                  <Flex
+                    _hover={{
+                      border: "1px solid white",
+                    }}
+                    cursor='pointer'
+                    alignItems={"center"}
+                    justifyContent='center'
+                    // py={1}
+                    w={isMobileDevice ? "200px" : undefined}
+                    h='60px'
+                    px={2}
+                    bgColor='black'
+                    borderRadius={"18px"}
+                  >
+                    <Img w='150px' h='30px' src={quillhash.src} />
+                  </Flex>
                 </Flex>
+              </Flex>
 
-                <Flex
-                  alignItems={"center"}
-                  justifyContent='center'
-                  px={2}
-                  borderRadius={"18px"}
-                  my={isMobileDevice ? 4 : 0}
+              <Flex
+                py={20}
+                // position='absolute'
+                flexDirection='column'
+                justifyContent={"space-between"}
+                w={{ sm: "80vw", lg: "70vw", xl: "60vw" }}
+                mt={isMobileDevice ? 20 : 0}
+                backdropFilter={"blur(20px)"}
+                alignItems='center'
+                border='1px solid rgba(255, 255, 255, 0.12)'
+                px={5}
+              >
+                <Heading
+                  fontSize={{ lg: "30px", xl: "40px" }}
+                  fontWeight='bold'
+                  color='white'
                 >
-                  <Img src={google.src} />
-                </Flex>
+                  Ecosystem Integration partners
+                </Heading>
+                <Flex
+                  py={2}
+                  px={2}
+                  flexDirection={isMobileDevice ? "column" : undefined}
+                  // alignItems='center'
+                  justifyContent='space-between'
+                  alignItems={isMobileDevice ? "flex-start" : undefined}
+                  w='100%'
+                  mt={10}
+                >
+                  <Flex
+                    alignItems={"center"}
+                    justifyContent='center'
+                    px={2}
+                    borderRadius={"18px"}
+                  >
+                    <Img src={spherium.src} />
+                  </Flex>
 
-                <Flex
-                  alignItems={"center"}
-                  justifyContent='center'
-                  px={2}
-                  borderRadius={"18px"}
-                >
-                  <Img src={transakt.src} />
-                </Flex>
+                  <Flex
+                    alignItems={"center"}
+                    justifyContent='center'
+                    px={2}
+                    borderRadius={"18px"}
+                    my={isMobileDevice ? 4 : 0}
+                  >
+                    <Img src={google.src} />
+                  </Flex>
 
-                <Flex
-                  alignItems={"center"}
-                  justifyContent='center'
-                  px={2}
-                  borderRadius={"18px"}
-                  my={isMobileDevice ? 4 : 0}
-                >
-                  <Img src={chainlink.src} />
+                  <Flex
+                    alignItems={"center"}
+                    justifyContent='center'
+                    px={2}
+                    borderRadius={"18px"}
+                  >
+                    <Img src={transakt.src} />
+                  </Flex>
+
+                  <Flex
+                    alignItems={"center"}
+                    justifyContent='center'
+                    px={2}
+                    borderRadius={"18px"}
+                    my={isMobileDevice ? 4 : 0}
+                  >
+                    <Img src={chainlink.src} />
+                  </Flex>
                 </Flex>
               </Flex>
             </Flex>
+
             <Flex
-              // mt={60}
-              // background={
-              //   "linear-gradient(90deg, rgba(73,168,252,1) 0%, rgba(12,86,219,1) 100%)"
-              // }
               flexDirection={"column"}
               w='100vw'
               px={5}
-              // zIndex={200}
-              // position='absolute'
+              zIndex={200}
+              position='absolute'
+              bottom={"20%"}
+              // border='1px solid red'
             >
-              <Text
-                fontWeight={"500"}
-                textAlign='center'
-                mt={isMobileDevice ? 5 : 0}
-                mb={10}
-                fontSize='30px'
-                color='white'
-              >
-                Backed by
-              </Text>
+              <Flex mt={isMobileDevice ? 5 : 0}>
+                <Flex justifyContent={"center"} w='100%'>
+                  <Heading
+                    fontWeight={"bold"}
+                    textAlign='center'
+                    // mb={10}
+                    // mt={10}
+                    fontSize='30px'
+                    color='white'
+                    // position={"absolute"}
+                    // top={-40}
+                    // left={"45%"}
+                  >
+                    Backed by
+                  </Heading>
+                </Flex>
 
-              <Flex justifyContent={"space-between"}>
-                <Img src={binancebacked.src} />
-                <Img src={polygonbacked.src} />
-                <Img src={okxbacked.src} />
-                <Img src={fantombacked.src} />
-                <Img src={ethereumbacked.src} />
+                <Flex
+                  mt={20}
+                  overflow={"hidden"}
+                  w='600%'
+                  className={styles.animate_mobile}
+                  position='absolute'
+                >
+                  <Flex
+                    w='50%'
+                    justifyContent={"space-around"}
+                    // className={styles.logo}
+                  >
+                    <a>
+                      <Img mr={10} src={binancebacked.src} />
+                    </a>
+                    <a>
+                      <Img mr={10} src={polygonbacked.src} />
+                    </a>
+                    <a>
+                      <Img mx={10} src={okxbacked.src} />
+                    </a>
+                    <a>
+                      <Img ml={10} mr={10} src={fantombacked.src} />
+                    </a>
+                    <a>
+                      <Img ml={10} mr={10} src={ethereumbacked.src} />
+                    </a>
+                  </Flex>
+
+                  <Flex
+                    ml={10}
+                    w='50%'
+                    justifyContent={"space-around"}
+                    // className={styles.logo}
+                  >
+                    <a>
+                      <Img mr={10} src={binancebacked.src} />
+                    </a>
+                    <a>
+                      <Img mr={10} src={polygonbacked.src} />
+                    </a>
+                    <a>
+                      <Img mx={10} src={okxbacked.src} />
+                    </a>
+                    <a>
+                      <Img ml={10} mr={10} src={fantombacked.src} />
+                    </a>
+                    <a>
+                      <Img ml={10} src={ethereumbacked.src} />
+                    </a>
+                  </Flex>
+                </Flex>
               </Flex>
             </Flex>
           </Flex>
-        </Flex>
+        ) : (
+          <Flex flexDirection='column' position='relative'>
+            <Img src={web3label.src} />
+
+            <Flex
+              w='100%'
+              mt={5}
+              py={10}
+              flexDirection='column'
+              alignItems={"center"}
+              position='absolute'
+            >
+              <Flex
+                py={10}
+                justifyContent={"space-between"}
+                w={{ sm: "80vw", lg: "70vw", xl: "60vw" }}
+                backdropFilter={"blur(20px)"}
+                flexDirection={isMobileDevice ? "column" : undefined}
+                alignItems='center'
+                border='1px solid rgba(255, 255, 255, 0.12)'
+                px={5}
+              >
+                <Heading
+                  fontSize={{ lg: "30px", xl: "40px" }}
+                  fontWeight='bold'
+                  color='white'
+                >
+                  Audited and <br /> Verified by
+                </Heading>
+                <Flex
+                  flexDirection={isMobileDevice ? "column" : undefined}
+                  border='1px solid rgba(255, 255, 255, 0.12)'
+                  py={2}
+                  px={2}
+                >
+                  <Flex
+                    _hover={{
+                      border: "1px solid white",
+                    }}
+                    cursor='pointer'
+                    alignItems={"center"}
+                    justifyContent='center'
+                    w={isMobileDevice ? "200px" : undefined}
+                    // py={1}
+                    h='60px'
+                    px={2}
+                    bgColor='black'
+                    borderRadius={"18px"}
+                  >
+                    <Img w='150px' h='30px' src={halborn.src} />
+                  </Flex>
+                  <Flex
+                    _hover={{
+                      border: "1px solid white",
+                    }}
+                    cursor='pointer'
+                    alignItems={"center"}
+                    justifyContent='center'
+                    // py={1}
+                    w={isMobileDevice ? "200px" : undefined}
+                    h='60px'
+                    px={2}
+                    bgColor='black'
+                    borderRadius={"18px"}
+                    mx={isMobileDevice ? 0 : 5}
+                    my={isMobileDevice ? 5 : 0}
+                  >
+                    <Img w='150px' h='40px' src={peckshield.src} />
+                  </Flex>
+                  <Flex
+                    _hover={{
+                      border: "1px solid white",
+                    }}
+                    cursor='pointer'
+                    alignItems={"center"}
+                    justifyContent='center'
+                    // py={1}
+                    w={isMobileDevice ? "200px" : undefined}
+                    h='60px'
+                    px={2}
+                    bgColor='black'
+                    borderRadius={"18px"}
+                  >
+                    <Img w='150px' h='30px' src={quillhash.src} />
+                  </Flex>
+                  {/* <Img src={peckshield.src} />
+                <Img src={quillhash.src} /> */}
+                </Flex>
+              </Flex>
+
+              <Flex
+                py={20}
+                // position='absolute'
+                flexDirection='column'
+                justifyContent={"space-between"}
+                w={{ sm: "80vw", lg: "70vw", xl: "60vw" }}
+                mt={isMobileDevice ? 5 : 0}
+                my={isMobileDevice ? 0 : 28}
+                backdropFilter={"blur(20px)"}
+                alignItems='center'
+                border='1px solid rgba(255, 255, 255, 0.12)'
+                px={5}
+              >
+                <Heading
+                  fontSize={{ lg: "30px", xl: "40px" }}
+                  fontWeight='bold'
+                  color='white'
+                >
+                  Ecosystem Integration partners
+                </Heading>
+                <Flex
+                  py={2}
+                  px={2}
+                  flexDirection={isMobileDevice ? "column" : undefined}
+                  // alignItems='center'
+                  justifyContent='space-between'
+                  alignItems={isMobileDevice ? "flex-start" : undefined}
+                  w='100%'
+                  mt={10}
+                >
+                  <Flex
+                    alignItems={"center"}
+                    justifyContent='center'
+                    px={2}
+                    borderRadius={"18px"}
+                  >
+                    <Img src={spherium.src} />
+                  </Flex>
+
+                  <Flex
+                    alignItems={"center"}
+                    justifyContent='center'
+                    px={2}
+                    borderRadius={"18px"}
+                    my={isMobileDevice ? 4 : 0}
+                  >
+                    <Img src={google.src} />
+                  </Flex>
+
+                  <Flex
+                    alignItems={"center"}
+                    justifyContent='center'
+                    px={2}
+                    borderRadius={"18px"}
+                  >
+                    <Img src={transakt.src} />
+                  </Flex>
+
+                  <Flex
+                    alignItems={"center"}
+                    justifyContent='center'
+                    px={2}
+                    borderRadius={"18px"}
+                    my={isMobileDevice ? 4 : 0}
+                  >
+                    <Img src={chainlink.src} />
+                  </Flex>
+                </Flex>
+              </Flex>
+            </Flex>
+
+            <Flex
+              flexDirection={"column"}
+              w='100vw'
+              px={5}
+              zIndex={200}
+              position='absolute'
+              bottom={"20%"}
+              // border='1px solid red'
+            >
+              <Flex mt={isMobileDevice ? 5 : 0}>
+                <Flex justifyContent={"center"} w='100%'>
+                  <Heading
+                    fontWeight={"bold"}
+                    textAlign='center'
+                    // mb={10}
+                    // mt={10}
+                    fontSize='30px'
+                    color='white'
+                    // position={"absolute"}
+                    // top={-40}
+                    // left={"45%"}
+                  >
+                    Backed by
+                  </Heading>
+                </Flex>
+
+                <Flex
+                  mt={20}
+                  overflow={"hidden"}
+                  w='200%'
+                  className={styles.animate}
+                  position='absolute'
+                >
+                  <Flex
+                    w='50%'
+                    justifyContent={"space-around"}
+                    // className={styles.logo}
+                  >
+                    <a>
+                      <Img src={binancebacked.src} />
+                    </a>
+                    <a>
+                      <Img src={polygonbacked.src} />
+                    </a>
+                    <a>
+                      <Img src={okxbacked.src} />
+                    </a>
+                    <a>
+                      <Img src={fantombacked.src} />
+                    </a>
+                    <a>
+                      <Img src={ethereumbacked.src} />
+                    </a>
+                  </Flex>
+
+                  <Flex
+                    w='50%'
+                    justifyContent={"space-around"}
+                    // className={styles.logo}
+                  >
+                    <a>
+                      <Img src={binancebacked.src} />
+                    </a>
+                    <a>
+                      <Img src={polygonbacked.src} />
+                    </a>
+                    <a>
+                      <Img src={okxbacked.src} />
+                    </a>
+                    <a>
+                      <Img src={fantombacked.src} />
+                    </a>
+                    <a>
+                      <Img src={ethereumbacked.src} />
+                    </a>
+                  </Flex>
+                </Flex>
+              </Flex>
+            </Flex>
+          </Flex>
+        )}
 
         {/* Footer */}
-        <Flex
+        <Footer />
+        {/* <Flex
           alignItems={"center"}
           py={20}
           bgColor={"white"}
@@ -1176,7 +1763,7 @@ const Landing1 = () => {
               </Flex>
             </Flex>
           )}
-        </Flex>
+        </Flex> */}
       </Box>
     </Box>
   );

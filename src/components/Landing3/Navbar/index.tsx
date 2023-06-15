@@ -17,13 +17,13 @@ const Navbar = () => {
   return (
     <>
       <Flex
-        w='100%'
+        position={"absolute"}
+        w='100vw'
+        backdropFilter={"blur(76px)"}
         justifyContent={"center"}
-        box-shadow=' 0px 5px 14px 2px rgba(0,0,0,0.38);
-        -webkit-box-shadow: 0px 5px 14px 2px rgba(0,0,0,0.38);
-        -moz-box-shadow: 0px 5px 14px 2px rgba(0,0,0,0.38)'
+        zIndex={199999}
       >
-        <Box w={isMobileDevice ? "100vw" : "70vw"}>
+        <Box w={{ sm: "100vw", md: "70vw", lg: "70vw", xl: "70vw" }}>
           <Flex
             alignItems={"center"}
             py={4}
@@ -40,7 +40,7 @@ const Navbar = () => {
             ) : (
               <>
                 <Flex
-                  flex={0.6}
+                  flex={{ lg: 0.6, xl: 0.5 }}
                   justifyContent='space-between'
                   fontWeight={"700"}
                 >

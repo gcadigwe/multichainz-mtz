@@ -7,6 +7,7 @@ import {
   Divider,
   useMediaQuery,
   AspectRatio,
+  Heading,
 } from "@chakra-ui/react";
 import multichainz from "../../assets/svg/bigmultichainz.svg";
 import binance from "../../assets/svg/placeholderbinance.svg";
@@ -34,7 +35,7 @@ export default function Landing4() {
       </Flex>
 
       <Flex flexDirection='column'>
-        <Flex position={"relative"}>
+        <Flex position={"relative"} pt={10}>
           {isMobileDevice ? (
             <Img src={backgroundvidpic.src} />
           ) : (
@@ -44,7 +45,7 @@ export default function Landing4() {
               muted
               autoPlay
               loop
-              src='https://res.cloudinary.com/duzyqi3zj/video/upload/v1685775603/animation_dscrz3.mp4'
+              src='https://res.cloudinary.com/duzyqi3zj/video/upload/v1686834772/dao_half_vd3zvt.mp4'
             />
           )}
 
@@ -55,9 +56,12 @@ export default function Landing4() {
             flexDirection={"column"}
             alignItems='center'
           >
-            <Text fontSize={isMobileDevice ? "40px" : "60px"} fontWeight='700'>
+            <Heading
+              fontSize={{ sm: "40px", lg: "80px", xl: "100px" }}
+              fontWeight='700'
+            >
               Multichainz DAO
-            </Text>
+            </Heading>
             <Text
               textAlign={isMobileDevice ? "center" : undefined}
               mb={5}
@@ -94,13 +98,13 @@ export default function Landing4() {
               >
                 <Flex justifyContent={"space-between"}>
                   <Box>
-                    <Text
+                    <Heading
                       fontWeight={"700"}
                       fontSize='24px'
                       textAlign={"center"}
                     >
                       CHAINZ, the MultichainZ Governance Token
-                    </Text>
+                    </Heading>
 
                     <Text my={4} textAlign='center'>
                       Use CHAINZ to submit priority proposals, get voting
@@ -138,48 +142,53 @@ export default function Landing4() {
             </Flex>
           ) : (
             <Flex
-              w='100%'
               top='85%'
               position={"absolute"}
-              justifyContent={"center"}
+              justifyContent='center'
+              w='100%'
             >
-              <Box
-                boxShadow={"0px 0px 40px -14px rgba(0,0,0,0.75)"}
-                borderRadius={"12px"}
-                p={4}
-                w='70vw'
-                bgColor={"#E0EFFB"}
+              <Flex
+                w={{ sm: "80vw", lg: "70vw", xl: "60vw" }}
+                justifyContent={"center"}
               >
-                <Flex justifyContent={"space-between"}>
-                  <Box>
-                    <Text fontWeight={"700"} fontSize='24px'>
-                      CHAINZ, the MultichainZ Governance Token
-                    </Text>
+                <Box
+                  boxShadow={"0px 0px 40px -14px rgba(0,0,0,0.75)"}
+                  borderRadius={"12px"}
+                  p={8}
+                  w='70vw'
+                  bgColor={"#E0EFFB"}
+                >
+                  <Flex justifyContent={"space-between"}>
+                    <Box>
+                      <Heading fontWeight={"700"} fontSize='24px'>
+                        CHAINZ, the MultichainZ Governance Token
+                      </Heading>
 
-                    <Text my={4}>
-                      Use CHAINZ to submit priority proposals, get voting
-                      powers,
-                      <br />
-                      and access exclusive benefits to govern Multichainz
-                    </Text>
+                      <Text my={4}>
+                        Use CHAINZ to submit priority proposals, get voting
+                        powers,
+                        <br />
+                        and access exclusive benefits to govern Multichainz
+                      </Text>
 
-                    <Text fontWeight={"bold"}>Trade</Text>
-                    <Flex justifyContent={"space-between"}>
-                      <Img src={binance.src} />
-                      <Img mx={3} src={binance.src} />
-                      <Img src={binance.src} />
-                      <Divider orientation='vertical' />
-                      <Flex mx={3} mb={5} flexDirection={"column"}>
-                        <Text fontWeight={"bold"}>Learn more</Text>
-                        <Img src={cmc.src} />
+                      <Text fontWeight={"bold"}>Trade</Text>
+                      <Flex justifyContent={"space-between"}>
+                        <Img src={binance.src} />
+                        <Img mx={3} src={binance.src} />
+                        <Img src={binance.src} />
+                        <Divider orientation='vertical' />
+                        <Flex mx={3} mb={5} flexDirection={"column"}>
+                          <Text fontWeight={"bold"}>Learn more</Text>
+                          <Img src={cmc.src} />
+                        </Flex>
+                        <Img src={coingecko.src} />
                       </Flex>
-                      <Img src={coingecko.src} />
-                    </Flex>
-                  </Box>
+                    </Box>
 
-                  <Img src={multichainz.src} />
-                </Flex>
-              </Box>
+                    <Img src={multichainz.src} />
+                  </Flex>
+                </Box>
+              </Flex>
             </Flex>
           )}
         </Flex>
@@ -191,13 +200,13 @@ export default function Landing4() {
           mt={isMobileDevice ? 40 : undefined}
         >
           <Box w={isMobileDevice ? "80vw" : "70vw"}>
-            <Text
+            <Heading
               textAlign={"center"}
               fontWeight={"700"}
               fontSize={isMobileDevice ? "24px" : "50px"}
             >
               The Decision Makers
-            </Text>
+            </Heading>
 
             {isMobileDevice ? (
               <Text mb={10} mt={5} fontWeight={"700"} fontSize={"14px"}>
@@ -208,13 +217,18 @@ export default function Landing4() {
                 process
               </Text>
             ) : (
-              <Text mb={10} fontWeight={"700"} textAlign='center'>
+              <Heading
+                mb={10}
+                fontSize='16px'
+                fontWeight={"700"}
+                textAlign='center'
+              >
                 Multichainz direction, future, and present improvements are
                 determined in a <br /> decentralized way by X token holders.
                 Multichainz governance model is unique since <br /> every
                 relevant ecosystem stakeholder is involved in the proposal and
                 voting process
-              </Text>
+              </Heading>
             )}
 
             <Flex
@@ -232,14 +246,14 @@ export default function Landing4() {
                 bgColor='#ffffff'
                 borderRadius={"6px"}
               >
-                <Text
+                <Heading
                   fontWeight={"bold"}
                   textAlign='center'
-                  fontSize={isMobileDevice ? "40px" : undefined}
+                  fontSize={isMobileDevice ? "40px" : "20px"}
                 >
                   Founding <br /> Team and <br />
                   Developers
-                </Text>
+                </Heading>
               </Flex>
 
               <Flex
@@ -255,13 +269,13 @@ export default function Landing4() {
                 alignItems='center'
                 mt={isMobileDevice ? 4 : undefined}
               >
-                <Text
+                <Heading
                   textAlign={"center"}
-                  fontSize={isMobileDevice ? "40px" : undefined}
+                  fontSize={isMobileDevice ? "40px" : "20px"}
                   fontWeight={"bold"}
                 >
                   Investors <br /> and Advisors
-                </Text>
+                </Heading>
               </Flex>
 
               <Flex
@@ -277,13 +291,13 @@ export default function Landing4() {
                 alignItems='center'
                 mt={isMobileDevice ? 4 : undefined}
               >
-                <Text
+                <Heading
                   textAlign={"center"}
-                  fontSize={isMobileDevice ? "40px" : undefined}
+                  fontSize={isMobileDevice ? "40px" : "20px"}
                   fontWeight={"bold"}
                 >
                   Community <br /> Members
-                </Text>
+                </Heading>
               </Flex>
 
               <Flex
@@ -299,32 +313,33 @@ export default function Landing4() {
                 alignItems='center'
                 mt={isMobileDevice ? 4 : undefined}
               >
-                <Text
+                <Heading
                   textAlign={"center"}
-                  fontSize={isMobileDevice ? "40px" : undefined}
+                  fontSize={isMobileDevice ? "40px" : "20px"}
                   fontWeight={"bold"}
                 >
                   Ecosystem <br /> Partners
-                </Text>
+                </Heading>
               </Flex>
             </Flex>
           </Box>
         </Flex>
       </Flex>
       <Flex
+        // background='radial-gradient(237.97% 471.1% at 108.54% -6.09%, #49A8FC 0%, #0C56DB 100%)'
         background='linear-gradient(90deg, rgba(73,168,252,1) 0%, rgba(12,86,219,1) 53%)'
         bgColor={"#0C56DB"}
         justifyContent={"center"}
       >
         <Box w={isMobileDevice ? "80vw" : "70vw"} py={20}>
-          <Text
+          <Heading
             color='white'
             textAlign={"center"}
             fontSize={isMobileDevice ? "24px" : "50px"}
             fontWeight='700'
           >
             Submit a Proposal
-          </Text>
+          </Heading>
 
           <Text mb={10} textAlign={"center"} color='white'>
             The DAO Process to submit a proposal is easy and intuitive, allowing
@@ -338,16 +353,16 @@ export default function Landing4() {
               px={6}
               py={8}
               border='1px solid rgba(255, 255, 255, 0.2)'
-              alignItems={isMobileDevice ? "center" : undefined}
+              alignItems={"center"}
             >
               <Text mr={5} fontSize={"60px"} fontWeight='700'>
                 1
               </Text>
 
               <Flex flexDirection={"column"}>
-                <Text fontSize={"24px"} fontWeight='bold'>
+                <Heading fontSize={"24px"} fontWeight='bold'>
                   Sign Up to Forum
-                </Text>
+                </Heading>
                 <Text fontWeight={"500"}>
                   Create an account on our forum and get <br />
                   approved to propose and comment in the interface
@@ -362,16 +377,16 @@ export default function Landing4() {
               px={6}
               py={8}
               border='1px solid rgba(255, 255, 255, 0.2)'
-              alignItems={isMobileDevice ? "center" : undefined}
+              alignItems={"center"}
             >
               <Text mr={5} fontSize={"60px"} fontWeight='700'>
                 2
               </Text>
 
               <Flex flexDirection={"column"}>
-                <Text fontSize={"24px"} fontWeight='bold'>
+                <Heading fontSize={"24px"} fontWeight='bold'>
                   Submit a Forum Proposal
-                </Text>
+                </Heading>
                 <Text fontWeight={"500"}>
                   Upload your proposal for improvement or suggestion to <br />{" "}
                   the forum and receive feedback and community interest
@@ -386,16 +401,16 @@ export default function Landing4() {
               px={6}
               py={8}
               border='1px solid rgba(255, 255, 255, 0.2)'
-              alignItems={isMobileDevice ? "center" : undefined}
+              alignItems={"center"}
             >
               <Text mr={5} fontSize={"60px"} fontWeight='700'>
                 3
               </Text>
 
               <Flex flexDirection={"column"}>
-                <Text fontSize={"24px"} fontWeight='bold'>
+                <Heading fontSize={"24px"} fontWeight='bold'>
                   Create a Snapshot
-                </Text>
+                </Heading>
                 <Text fontWeight={"500"}>
                   If the forum interest is big, connect your wallet <br /> to
                   Snapshot, and submit the proposal
@@ -410,16 +425,16 @@ export default function Landing4() {
               px={6}
               py={8}
               border='1px solid rgba(255, 255, 255, 0.2)'
-              alignItems={isMobileDevice ? "center" : undefined}
+              alignItems={"center"}
             >
               <Text mr={5} fontSize={"60px"} fontWeight='700'>
                 4
               </Text>
 
               <Flex flexDirection={"column"}>
-                <Text fontSize={"24px"} fontWeight='bold'>
+                <Heading fontSize={"24px"} fontWeight='bold'>
                   Sign Up to Forum
-                </Text>
+                </Heading>
                 <Text fontWeight={"500"}>
                   Once approved in Snapshot, create a Github request <br /> for
                   the proposal to be voted by all MTZ token holders
@@ -427,7 +442,7 @@ export default function Landing4() {
               </Flex>
             </Flex>
           </Flex>
-          <Text
+          <Heading
             color='white'
             mt={20}
             fontSize={isMobileDevice ? "24px" : "30px"}
@@ -436,7 +451,7 @@ export default function Landing4() {
             textAlign={isMobileDevice ? "center" : undefined}
           >
             About MultichainZ Governance
-          </Text>
+          </Heading>
 
           <Flex
             flex={1}
@@ -445,9 +460,10 @@ export default function Landing4() {
           >
             <Flex flex={0.24}>
               <GovernanceCard
+                bottomText='Go to Forum'
                 title='Our Forum'
                 text={
-                  <Text fontSize={"14px"}>
+                  <Text fontSize={"14px"} opacity={0.7}>
                     Visit our forum to know and engage with active proposals and
                     its categories
                   </Text>
@@ -457,9 +473,10 @@ export default function Landing4() {
 
             <Flex flex={0.24} mt={isMobileDevice ? 4 : undefined}>
               <GovernanceCard
+                bottomText='Go to Guide'
                 title='Proposals'
                 text={
-                  <Text fontSize={"14px"}>
+                  <Text fontSize={"14px"} opacity={0.7}>
                     Read our process to submit proposals to our DAO and learn
                     its guidelines
                   </Text>
@@ -469,9 +486,10 @@ export default function Landing4() {
 
             <Flex flex={0.24} mt={isMobileDevice ? 4 : undefined}>
               <GovernanceCard
+                bottomText='Go to Manual'
                 title='Voting'
                 text={
-                  <Text fontSize={"14px"}>
+                  <Text fontSize={"14px"} opacity={0.7}>
                     Learn more about voting processes, vote delegation, and vote
                     types
                   </Text>
@@ -481,9 +499,10 @@ export default function Landing4() {
 
             <Flex flex={0.24} mt={isMobileDevice ? 4 : undefined}>
               <GovernanceCard
+                bottomText='Go to FAQs'
                 title='FAQs'
                 text={
-                  <Text fontSize={"14px"}>
+                  <Text fontSize={"14px"} opacity={0.7}>
                     Solve any questions you have about our governance model and
                     process
                   </Text>
@@ -497,116 +516,138 @@ export default function Landing4() {
               <Img src={join.src} />
             </Flex>
           ) : (
-            <Flex
-              pl={isMobileDevice ? 2 : 4}
-              border='1px solid rgba(255, 255, 255, 0.2)'
-              alignItems={"center"}
-              mt={40}
-              color='white'
-            >
-              <Flex flexDirection={"column"}>
-                <Text
-                  fontWeight={"700"}
-                  fontSize={isMobileDevice ? "14px" : "16px"}
-                >
-                  Multichainz DAO Grants
-                </Text>
-                {isMobileDevice ? (
-                  <Text fontSize={isMobileDevice ? "10px" : "12px"}>
-                    If your startup or company has a proposal to
-                    advance Institutional or Real-World Asset on-chain lending,
-                    our DAO Grant program is interested to fund your idea.
-                  </Text>
-                ) : (
-                  <Text fontSize={isMobileDevice ? "10px" : "12px"}>
-                    If your startup or company has a proposal to
-                    advance Institutional or Real-World <br /> Asset on-chain
-                    lending, our DAO Grant program is interested to fund your
-                    idea.
-                  </Text>
-                )}
-              </Flex>
+            <Flex justifyContent={"center"}>
+              <Flex
+                pl={isMobileDevice ? 2 : 4}
+                border='1px solid rgba(255, 255, 255, 0.2)'
+                alignItems={"center"}
+                justifyContent='space-between'
+                mt={40}
+                color='white'
+                w={{ sm: "80vw", lg: "70vw", xl: "60vw" }}
+              >
+                <Flex flexDirection={"column"}>
+                  <Heading
+                    fontWeight={"700"}
+                    fontSize={isMobileDevice ? "14px" : "18px"}
+                  >
+                    Multichainz DAO Grants
+                  </Heading>
+                  {isMobileDevice ? (
+                    <Text fontSize={isMobileDevice ? "10px" : "12px"}>
+                      If your startup or company has a proposal to
+                      advance Institutional or Real-World Asset on-chain
+                      lending, our DAO Grant program is interested to fund your
+                      idea.
+                    </Text>
+                  ) : (
+                    <Text fontSize={isMobileDevice ? "10px" : "12px"}>
+                      If your startup or company has a proposal to
+                      advance Institutional or Real-World Asset on-chain
+                      lending, our DAO Grant program is interested to fund your
+                      idea.
+                    </Text>
+                  )}
+                </Flex>
 
-              <Flex position={"relative"}>
-                <Img
-                  src={comingsoon.src}
-                  // h='100px'
-                />
-                <Flex
-                  borderRadius='4px'
-                  top={"40%"}
-                  right={"10%"}
-                  bgColor='black'
-                  px={4}
-                  py={2}
-                  position={"absolute"}
-                >
-                  <Text fontSize={"14px"}>COMING SOON</Text>
+                <Flex position={"relative"}>
+                  <Img
+                    src={comingsoon.src}
+                    // h='100px'
+                  />
+                  <Flex
+                    borderRadius='4px'
+                    top={"40%"}
+                    right={"10%"}
+                    bgColor='black'
+                    px={4}
+                    py={2}
+                    position={"absolute"}
+                  >
+                    <Text fontSize={"14px"}>COMING SOON</Text>
+                  </Flex>
                 </Flex>
               </Flex>
             </Flex>
           )}
 
-          <Flex
-            mt={40}
-            py={10}
-            justifyContent={"space-between"}
-            w={isMobileDevice ? "80vw" : "70vw"}
-            backdropFilter={"blur(20px)"}
-            flexDirection={isMobileDevice ? "column" : undefined}
-            alignItems='center'
-            border='1px solid rgba(255, 255, 255, 0.12)'
-            px={5}
-          >
-            <Text fontSize={"30px"} fontWeight='bold' color='white'>
-              Audited and <br /> Verified by
-            </Text>
+          <Flex justifyContent={"center"} pt={20}>
             <Flex
+              py={{ sm: 14, lg: 14, xl: 20 }}
+              justifyContent={"space-between"}
+              w={{ sm: "80vw", lg: "70vw", xl: "60vw" }}
+              backdropFilter={"blur(20px)"}
               flexDirection={isMobileDevice ? "column" : undefined}
+              alignItems='center'
               border='1px solid rgba(255, 255, 255, 0.12)'
-              py={2}
-              px={2}
+              px={5}
+              borderRadius='18px'
+              boxShadow='0px 0px 40px -14px rgba(0,0,0,0.75)'
             >
-              <Flex
-                alignItems={"center"}
-                justifyContent='center'
-                w={isMobileDevice ? "200px" : undefined}
-                // py={1}
-                h='60px'
-                px={2}
-                bgColor='black'
-                borderRadius={"18px"}
+              <Heading
+                fontSize={{ sm: "30px", lg: "40px", xl: "45px" }}
+                fontWeight='bold'
+                color='white'
               >
-                <Img w='150px' h='30px' src={halborn.src} />
-              </Flex>
+                Audited and <br /> Verified by
+              </Heading>
               <Flex
-                alignItems={"center"}
-                justifyContent='center'
-                // py={1}
-                w={isMobileDevice ? "200px" : undefined}
-                h='60px'
+                flexDirection={isMobileDevice ? "column" : undefined}
+                border='1px solid rgba(255, 255, 255, 0.12)'
+                py={2}
                 px={2}
-                bgColor='black'
-                borderRadius={"18px"}
-                mx={isMobileDevice ? 0 : 5}
-                my={isMobileDevice ? 5 : 0}
               >
-                <Img w='150px' h='40px' src={peckshield.src} />
+                <Flex
+                  alignItems={"center"}
+                  justifyContent='center'
+                  w={isMobileDevice ? "200px" : undefined}
+                  // py={1}
+                  h='60px'
+                  px={2}
+                  bgColor='black'
+                  borderRadius={"18px"}
+                  cursor='pointer'
+                  _hover={{
+                    border: "1px solid white",
+                  }}
+                >
+                  <Img w='150px' h='30px' src={halborn.src} />
+                </Flex>
+                <Flex
+                  alignItems={"center"}
+                  justifyContent='center'
+                  // py={1}
+                  w={isMobileDevice ? "200px" : undefined}
+                  h='60px'
+                  px={2}
+                  bgColor='black'
+                  borderRadius={"18px"}
+                  mx={isMobileDevice ? 0 : 5}
+                  my={isMobileDevice ? 5 : 0}
+                  cursor='pointer'
+                  _hover={{
+                    border: "1px solid white",
+                  }}
+                >
+                  <Img w='150px' h='40px' src={peckshield.src} />
+                </Flex>
+                <Flex
+                  alignItems={"center"}
+                  justifyContent='center'
+                  // py={1}
+                  w={isMobileDevice ? "200px" : undefined}
+                  h='60px'
+                  px={2}
+                  bgColor='black'
+                  borderRadius={"18px"}
+                  cursor='pointer'
+                  _hover={{
+                    border: "1px solid white",
+                  }}
+                >
+                  <Img w='150px' h='30px' src={quillhash.src} />
+                </Flex>
               </Flex>
-              <Flex
-                alignItems={"center"}
-                justifyContent='center'
-                // py={1}
-                w={isMobileDevice ? "200px" : undefined}
-                h='60px'
-                px={2}
-                bgColor='black'
-                borderRadius={"18px"}
-              >
-                <Img w='150px' h='30px' src={quillhash.src} />
-              </Flex>
-              {/* <Img src={peckshield.src} />
-                <Img src={quillhash.src} /> */}
             </Flex>
           </Flex>
         </Box>

@@ -23,37 +23,85 @@ const Navbar = () => {
         justifyContent={"center"}
         zIndex={199999}
       >
-        <Flex
-          w={isMobileDevice ? "100vw" : "70vw"}
-          alignItems={"center"}
-          py={4}
-          px={isMobileDevice ? 5 : undefined}
-          justifyContent={"space-between"}
-        >
-          <Img src={logo.src} />
+        <Box w={{ sm: "100vw", md: "70vw", lg: "80vw", xl: "80vw" }}>
+          <Flex
+            alignItems={"center"}
+            py={4}
+            px={isMobileDevice ? 5 : undefined}
+            justifyContent={"space-between"}
+            flex={1}
+          >
+            <Flex>
+              <Img src={logo.src} />
+            </Flex>
 
-          {isMobileDevice ? (
-            <HamburgerIcon
-              onClick={() => {
-                onToggle();
-              }}
-              fontSize={"24px"}
-            />
-          ) : (
-            <>
-              <Flex>
-                <Text>Products</Text>
-                <Text mx={3}>Markets</Text>
-                <Text>Governance</Text>
-                <Text mx={3}>Documentation</Text>
-              </Flex>
+            {isMobileDevice ? (
+              <HamburgerIcon onClick={onToggle} fontSize={"24px"} />
+            ) : (
+              <>
+                <Flex
+                  flex={{ lg: 0.6, xl: 0.5 }}
+                  justifyContent='space-between'
+                  fontWeight={"700"}
+                >
+                  <Text
+                    cursor={"pointer"}
+                    _hover={{
+                      textDecoration: "underline",
+                      textDecorationColor: "rgba(44, 129, 237, 0.7)",
+                      textDecorationThickness: "0.2em",
+                    }}
+                  >
+                    Products
+                  </Text>
+                  <Text
+                    cursor={"pointer"}
+                    _hover={{
+                      textDecoration: "underline",
+                      textDecorationColor: "rgba(44, 129, 237, 0.7)",
+                      textDecorationThickness: "0.2em",
+                    }}
+                    mx={3}
+                  >
+                    Markets
+                  </Text>
+                  <Text
+                    cursor={"pointer"}
+                    _hover={{
+                      textDecoration: "underline",
+                      textDecorationColor: "rgba(44, 129, 237, 0.7)",
+                      textDecorationThickness: "0.2em",
+                    }}
+                  >
+                    Governance
+                  </Text>
+                  <Text
+                    cursor={"pointer"}
+                    _hover={{
+                      textDecoration: "underline",
+                      textDecorationColor: "rgba(44, 129, 237, 0.7)",
+                      textDecorationThickness: "0.2em",
+                    }}
+                    mx={3}
+                  >
+                    Documentation
+                  </Text>
+                </Flex>
 
-              <Button fontSize={"14px"} bgColor='#49A8FC' color='white'>
-                Launch App
-              </Button>
-            </>
-          )}
-        </Flex>
+                <Button
+                  fontSize={"14px"}
+                  _hover={{
+                    bgColor: "#49A8FC",
+                  }}
+                  bgColor='#49A8FC'
+                  color='white'
+                >
+                  Launch App
+                </Button>
+              </>
+            )}
+          </Flex>
+        </Box>
       </Flex>
 
       <MobileNavbar toggle={onToggle} isOpen={isOpen} />

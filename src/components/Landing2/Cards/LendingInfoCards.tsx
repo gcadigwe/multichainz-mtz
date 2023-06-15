@@ -1,4 +1,4 @@
-import { Box, Flex, Img, Text } from "@chakra-ui/react";
+import { Box, Flex, Img, Text, useMediaQuery } from "@chakra-ui/react";
 
 export default function LendingInfoCards({
   img,
@@ -7,11 +7,20 @@ export default function LendingInfoCards({
   img: any;
   text: any;
 }) {
+  const [isMobileDevice] = useMediaQuery("(max-width: 750px)");
   return (
-    <Box minW='300px'>
-      <Img borderTopRadius='10px' w='300px' h='150px' src={img} />
+    <Flex
+      boxShadow={
+        isMobileDevice ? undefined : "0px 0px 40px -14px rgba(0,0,0,0.75)"
+      }
+      flex={0.3}
+      flexDirection={"column"}
+      // minW={{ sm: "300px", lg: undefined, xl: "350px" }}
+      minW={isMobileDevice ? "300px" : undefined}
+    >
+      <Img borderTopRadius='10px' src={img} />
       <Flex
-        w='300px'
+        // w='300px'
         px={6}
         py={4}
         bgColor={"#D3E7F7"}
@@ -23,6 +32,6 @@ export default function LendingInfoCards({
           Learn More
         </Text>
       </Flex>
-    </Box>
+    </Flex>
   );
 }

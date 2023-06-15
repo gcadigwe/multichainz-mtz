@@ -1,9 +1,18 @@
 import BorrowLend from "@/components/Landing2/Cards/BorrowPools";
 import LendingInfoCards from "@/components/Landing2/Cards/LendingInfoCards";
 import Navbar from "@/components/Landing2/Navbar";
-import { Box, Button, Flex, Img, Text, useMediaQuery } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  Heading,
+  Img,
+  Text,
+  useMediaQuery,
+} from "@chakra-ui/react";
 import lendingbg from "../../assets/lendingbg.png";
 import mobilelendingbg from "../../assets/mobilelendingbg.png";
+import mobilelendingbg2 from "../../assets/mobilelendingbg2.png";
 import underline from "../../assets/svg/underline.svg";
 import capitalefficient from "../../assets/capitalefficient.png";
 import crosschainintegration from "../../assets/crosschainintegration.png";
@@ -28,6 +37,9 @@ import quillhash from "../../assets/svg/quickshill.svg";
 import Footer from "@/components/Footer";
 import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import { useRef, useState } from "react";
+
+import web3label from "../../assets/svg/web3label.svg";
+import SupportedNetwork from "@/components/Landing2/SupportedNetworks";
 
 export default function Landing2() {
   const [isMobileDevice] = useMediaQuery("(max-width: 750px)");
@@ -65,6 +77,8 @@ export default function Landing2() {
       setcurrentCard((prev) => prev - 1);
     }
   };
+
+  const width = { sm: "80vw", md: "70vw", lg: "70vw", xl: "80vw" };
   return (
     <Box>
       <Box position={"relative"}>
@@ -74,76 +88,91 @@ export default function Landing2() {
 
         <Flex
           w='100%'
-          mt={40}
+          // h='90vh'
+          h='100%'
           position={"absolute"}
           alignItems='center'
           flexDirection={"column"}
-          //   h={isMobileDevice ? "100vh" : undefined}
-          //   border='1px solid red'
-        >
-          <Text
-            // lineHeight={"1"}
-            textAlign={"center"}
-            fontWeight={"900"}
-            fontSize={isMobileDevice ? "40px" : "60px"}
-          >
-            The Institutional Cross-Chain <br /> Lending Solution
-          </Text>
-          <Text
-            textAlign={isMobileDevice ? "center" : undefined}
-            mt={isMobileDevice ? 10 : undefined}
-            fontSize={"20px"}
-          >
-            Bringing real-life use cases to on-chain lending
-          </Text>
+          justifyContent={"center"}
 
+          // mb={60}
+        >
+          <Flex mb={40} flexDirection={"column"} alignItems='center'>
+            <Heading
+              textAlign={"center"}
+              fontWeight={"900"}
+              fontSize={{ sm: "40px", lg: "80px", xl: "100px" }}
+            >
+              The Institutional Cross-Chain <br /> Lending Solution
+            </Heading>
+            <Text
+              textAlign={isMobileDevice ? "center" : undefined}
+              mt={isMobileDevice ? 10 : undefined}
+              fontSize={isMobileDevice ? "20px" : "24px"}
+            >
+              Bringing real-life use cases to on-chain lending
+            </Text>
+          </Flex>
           <Flex
-            mx={isMobileDevice ? 5 : 0}
-            mt={20}
-            px={5}
-            border={"1px solid white"}
+            // mx={isMobileDevice ? 10 : 0}
+            boxShadow={"0px 0px 40px -14px rgba(0,0,0,0.75)"}
+            mx={5}
+            border='1px solid white'
+            mt={isMobileDevice ? 20 : undefined}
+            px={{ sm: 2, lg: 10, xl: 10 }}
+            py={{ sm: 4, lg: 6, xl: 6 }}
+            // border={"1px solid white"}
             borderRadius='6px'
-            backdropFilter={"blur(76px)"}
+            backdropFilter={"blur(20px)"}
           >
             <Flex flexDirection={"column"} alignItems='center'>
-              <Text
-                fontSize={isMobileDevice ? "40px" : "60px"}
+              <Heading
+                fontSize={{ sm: "24px", md: "40px", lg: "60px", xl: "60px" }}
                 fontWeight={"500"}
               >
-                $X
-              </Text>
-              <Text fontSize={isMobileDevice ? "20px" : "30px"}>
+                $0
+              </Heading>
+              <Text
+                whiteSpace={"nowrap"}
+                fontSize={{ sm: "14px", lg: "30px", xl: "30px" }}
+              >
                 Total Collateral
               </Text>
             </Flex>
 
             <Flex mx={10} flexDirection={"column"} alignItems='center'>
-              <Text
-                fontSize={isMobileDevice ? "40px" : "60px"}
+              <Heading
+                fontSize={{ sm: "24px", md: "40px", lg: "60px", xl: "60px" }}
                 fontWeight={"500"}
               >
-                $X
-              </Text>
-              <Text fontSize={isMobileDevice ? "20px" : "30px"}>
+                $0
+              </Heading>
+              <Text
+                whiteSpace={"nowrap"}
+                fontSize={{ sm: "14px", lg: "30px", xl: "30px" }}
+              >
                 Total Borrowing
               </Text>
             </Flex>
 
             <Flex flexDirection={"column"} alignItems='center'>
-              <Text
-                fontSize={isMobileDevice ? "40px" : "60px"}
+              <Heading
+                fontSize={{ sm: "24px", md: "40px", lg: "60px", xl: "60px" }}
                 fontWeight={"500"}
               >
-                $X
-              </Text>
-              <Text fontSize={isMobileDevice ? "20px" : "30px"}>
+                $0
+              </Heading>
+              <Text
+                whiteSpace={"nowrap"}
+                fontSize={{ sm: "14px", lg: "30px", xl: "30px" }}
+              >
                 Total Loans
               </Text>
             </Flex>
           </Flex>
         </Flex>
         <Img
-          w='100vw'
+          w='100%'
           h={isMobileDevice ? "100vh" : undefined}
           src={isMobileDevice ? mobilelendingbg.src : lendingbg.src}
 
@@ -155,7 +184,7 @@ export default function Landing2() {
         background='linear-gradient(90deg, rgba(241,247,252,1) 0%, rgba(218,237,253,1) 40%)'
       >
         <Flex justifyContent={"center"}>
-          <Box w={isMobileDevice ? "80vw" : "70vw"}>
+          <Box w={width}>
             <Flex flexDirection={"column"}>
               <Text
                 fontSize={isMobileDevice ? "30px" : "40px"}
@@ -180,46 +209,36 @@ export default function Landing2() {
               mt={10}
               flexDirection={isMobileDevice ? "column" : undefined}
               justifyContent={isMobileDevice ? "center" : "space-between"}
+              flex={1}
             >
               <BorrowLend />
-              {isMobileDevice ? (
-                <BorrowLend />
-              ) : (
-                <Flex mx={5}>
-                  <BorrowLend />
-                </Flex>
-              )}
+              <BorrowLend />
               <BorrowLend />
             </Flex>
 
             <Flex
-              mt={5}
+              mt={6}
               flexDirection={isMobileDevice ? "column" : undefined}
               justifyContent={isMobileDevice ? "center" : "space-between"}
+              flex={1}
             >
               <BorrowLend />
-              {isMobileDevice ? (
-                <BorrowLend />
-              ) : (
-                <Flex mx={5}>
-                  <BorrowLend />
-                </Flex>
-              )}
+              <BorrowLend />
               <BorrowLend />
             </Flex>
           </Box>
         </Flex>
 
         <Flex justifyContent={"center"}>
-          <Box w='70vw'>
-            <Text
+          <Box w={width}>
+            <Heading
               pt={32}
               fontSize={isMobileDevice ? "30px" : "40px"}
               fontWeight='700'
               textAlign='center'
             >
               On-Chain lending available for all Institutions
-            </Text>
+            </Heading>
             <Flex
               mt={20}
               w={isMobileDevice ? "80vw" : "70vw"}
@@ -254,45 +273,46 @@ export default function Landing2() {
               overflowX={"hidden"}
               mt={isMobileDevice ? 0 : 10}
               justifyContent={"space-between"}
+              flex={1}
             >
-              <Flex ref={lendingInfocard1}>
-                <LendingInfoCards
-                  img={crosschainintegration.src}
-                  text={
-                    <Text fontSize={"20px"} fontWeight='600'>
-                      Secure Cross-chain <br /> Integration
-                    </Text>
-                  }
-                />
-              </Flex>
+              {/* <Flex flex={0.3} ref={lendingInfocard1}> */}
+              <LendingInfoCards
+                img={crosschainintegration.src}
+                text={
+                  <Text fontSize={"20px"} fontWeight='600'>
+                    Secure Cross-chain <br /> Integration
+                  </Text>
+                }
+              />
+              {/* </Flex> */}
 
-              <Flex mx={5} ref={lendingInfocard2}>
-                <LendingInfoCards
-                  img={riskmanagement.src}
-                  text={
-                    <Text fontSize={"20px"} fontWeight='600'>
-                      Risk-Managing <br /> Borrowing Mechanism
-                    </Text>
-                  }
-                />
-              </Flex>
+              {/* <Flex ref={lendingInfocard2}> */}
+              <LendingInfoCards
+                img={riskmanagement.src}
+                text={
+                  <Text fontSize={"20px"} fontWeight='600'>
+                    Risk-Managing <br /> Borrowing Mechanism
+                  </Text>
+                }
+              />
+              {/* </Flex> */}
 
-              <Flex ref={lendingInfocard3}>
-                <LendingInfoCards
-                  img={capitalefficient.src}
-                  text={
-                    <Text fontSize={"20px"} fontWeight='600'>
-                      Capital-Efficient <br /> Lending Pools
-                    </Text>
-                  }
-                />
-              </Flex>
+              {/* <Flex ref={lendingInfocard3}> */}
+              <LendingInfoCards
+                img={capitalefficient.src}
+                text={
+                  <Text fontSize={"20px"} fontWeight='600'>
+                    Capital-Efficient <br /> Lending Pools
+                  </Text>
+                }
+              />
+              {/* </Flex> */}
             </Flex>
           </Box>
         </Flex>
 
         <Flex justifyContent={"center"}>
-          <Box w={isMobileDevice ? "80vw" : "70vw"}>
+          <Box w={width} pb={20}>
             <Text
               pt={32}
               fontSize={isMobileDevice ? "30px" : "40px"}
@@ -308,6 +328,7 @@ export default function Landing2() {
               justifyContent={isMobileDevice ? "center" : "space-between"}
             >
               <Flex
+                boxShadow={"0px 0px 40px -14px rgba(0,0,0,0.75)"}
                 position='relative'
                 border='1px solid white'
                 flex={isMobileDevice ? undefined : 6}
@@ -317,11 +338,19 @@ export default function Landing2() {
                 bgColor={"#D3E7F7"}
                 borderRadius='12px'
               >
-                <Text fontWeight={"700"} fontSize={"20px"}>
+                <Heading
+                  fontWeight={"700"}
+                  fontSize={{ sm: "20px", lg: "24px", xl: "30px" }}
+                >
                   Compliance
-                </Text>
+                </Heading>
 
-                <Text px={10} mt={10} textAlign={"center"}>
+                <Text
+                  fontSize={{ sm: "16px", lg: "18px", xl: "20px" }}
+                  px={10}
+                  mt={10}
+                  textAlign={"center"}
+                >
                   Off-chain and on-chain Know-Your-Customer (KYC) process for
                   institutional network participants
                 </Text>
@@ -345,17 +374,25 @@ export default function Landing2() {
                 bgColor={"#D3E7F7"}
                 borderRadius='12px'
                 mt={isMobileDevice ? 10 : undefined}
+                boxShadow={"0px 0px 40px -14px rgba(0,0,0,0.75)"}
               >
-                <Text fontWeight={"700"} fontSize={"20px"}>
+                <Heading
+                  fontWeight={"700"}
+                  fontSize={{ sm: "20px", lg: "24px", xl: "30px" }}
+                >
                   Custody
-                </Text>
+                </Heading>
 
-                <Text mt={10} textAlign={"center"}>
+                <Text
+                  fontSize={{ sm: "16px", lg: "18px", xl: "20px" }}
+                  my={10}
+                  textAlign={"center"}
+                >
                   Institutional-grade asset custody partners to enhance protocol
                   liquidity security
                 </Text>
 
-                <Img w='100px' h='120px' src={custody.src} />
+                <Img src={custody.src} />
               </Flex>
             </Flex>
 
@@ -374,12 +411,21 @@ export default function Landing2() {
                 pt={5}
                 bgColor={"#D3E7F7"}
                 borderRadius='12px'
+                boxShadow={"0px 0px 40px -14px rgba(0,0,0,0.75)"}
               >
-                <Text fontWeight={"700"} fontSize={"20px"}>
+                <Heading
+                  fontWeight={"700"}
+                  fontSize={{ sm: "20px", lg: "24px", xl: "30px" }}
+                >
                   Security
-                </Text>
+                </Heading>
 
-                <Text px={5} mt={10} textAlign={"center"}>
+                <Text
+                  px={5}
+                  my={10}
+                  fontSize={{ sm: "16px", lg: "18px", xl: "20px" }}
+                  textAlign={"center"}
+                >
                   Contract audits and bug bounty program to minimize contract
                   risk
                 </Text>
@@ -405,12 +451,21 @@ export default function Landing2() {
                 bgColor={"#D3E7F7"}
                 borderRadius='12px'
                 mt={isMobileDevice ? 10 : undefined}
+                boxShadow={"0px 0px 40px -14px rgba(0,0,0,0.75)"}
               >
-                <Text fontWeight={"700"} fontSize={"20px"}>
+                <Heading
+                  fontWeight={"700"}
+                  fontSize={{ sm: "20px", lg: "24px", xl: "30px" }}
+                >
                   Efficiency
-                </Text>
+                </Heading>
 
-                <Text px={10} mt={10} textAlign={"center"}>
+                <Text
+                  px={10}
+                  mt={10}
+                  fontSize={{ sm: "16px", lg: "18px", xl: "20px" }}
+                  textAlign={"center"}
+                >
                   Fast, scalable and reliable chain alternatives to decrease
                   transaction costs
                 </Text>
@@ -435,12 +490,21 @@ export default function Landing2() {
               bgColor={"#D3E7F7"}
               borderRadius='12px'
               mt={10}
+              boxShadow={"0px 0px 40px -14px rgba(0,0,0,0.75)"}
             >
-              <Text fontWeight={"700"} fontSize={"20px"}>
+              <Heading
+                fontWeight={"700"}
+                fontSize={{ sm: "20px", lg: "24px", xl: "30px" }}
+              >
                 Transparency
-              </Text>
+              </Heading>
 
-              <Text px={10} mt={10} textAlign={"center"}>
+              <Text
+                fontSize={{ sm: "16px", lg: "18px", xl: "20px" }}
+                px={10}
+                mt={10}
+                textAlign={"center"}
+              >
                 Instant and accessible on-chain transaction and liquidity
                 verifications
               </Text>
@@ -455,276 +519,319 @@ export default function Landing2() {
             </Flex>
           </Box>
         </Flex>
+      </Box>
+      <Flex
+        // mt={20}
+        // justifyContent={"center"}
+        // mb={20}
+        // h='200vh'
+        position='relative'
+        bg='linear-gradient(90deg, rgba(65,156,247,1) 0%, rgba(42,126,235,1) 100%)'
+        // h={{ lg: "200vh" }}
+        // border='1px solid #2C80EC'
+      >
+        {/* <Flex w='100%' border='1px solid green'> */}
 
         <Flex
-          mt={20}
-          justifyContent={"center"}
-          background={
-            "linear-gradient(90deg, rgba(73,168,252,1) 0%, rgba(12,86,219,1) 100%)"
-          }
-          position='relative'
+          position={isMobileDevice ? undefined : "absolute"}
+          // mt={20}
+          flexDirection='column'
+          alignItems={"center"}
+          justifyContent='space-evenly'
+          h={isMobileDevice ? undefined : "100%"}
+          w={isMobileDevice ? "100vw" : "100%"}
+          pt={10}
         >
-          <Flex h={"90vh"} w={isMobileDevice ? "100%" : undefined}>
-            <Text
-              // backgroundClip={"text"}
-              // fill='transparent'
-
-              className={styles.text}
-              fontSize={"100px"}
-              fontWeight='bold'
-              textAlign={"center"}
-            >
-              WEB3 CRYPTO WALLET <br /> LENDING STAKING <br /> NFT CONTRACT
-              TOKENS SECURITY
-            </Text>
-
-            <Flex
-              position={"absolute"}
-              flexDirection='column'
-              alignItems={"center"}
-              w={isMobileDevice ? "100vw" : "100%"}
-              pt={10}
-            >
-              <Text
-                textAlign={isMobileDevice ? "center" : undefined}
-                fontSize={isMobileDevice ? "30px" : "40px"}
-                fontWeight='700'
-                color='white'
-              >
-                Instant Support for Institutions
-              </Text>
-
-              <Text
-                fontSize={isMobileDevice ? "20px" : "26px"}
-                fontWeight='700'
-                color='white'
-                textAlign={"center"}
-                my={10}
-                px={isMobileDevice ? 2 : undefined}
-              >
-                If your institution wants support to lend  off-chain,
-                <br /> Multichainz offers multiple deposit alternatives aside
-                from wallets.
-              </Text>
-
-              <Button
-                background={
-                  "linear-gradient(90deg, rgba(225,241,255,1) 0%, rgba(208,230,255,1) 100%)"
-                }
-                color='#125EDF'
-              >
-                Get Support
-              </Button>
-
-              <Box
-                // background={
-                //   "linear-gradient(90deg, rgba(73,168,252,1) 0%, rgba(12,86,219,1) 100%)"
-                // }
-
-                border='0.5px solid white'
-                backdropFilter={"blur(76px)"}
-                px={5}
-                py={5}
-                mt={10}
-                borderRadius='6px'
-                mx={isMobileDevice ? 10 : undefined}
-              >
-                <Text
-                  fontSize={isMobileDevice ? "20px" : "26px"}
-                  fontWeight='700'
-                  color='white'
-                  textAlign={"center"}
-                  mb={10}
-                >
-                  Partners, integrators, and protocols that collaborate <br />
-                  with Multichainz continue to grow
-                </Text>
-
-                <Flex
-                  justifyContent={"center"}
-                  flexDirection={isMobileDevice ? "column" : undefined}
-                >
-                  <Flex
-                    alignItems='center'
-                    flexDirection={isMobileDevice ? "row" : "column"}
-                  >
-                    <Img w='30px' h='30px' src={chainlinklogo.src} />
-                    <Text
-                      fontSize={isMobileDevice ? "24px" : undefined}
-                      ml={isMobileDevice ? 2 : undefined}
-                      fontWeight={"700"}
-                      color='white'
-                    >
-                      Chainlink
-                    </Text>
-                  </Flex>
-                  <Flex
-                    mx={isMobileDevice ? undefined : 20}
-                    alignItems='center'
-                    flexDirection={isMobileDevice ? "row" : "column"}
-                  >
-                    <Img w='30px' h='30px' src={gemini.src} />
-                    {isMobileDevice ? (
-                      <Text
-                        textAlign={"center"}
-                        fontWeight={"700"}
-                        color='white'
-                        fontSize={"24px"}
-                        ml={2}
-                      >
-                        Gemini Finance
-                      </Text>
-                    ) : (
-                      <Text
-                        textAlign={"center"}
-                        fontWeight={"700"}
-                        color='white'
-                      >
-                        Gemini <br /> Finance
-                      </Text>
-                    )}
-                  </Flex>
-                  <Flex
-                    flexDirection={isMobileDevice ? "row" : "column"}
-                    alignItems='center'
-                  >
-                    <Img w='30px' h='30px' src={supra.src} />
-                    {isMobileDevice ? (
-                      <Text
-                        textAlign={"center"}
-                        fontWeight={"700"}
-                        color='white'
-                        fontSize={"24px"}
-                        ml={2}
-                      >
-                        Supra Oracles
-                      </Text>
-                    ) : (
-                      <Text
-                        textAlign={"center"}
-                        fontWeight={"700"}
-                        color='white'
-                      >
-                        Supra <br /> Oracles
-                      </Text>
-                    )}
-                  </Flex>
-                </Flex>
-              </Box>
-            </Flex>
-          </Flex>
-        </Flex>
-
-        <Flex
-          background={
-            "linear-gradient(90deg, rgba(73,168,252,1) 0%, rgba(12,86,219,1) 100%)"
-          }
-          justifyContent={"center"}
-          pt={isMobileDevice ? 20 : 10}
-        >
-          <Box pb={10} w={isMobileDevice ? "80vw" : "70vw"}>
-            <Text
+          <Flex flexDirection='column' alignItems={"center"}>
+            <Heading
               textAlign={isMobileDevice ? "center" : undefined}
+              fontSize={{ sm: "30px", lg: "40px", xl: "50px" }}
               fontWeight='700'
-              color={"#ffffff"}
-              mb={4}
+              color='white'
             >
-              Supported Networks
-            </Text>
+              Instant Support for Institutions
+            </Heading>
+
+            <Heading
+              fontSize={isMobileDevice ? "20px" : "26px"}
+              fontWeight='700'
+              color='white'
+              textAlign={"center"}
+              my={10}
+              px={isMobileDevice ? 2 : undefined}
+              w={{ sm: "80vw", lg: "50vw", xl: "40vw" }}
+            >
+              If your institution wants support to lend off-chain, Multichainz
+              offers multiple deposit alternatives aside from wallets.
+            </Heading>
+            <Button
+              background={
+                "linear-gradient(90deg, rgba(225,241,255,1) 0%, rgba(208,230,255,1) 100%)"
+              }
+              color='#125EDF'
+            >
+              Get Support
+            </Button>
+          </Flex>
+
+          <Box
+            w={{ sm: "80vw", lg: "70vw", xl: "60vw" }}
+            border='0.5px solid white'
+            backdropFilter={"blur(5px)"}
+            px={5}
+            py={10}
+            // py={[4, 10, 20, 40]}
+            my={10}
+            borderRadius='12px'
+            mx={isMobileDevice ? 10 : undefined}
+            bg='rgba(255, 255, 255, 0.54'
+            boxShadow='0px 0px 40px -14px rgba(0,0,0,0.75)'
+          >
+            <Heading
+              fontSize={isMobileDevice ? "20px" : "26px"}
+              fontWeight='700'
+              // color='white'
+              textAlign={"center"}
+              mb={10}
+              color={"white"}
+            >
+              Partners, integrators, and protocols that collaborate <br />
+              with Multichainz continue to grow
+            </Heading>
 
             <Flex
-              flexWrap={isMobileDevice ? "nowrap" : "wrap"}
-              justifyContent='center'
+              justifyContent={"center"}
               flexDirection={isMobileDevice ? "column" : undefined}
-              alignItems={isMobileDevice ? "center" : undefined}
-              my={isMobileDevice ? 5 : 10}
             >
-              <Img
-                w='150px'
-                mr={isMobileDevice ? undefined : 4}
-                src={activebinance.src}
-              />
-              <Img w='150px' src={inactiveethereum.src} />
-              <Img
-                w='150px'
-                mx={isMobileDevice ? undefined : 4}
-                src={inactivefantom.src}
-              />
-              <Img w='150px' src={inactivepolygon.src} />
-              <Img
-                w='150px'
-                mx={isMobileDevice ? undefined : 4}
-                src={inactiveavalanche.src}
-              />
-              <Img w='150px' src={inactiveoptimism.src} />
-            </Flex>
-
-            <Flex
-              py={10}
-              justifyContent={"space-between"}
-              w={isMobileDevice ? "80vw" : "70vw"}
-              backdropFilter={"blur(20px)"}
-              flexDirection={isMobileDevice ? "column" : undefined}
-              alignItems='center'
-              border='1px solid rgba(255, 255, 255, 0.12)'
-              px={5}
-            >
-              <Text fontSize={"30px"} fontWeight='bold' color='white'>
-                Audited and <br /> Verified by
-              </Text>
               <Flex
-                flexDirection={isMobileDevice ? "column" : undefined}
-                border='1px solid rgba(255, 255, 255, 0.12)'
-                py={2}
-                px={2}
+                alignItems='center'
+                flexDirection={isMobileDevice ? "row" : "column"}
               >
-                <Flex
-                  alignItems={"center"}
-                  justifyContent='center'
-                  w={isMobileDevice ? "200px" : undefined}
-                  // py={1}
-                  h='60px'
-                  px={2}
-                  bgColor='black'
-                  borderRadius={"18px"}
+                <Img w='50px' h='50px' src={chainlinklogo.src} />
+                <Text
+                  fontSize={isMobileDevice ? "24px" : undefined}
+                  ml={isMobileDevice ? 2 : undefined}
+                  fontWeight={"700"}
+                  color='white'
                 >
-                  <Img w='150px' h='30px' src={halborn.src} />
-                </Flex>
-                <Flex
-                  alignItems={"center"}
-                  justifyContent='center'
-                  // py={1}
-                  w={isMobileDevice ? "200px" : undefined}
-                  h='60px'
-                  px={2}
-                  bgColor='black'
-                  borderRadius={"18px"}
-                  mx={isMobileDevice ? 0 : 5}
-                  my={isMobileDevice ? 5 : 0}
-                >
-                  <Img w='150px' h='40px' src={peckshield.src} />
-                </Flex>
-                <Flex
-                  alignItems={"center"}
-                  justifyContent='center'
-                  // py={1}
-                  w={isMobileDevice ? "200px" : undefined}
-                  h='60px'
-                  px={2}
-                  bgColor='black'
-                  borderRadius={"18px"}
-                >
-                  <Img w='150px' h='30px' src={quillhash.src} />
-                </Flex>
-                {/* <Img src={peckshield.src} />
-                <Img src={quillhash.src} /> */}
+                  Chainlink
+                </Text>
+              </Flex>
+              <Flex
+                mx={isMobileDevice ? undefined : 20}
+                my={isMobileDevice ? 4 : undefined}
+                alignItems='center'
+                flexDirection={isMobileDevice ? "row" : "column"}
+              >
+                <Img w='50px' h='50px' src={gemini.src} />
+                {isMobileDevice ? (
+                  <Text
+                    textAlign={"center"}
+                    fontWeight={"700"}
+                    color='white'
+                    fontSize={"24px"}
+                    ml={2}
+                  >
+                    Gemini Finance
+                  </Text>
+                ) : (
+                  <Text textAlign={"center"} fontWeight={"700"} color='white'>
+                    Gemini <br /> Finance
+                  </Text>
+                )}
+              </Flex>
+              <Flex
+                flexDirection={isMobileDevice ? "row" : "column"}
+                alignItems='center'
+              >
+                <Img w='50px' h='50px' src={supra.src} />
+                {isMobileDevice ? (
+                  <Text
+                    textAlign={"center"}
+                    fontWeight={"700"}
+                    color='white'
+                    fontSize={"24px"}
+                    ml={2}
+                  >
+                    Supra Oracles
+                  </Text>
+                ) : (
+                  <Text textAlign={"center"} fontWeight={"700"} color='white'>
+                    Supra <br /> Oracles
+                  </Text>
+                )}
               </Flex>
             </Flex>
           </Box>
+
+          <Flex
+            // bg='linear-gradient(90deg, rgba(65,156,247,1) 0%, rgba(42,126,235,1) 100%)'
+            // bgColor={"#49a8fc"}
+            w='100%'
+            justifyContent={"center"}
+            // pt={isMobileDevice ? 20 : 10}
+          >
+            <Box w={isMobileDevice ? "80vw" : "70vw"}>
+              <Text
+                textAlign={isMobileDevice ? "center" : undefined}
+                fontWeight='700'
+                color={"#ffffff"}
+                mb={4}
+                fontSize={"18px"}
+              >
+                Supported Networks
+              </Text>
+
+              <Flex
+                flexWrap={isMobileDevice ? "nowrap" : "wrap"}
+                justifyContent={isMobileDevice ? "center" : "space-between"}
+                flexDirection={isMobileDevice ? "column" : undefined}
+                alignItems={isMobileDevice ? "center" : undefined}
+                my={isMobileDevice ? 5 : 10}
+              >
+                <SupportedNetwork img={activebinance.src} />
+                <SupportedNetwork img={inactiveethereum.src} />
+                <SupportedNetwork img={inactivefantom.src} />
+                <SupportedNetwork img={inactivepolygon.src} />
+              </Flex>
+
+              <Flex
+                justifyContent={isMobileDevice ? "center" : "space-between"}
+                flexDirection={isMobileDevice ? "column" : undefined}
+                alignItems={isMobileDevice ? "center" : undefined}
+                pb={20}
+              >
+                <SupportedNetwork img={inactiveavalanche.src} />
+                <SupportedNetwork img={inactiveoptimism.src} />
+
+                <Img
+                  cursor={"pointer"}
+                  opacity={0.6}
+                  _hover={{
+                    opacity: 1,
+                  }}
+                  w='180px'
+                  visibility={"hidden"}
+                  // mx={isMobileDevice ? undefined : 4}
+                  src={inactiveavalanche.src}
+                />
+                <Img
+                  cursor={"pointer"}
+                  visibility={"hidden"}
+                  opacity={0.6}
+                  _hover={{
+                    opacity: 1,
+                  }}
+                  w='180px'
+                  src={inactiveoptimism.src}
+                />
+              </Flex>
+            </Box>
+          </Flex>
         </Flex>
 
-        <Footer />
-      </Box>
+        {/* </Flex> */}
+        <Img
+          // aspectRatio={"16/9"}
+          // aspectRatio={"auto"}
+          display={isMobileDevice ? "none" : undefined}
+          w='100%'
+          // h={{ lg: "200vh" }}
+          src={web3label.src}
+        />
+      </Flex>
+
+      <Flex
+        bg='linear-gradient(90deg, rgba(65,156,247,1) 0%, rgba(42,126,235,1) 100%)'
+        // bgColor={"#49a8fc"}
+        justifyContent={"center"}
+        pt={isMobileDevice ? 20 : 10}
+      >
+        <Flex
+          pb={10}
+          // w={isMobileDevice ? "80vw" : "70vw"}
+          justifyContent='center'
+        >
+          <Flex
+            py={{ sm: 14, lg: 14, xl: 20 }}
+            justifyContent={"space-between"}
+            w={{ sm: "80vw", lg: "70vw", xl: "60vw" }}
+            backdropFilter={"blur(20px)"}
+            flexDirection={isMobileDevice ? "column" : undefined}
+            alignItems='center'
+            border='1px solid rgba(255, 255, 255, 0.12)'
+            px={5}
+            borderRadius='18px'
+            boxShadow='0px 0px 40px -14px rgba(0,0,0,0.75)'
+          >
+            <Heading
+              fontSize={{ sm: "30px", lg: "40px", xl: "45px" }}
+              fontWeight='bold'
+              color='white'
+            >
+              Audited and <br /> Verified by
+            </Heading>
+            <Flex
+              flexDirection={isMobileDevice ? "column" : undefined}
+              border='1px solid rgba(255, 255, 255, 0.12)'
+              py={2}
+              px={2}
+            >
+              <Flex
+                alignItems={"center"}
+                justifyContent='center'
+                w={isMobileDevice ? "200px" : undefined}
+                // py={1}
+                h='60px'
+                px={2}
+                bgColor='black'
+                borderRadius={"18px"}
+                cursor='pointer'
+                _hover={{
+                  border: "1px solid white",
+                }}
+              >
+                <Img w='150px' h='30px' src={halborn.src} />
+              </Flex>
+              <Flex
+                alignItems={"center"}
+                justifyContent='center'
+                // py={1}
+                w={isMobileDevice ? "200px" : undefined}
+                h='60px'
+                px={2}
+                bgColor='black'
+                borderRadius={"18px"}
+                mx={isMobileDevice ? 0 : 5}
+                my={isMobileDevice ? 5 : 0}
+                cursor='pointer'
+                _hover={{
+                  border: "1px solid white",
+                }}
+              >
+                <Img w='150px' h='40px' src={peckshield.src} />
+              </Flex>
+              <Flex
+                alignItems={"center"}
+                justifyContent='center'
+                // py={1}
+                w={isMobileDevice ? "200px" : undefined}
+                h='60px'
+                px={2}
+                bgColor='black'
+                borderRadius={"18px"}
+                cursor='pointer'
+                _hover={{
+                  border: "1px solid white",
+                }}
+              >
+                <Img w='150px' h='30px' src={quillhash.src} />
+              </Flex>
+            </Flex>
+          </Flex>
+        </Flex>
+      </Flex>
+      <Footer />
     </Box>
   );
 }

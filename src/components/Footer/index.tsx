@@ -8,6 +8,7 @@ import {
   Button,
   InputGroup,
   useMediaQuery,
+  Heading,
 } from "@chakra-ui/react";
 import { FaDiscord, FaTwitter, FaLinkedin } from "react-icons/fa";
 import { IoMdMail } from "react-icons/io";
@@ -22,6 +23,7 @@ export default function Footer() {
       py={20}
       bgColor={"white"}
       flexDirection={"column"}
+      zIndex={99999}
     >
       <Flex
         w={isMobileDevice ? "100vw" : "70vw"}
@@ -35,10 +37,36 @@ export default function Footer() {
           mt={isMobileDevice ? 5 : 0}
           fontSize={isMobileDevice ? "30px" : "24px"}
         >
-          <Icon as={FaDiscord} />
-          <Icon mx={10} as={FaTwitter} />
-          <Icon as={FaLinkedin} />
-          <Icon mx={10} as={IoMdMail} />
+          <Icon
+            cursor={"pointer"}
+            _hover={{
+              color: "#2F84EE",
+            }}
+            as={FaDiscord}
+          />
+          <Icon
+            cursor={"pointer"}
+            _hover={{
+              color: "#2F84EE",
+            }}
+            mx={10}
+            as={FaTwitter}
+          />
+          <Icon
+            cursor={"pointer"}
+            _hover={{
+              color: "#2F84EE",
+            }}
+            as={FaLinkedin}
+          />
+          <Icon
+            cursor={"pointer"}
+            _hover={{
+              color: "#2F84EE",
+            }}
+            mx={10}
+            as={IoMdMail}
+          />
         </Flex>
       </Flex>
 
@@ -107,9 +135,9 @@ export default function Footer() {
       ) : (
         <Flex w='70vw' mt={20} justifyContent={"space-between"}>
           <Flex flexDirection={"column"}>
-            <Text fontWeight={"bold"} fontSize='20px'>
+            <Heading fontWeight={"bold"} fontSize='20px'>
               Product
-            </Text>
+            </Heading>
 
             <Flex mt={10} flexDirection={"column"}>
               <Text>Media Kit</Text>
@@ -119,9 +147,9 @@ export default function Footer() {
           </Flex>
 
           <Flex flexDirection={"column"}>
-            <Text fontWeight={"bold"} fontSize='20px'>
+            <Heading fontWeight={"bold"} fontSize='20px'>
               Company
-            </Text>
+            </Heading>
 
             <Flex mt={10} flexDirection={"column"}>
               <Text>Technical Paper</Text>
@@ -131,9 +159,9 @@ export default function Footer() {
           </Flex>
 
           <Flex flexDirection={"column"}>
-            <Text fontWeight={"bold"} fontSize='20px'>
+            <Heading fontWeight={"bold"} fontSize='20px'>
               Resources
-            </Text>
+            </Heading>
 
             <Flex mt={10} flexDirection={"column"}>
               <Text>Documentation</Text>
@@ -144,9 +172,9 @@ export default function Footer() {
           </Flex>
 
           <Flex flexDirection={"column"}>
-            <Text fontWeight={"bold"}>
+            <Heading fontWeight={"bold"} fontSize='18px'>
               Subscribe to our newsletter for updates
-            </Text>
+            </Heading>
 
             <InputGroup mt={10}>
               <Input

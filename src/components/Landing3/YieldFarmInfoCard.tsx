@@ -1,4 +1,4 @@
-import { Box, Flex, Text, useMediaQuery } from "@chakra-ui/react";
+import { Box, Flex, Heading, Text, useMediaQuery } from "@chakra-ui/react";
 
 const YieldFarmInfoCard = ({
   number,
@@ -11,7 +11,14 @@ const YieldFarmInfoCard = ({
 }) => {
   const [isMobileDevice] = useMediaQuery("(max-width: 750px)");
   return (
-    <Box borderRadius={"20px"} bgColor={"white"} position={"relative"}>
+    <Flex
+      flexDirection={"column"}
+      borderRadius={"20px"}
+      bgColor={"white"}
+      position={"relative"}
+      flex={0.24}
+      mt={isMobileDevice ? 10 : undefined}
+    >
       <Flex w='100%' justifyContent={"center"} position={"absolute"} top={-6}>
         <Flex
           boxShadow={"0px 0px 40px -14px rgba(0,0,0,0.75)"}
@@ -31,17 +38,13 @@ const YieldFarmInfoCard = ({
         </Flex>
       </Flex>
 
-      <Text pt={6} textAlign={"center"} fontSize={"24px"} fontWeight='700'>
+      <Heading pt={6} textAlign={"center"} fontSize={"24px"} fontWeight='700'>
         {title}
-      </Text>
-      <Flex
-        pb={6}
-        px={4}
-        justifyContent={isMobileDevice ? "center" : undefined}
-      >
+      </Heading>
+      <Flex pt={4} pb={6} px={4} justifyContent={"center"}>
         {info}
       </Flex>
-    </Box>
+    </Flex>
   );
 };
 
