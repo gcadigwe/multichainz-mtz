@@ -80,7 +80,7 @@ export default function Landing2() {
 
   const width = { sm: "80vw", md: "70vw", lg: "70vw", xl: "80vw" };
   return (
-    <Box>
+    <Box color='black'>
       <Box position={"relative"}>
         <Flex justifyContent={"center"}>
           <Navbar />

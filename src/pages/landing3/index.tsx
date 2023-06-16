@@ -38,7 +38,7 @@ export default function Landing3() {
   const [isMobileDevice] = useMediaQuery("(max-width: 750px)");
   const width = { sm: "80vw", md: "70vw", lg: "70vw", xl: "70vw" };
   return (
-    <Box bgColor={"#CDE6FA"}>
+    <Box bgColor={"#CDE6FA"} color='black'>
       <Box bgColor={"#CDE6FA"} position={"relative"}>
         <Flex justifyContent={"center"}>
           <Navbar />
