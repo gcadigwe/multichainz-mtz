@@ -14,7 +14,9 @@ const Cards = ({ img, text }: CardProps) => {
       position={"relative"}
       flexDirection='column'
       flex={0.3}
+      h='250px'
       maxW={"500px"}
+      w={{ sm: "auto", md: "500px", lg: "auto", xl: "auto" }}
       _hover={{
         boxShadow: "0px 0px 40px -14px rgba(0,0,0,0.75)",
       }}
@@ -23,7 +25,7 @@ const Cards = ({ img, text }: CardProps) => {
       py={8}
       px={8}
       borderRadius='12px'
-      mt={isMobileDevice ? 5 : undefined}
+      mt={{ sm: 5, md: 5, lg: 0, xl: 0 }}
     >
       <Img h='50px' w={{ lg: "150px", xl: "200px" }} src={img} mb={6} />
       {text}

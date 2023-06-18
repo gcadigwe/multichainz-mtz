@@ -167,8 +167,8 @@ const Landing1 = () => {
       >
         <Flex position={"relative"} justifyContent={"center"}>
           <Img
-            w={isMobileDevice ? "100%" : "50%"}
-            h={isMobileDevice ? "70vh" : undefined}
+            w={{ sm: "100%", md: "100%", lg: "50%", xl: "50%" }}
+            h={{ sm: "70vh", lg: "100%" }}
             src={eclipsebg.src}
           />
 
@@ -186,7 +186,10 @@ const Landing1 = () => {
                 MultichainZ <br /> Protocol
               </Heading>
             ) : (
-              <Heading fontSize={{ lg: "80px", xl: "100px" }} fontWeight='900'>
+              <Heading
+                fontSize={{ md: "60px", lg: "80px", xl: "100px" }}
+                fontWeight='900'
+              >
                 MultiChainZ Protocol
               </Heading>
             )}
@@ -233,12 +236,12 @@ const Landing1 = () => {
 
             <Flex
               mt={isMobileDevice ? 10 : 40}
-              w={isMobileDevice ? "100vw" : "70vw"}
+              w={{ sm: "100vw", md: "80vw", lg: "70vw", xl: "70vw" }}
               px={isMobileDevice ? 5 : 0}
               fontWeight={"bold"}
               flexDirection={isMobileDevice ? "column" : undefined}
               justifyContent={isMobileDevice ? undefined : "space-between"}
-              fontSize='18px'
+              fontSize={{ sm: "18px", md: "14px", xl: "18px", lg: "18px" }}
             >
               <Flex alignItems={"center"}>
                 <Img mr={2} src={wallet.src} />
@@ -274,7 +277,7 @@ const Landing1 = () => {
         <Flex alignItems={"center"} flexDirection={"column"}>
           <Flex
             justifyContent={isMobileDevice ? "center" : undefined}
-            w={isMobileDevice ? "100vw" : "70vw"}
+            w={{ sm: "100vw", md: "80vw", lg: "70vw", xl: "70vw" }}
             mb={10}
           >
             <Text
@@ -287,7 +290,7 @@ const Landing1 = () => {
           </Flex>
 
           <Flex
-            w={isMobileDevice ? "100vw" : "70vw"}
+            w={{ sm: "100vw", md: "80vw", lg: "70vw", xl: "70vw" }}
             mt={5}
             justifyContent={"space-between"}
             px={isMobileDevice ? 5 : undefined}
@@ -345,7 +348,7 @@ const Landing1 = () => {
         </Flex>
         <Flex justifyContent={"center"}>
           <Flex
-            w={isMobileDevice ? "100vw" : "70vw"}
+            w={{ sm: "100vw", md: "80vw", lg: "70vw", xl: "70vw" }}
             px={isMobileDevice ? 5 : undefined}
             mt={40}
             flexDirection={"column"}
@@ -367,12 +370,23 @@ const Landing1 = () => {
           </Flex>
         </Flex>
         <Flex mt={20} justifyContent={"center"}>
-          <Box w={{ sm: "80vw", lg: "70vw", xl: "70vw" }}>
+          <Box w={{ sm: "80vw", md: "80vw", lg: "70vw", xl: "70vw" }}>
             <Flex
-              h={isMobileDevice ? undefined : "250px"}
+              // h={isMobileDevice ? undefined : "250px"}
               flex={1}
-              flexDirection={{ sm: "column", lg: "row", xl: "row" }}
+              flexDirection={{
+                sm: "column",
+                md: "column",
+                lg: "row",
+                xl: "row",
+              }}
               justifyContent='space-between'
+              alignItems={{
+                sm: "normal",
+                md: "center",
+                lg: "normal",
+                xl: "normal",
+              }}
             >
               <Cards
                 img={ethereum.src}
@@ -407,14 +421,26 @@ const Landing1 = () => {
 
         <Flex mt={6} justifyContent={"center"}>
           <Box
-            w={{ sm: "80vw", lg: "70vw", xl: "70vw" }}
+            w={{ sm: "80vw", md: "80vw", lg: "70vw", xl: "70vw" }}
             // border='1px solid red'
           >
             <Flex
-              h={isMobileDevice ? undefined : "250px"}
-              flexDirection={{ sm: "column", lg: "row", xl: "row" }}
+              // h={isMobileDevice ? undefined : "250px"}
+              flexDirection={{
+                sm: "column",
+                md: "column",
+                lg: "row",
+                xl: "row",
+              }}
               flex={1}
               justifyContent='space-between'
+              // alignItems={"center"}
+              alignItems={{
+                sm: "normal",
+                md: "center",
+                lg: "normal",
+                xl: "normal",
+              }}
             >
               <Cards
                 img={polygon.src}
@@ -1121,7 +1147,7 @@ const Landing1 = () => {
 
         {isMobileDevice ? (
           <Flex
-            h='150vh'
+            // h='10vh'
             bg='linear-gradient(90deg, rgba(65,156,247,1) 0%, rgba(42,126,235,1) 100%)'
             flexDirection='column'
             position='relative'
@@ -1132,7 +1158,7 @@ const Landing1 = () => {
               py={10}
               flexDirection='column'
               alignItems={"center"}
-              position='absolute'
+              // position='absolute'
             >
               <Flex
                 py={10}
@@ -1279,7 +1305,7 @@ const Landing1 = () => {
                 </Flex>
               </Flex>
             </Flex>
-
+            {/* 
             <Flex
               flexDirection={"column"}
               w='100vw'
@@ -1359,7 +1385,7 @@ const Landing1 = () => {
                   </Flex>
                 </Flex>
               </Flex>
-            </Flex>
+            </Flex> */}
           </Flex>
         ) : (
           <Flex flexDirection='column' position='relative'>

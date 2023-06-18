@@ -26,7 +26,7 @@ export default function Footer() {
       zIndex={99999}
     >
       <Flex
-        w={isMobileDevice ? "100vw" : "70vw"}
+        w={{ sm: "100vw", md: "80vw", lg: "70vw", xl: "70vw" }}
         flexDirection={isMobileDevice ? "column" : undefined}
         justifyContent='space-between'
         alignItems={isMobileDevice ? undefined : "center"}
@@ -133,7 +133,11 @@ export default function Footer() {
           </Flex>
         </Flex>
       ) : (
-        <Flex w='70vw' mt={20} justifyContent={"space-between"}>
+        <Flex
+          w={{ sm: "100vw", md: "90vw", lg: "70vw", xl: "70vw" }}
+          mt={20}
+          justifyContent={"space-between"}
+        >
           <Flex flexDirection={"column"}>
             <Heading fontWeight={"bold"} fontSize='20px'>
               Product

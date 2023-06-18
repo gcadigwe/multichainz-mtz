@@ -23,7 +23,7 @@ const Navbar = () => {
         -webkit-box-shadow: 0px 5px 14px 2px rgba(0,0,0,0.38);
         -moz-box-shadow: 0px 5px 14px 2px rgba(0,0,0,0.38)'
       >
-        <Box w={isMobileDevice ? "100vw" : "70vw"}>
+        <Box w={{ sm: "100vw", md: "80vw", lg: "70vw", xl: "70vw" }}>
           <Flex
             alignItems={"center"}
             py={4}
@@ -40,6 +40,7 @@ const Navbar = () => {
             ) : (
               <>
                 <Flex
+                  fontSize={{ sm: "16px", md: "14px", lg: "16px", xl: "18px" }}
                   flex={0.6}
                   justifyContent='space-between'
                   fontWeight={"700"}
