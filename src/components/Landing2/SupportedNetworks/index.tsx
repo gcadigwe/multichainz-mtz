@@ -1,5 +1,6 @@
 import { Flex, Img, Text, useMediaQuery } from "@chakra-ui/react";
 import { useState } from "react";
+import styles from "./styles.module.css";
 
 export default function SupportedNetwork({ img }: { img: any }) {
   const [isMobileDevice] = useMediaQuery("(max-width: 750px)");
@@ -11,6 +12,7 @@ export default function SupportedNetwork({ img }: { img: any }) {
       flexDirection={"column"}
       alignItems='center'
       cursor={"pointer"}
+      className={styles.stakeTextParent}
     >
       <Img
         cursor={"pointer"}
@@ -19,7 +21,12 @@ export default function SupportedNetwork({ img }: { img: any }) {
         mr={isMobileDevice ? undefined : 4}
         src={img}
       />
-      <Text color='white' fontSize={"14px"} opacity={hovered ? 1 : 0}>
+      <Text
+        color='white'
+        fontSize={"14px"}
+        className={styles.stakeText}
+        // opacity={0}
+      >
         Stake Now
       </Text>
     </Flex>

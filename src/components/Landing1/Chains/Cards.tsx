@@ -18,7 +18,7 @@ const Cards = ({ img, text }: CardProps) => {
       maxW={"500px"}
       w={{ sm: "auto", md: "500px", lg: "auto", xl: "auto" }}
       _hover={{
-        boxShadow: "0px 0px 40px -14px rgba(0,0,0,0.75)",
+        boxShadow: "0px 4px 49px 0px rgba(0, 7, 72, 0.12)",
       }}
       // boxShadow={"0px 0px 40px -14px rgba(0,0,0,0.75)"}
       bgColor={"rgba(255, 255, 255, 0.62)"}

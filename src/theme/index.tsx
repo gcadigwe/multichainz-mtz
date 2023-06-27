@@ -10,7 +10,7 @@ const breakpoints = {
 
 const theme = extendTheme({
   fonts: {
-    heading: `'Roboto-Bold', sans-serif`,
+    heading: `'Roboto', sans-serif`,
     body: `'Roboto', sans-serif`,
   },
   breakpoints,

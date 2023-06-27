@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { Text, Flex, Img, useMediaQuery } from "@chakra-ui/react";
+import { Text, Flex, Img, useMediaQuery, Circle } from "@chakra-ui/react";
 import usdc from "../../../assets/svg/usdcelipse.svg";
 import busd from "../../../assets/svg/busdelipse.svg";
 import usdt from "../../../assets/svg/usdtelipse.svg";
@@ -13,6 +13,7 @@ import activeusdc from "../../../assets/svg/activeusdcelipse.svg";
 import activebusd from "../../../assets/svg/activebusdelipse.svg";
 import activeusdt from "../../../assets/svg/activeusdtelipse.svg";
 import activechainz from "../../../assets/svg/activechainzelipse.svg";
+import menuoutline from "../../../assets/svg/menuoutline.svg";
 
 enum Tiles {
   "NONE" = 0,
@@ -29,8 +30,9 @@ export default function RadialMenu() {
       position={"absolute"}
       w={isMobileDevice ? "400px" : "600px"}
       h='600px'
-      mt={{ sm: 48, lg: 0, xl: 0 }}
+      mt={{ sm: 6, lg: 0, xl: 0 }}
       ml={{ sm: 14, lg: 0, xl: 0 }}
+      alignItems='center'
     >
       <Flex flexDirection={"column"}>
         <Flex
@@ -52,7 +54,7 @@ export default function RadialMenu() {
           >
             <Img src={usdclogo.src} w='30px' h='30px' />
             <Text fontWeight={"bold"} color='white' textAlign={"center"}>
-              USDC
+              {activeTile === Tiles["FIRST"] ? "$300k" : "USDC"}
             </Text>
           </Flex>
         </Flex>
@@ -75,7 +77,7 @@ export default function RadialMenu() {
           >
             <Img src={chainzlogo.src} w='30px' h='30px' />
             <Text fontWeight={"bold"} color='white' textAlign={"center"}>
-              ChainZ
+              {activeTile === Tiles["SECOND"] ? "$100k" : "ChainZ"}
             </Text>
           </Flex>
         </Flex>
@@ -100,7 +102,7 @@ export default function RadialMenu() {
           >
             <Img src={busdlogo.src} w='30px' h='30px' />
             <Text fontWeight={"bold"} color='white' textAlign={"center"}>
-              BUSD
+              {activeTile === Tiles["THIRD"] ? "$150k" : "BUSD"}
             </Text>
           </Flex>
         </Flex>
@@ -123,7 +125,7 @@ export default function RadialMenu() {
           >
             <Img src={usdtlogo.src} w='30px' h='30px' />
             <Text fontWeight={"bold"} color='white' textAlign={"center"}>
-              USDT
+              {activeTile === Tiles["FOURTH"] ? "$130k" : "USDT"}
             </Text>
           </Flex>
         </Flex>

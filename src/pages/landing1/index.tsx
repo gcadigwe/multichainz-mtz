@@ -11,8 +11,9 @@ import {
   InputRightAddon,
   useMediaQuery,
   Heading,
+  Circle,
 } from "@chakra-ui/react";
-import eclipsebg from "../../assets/svg/elipsebg.svg";
+import eclipsebg from "../../assets/elipsebg.png";
 import wallet from "../../assets/svg/wallet.svg";
 import crosschain from "../../assets/svg/crosschain.svg";
 import institution from "../../assets/svg/institution.svg";
@@ -46,10 +47,10 @@ import spherium from "../../assets/svg/spherium.svg";
 import google from "../../assets/svg/google.svg";
 import transakt from "../../assets/svg/transakt.svg";
 import chainlink from "../../assets/svg/chainlink.svg";
-import binancebacked from "../../assets/svg/binancebacked.svg";
+
 import polygonbacked from "../../assets/svg/polygonbacked.svg";
 import okxbacked from "../../assets/svg/okx.svg";
-import fantombacked from "../../assets/svg/fantombacked.svg";
+import arbitrumbacked from "../../assets/svg/arbitrum.svg";
 import ethereumbacked from "../../assets/svg/ethereumbacked.svg";
 import multichainz from "../../assets/svg/multichainzlogo.svg";
 import { FaDiscord, FaTwitter, FaLinkedin } from "react-icons/fa";
@@ -61,6 +62,8 @@ import { useEffect, useState } from "react";
 import Footer from "@/components/Footer";
 import AnimatedPolygon from "@/components/Landing1/AnimatedPolygons";
 import web3label from "../../assets/svg/web3label.svg";
+import arbitrum from "../../assets/svg/arbitrum.svg";
+import binancebacked from "../../assets/svg/activebinance.svg";
 
 const Landing1 = () => {
   const firstpageRef = useRef<any>(null);
@@ -167,7 +170,7 @@ const Landing1 = () => {
       >
         <Flex position={"relative"} justifyContent={"center"}>
           <Img
-            w={{ sm: "100%", md: "100%", lg: "50%", xl: "50%" }}
+            w={{ sm: "100%", md: "100%", lg: "60%", xl: "55%" }}
             h={{ sm: "70vh", lg: "100%" }}
             src={eclipsebg.src}
           />
@@ -229,6 +232,10 @@ const Landing1 = () => {
                 background={
                   "linear-gradient(90deg, rgba(73,168,252,1) 0%, rgba(104,172,253,1) 100%)"
                 }
+                _hover={{
+                  background:
+                    "linear-gradient(90deg, rgba(73,168,252,1) 0%, rgba(104,172,253,1) 100%)",
+                }}
               >
                 Get Started
               </Button>
@@ -282,10 +289,11 @@ const Landing1 = () => {
           >
             <Text
               textAlign={isMobileDevice ? "center" : undefined}
-              fontSize={isMobileDevice ? "20px" : "24px"}
+              // fontSize={isMobileDevice ? "20px" : "24px"}
+              fontSize={{ sm: "20px", lg: "36px", xl: "36px" }}
               fontWeight='600'
             >
-              $X locked in collateral to back the loans
+              $0 locked in collateral to back the loans
             </Text>
           </Flex>
 
@@ -304,43 +312,50 @@ const Landing1 = () => {
             >
               <Heading
                 // fontWeight={"700"}
-                fontSize={isMobileDevice ? "20px" : "40px"}
+
+                fontSize={{ sm: "20px", md: "40px", lg: "56px", xl: "56px" }}
               >
-                $xx Million+
+                $0 Million+
               </Heading>
-              <Text fontSize={isMobileDevice ? "14px" : "18px"}>
+              <Text
+                fontSize={{ sm: "16px", md: "18px", lg: "28px", xl: "28px" }}
+              >
                 Processed Loans
               </Text>
             </Flex>
 
             <Flex
-              alignItems={isMobileDevice ? "center" : undefined}
+              alignItems={isMobileDevice ? "center" : "center"}
               flexDirection={"column"}
               justifyContent={"center"}
             >
               <Heading
                 fontWeight={"700"}
-                fontSize={isMobileDevice ? "20px" : "40px"}
+                fontSize={{ sm: "20px", md: "40px", lg: "56px", xl: "56px" }}
               >
-                $M+
+                $0
               </Heading>
-              <Text fontSize={isMobileDevice ? "14px" : "18px"}>
+              <Text
+                fontSize={{ sm: "16px", md: "18px", lg: "28px", xl: "28px" }}
+              >
                 World Users
               </Text>
             </Flex>
 
             <Flex
               flexDirection={"column"}
-              alignItems={isMobileDevice ? "center" : undefined}
+              alignItems={"center"}
               justifyContent={"center"}
             >
               <Heading
                 fontWeight={"700"}
-                fontSize={isMobileDevice ? "20px" : "40px"}
+                fontSize={{ sm: "20px", md: "40px", lg: "56px", xl: "56px" }}
               >
                 20+
               </Heading>
-              <Text fontSize={isMobileDevice ? "14px" : "18px"}>
+              <Text
+                fontSize={{ sm: "16px", md: "18px", lg: "28px", xl: "28px" }}
+              >
                 Reached Countries
               </Text>
             </Flex>
@@ -356,14 +371,16 @@ const Landing1 = () => {
             <Heading
               fontWeight={"700"}
               color='#8F979C'
-              fontSize={isMobileDevice ? "24px" : "40px"}
+              // fontSize={isMobileDevice ? "24px" : "40px"}
+              fontSize={{ sm: "24px", md: "30px", lg: "48px", xl: "48px" }}
             >
               Explore MultichainZ
             </Heading>
             <Heading
               lineHeight={"1.2"}
               fontWeight={"700"}
-              fontSize={isMobileDevice ? "24px" : "38px"}
+              // fontSize={isMobileDevice ? "24px" : "38px"}
+              fontSize={{ sm: "24px", md: "30px", lg: "38px", xl: "38px" }}
             >
               Community Pools <br /> across Multiple Chains
             </Heading>
@@ -513,9 +530,9 @@ const Landing1 = () => {
           </Flex>
         </Flex> */}
 
-        <Flex mt={4} justifyContent={"center"}>
+        <Flex mt={6} justifyContent={"center"}>
           <Flex w='70vw'>
-            <Heading fontSize={"16px"} fontWeight={"bold"}>
+            <Heading fontSize={"18px"} fontWeight={"bold"}>
               More chains coming soon…
             </Heading>
           </Flex>
@@ -526,7 +543,8 @@ const Landing1 = () => {
           flexDirection={"column"}
         >
           <Heading
-            fontSize={isMobileDevice ? "18px" : "24px"}
+            // fontSize={isMobileDevice ? "18px" : "24px"}
+            fontSize={{ sm: "18px", md: "20px", lg: "32px", xl: "32px" }}
             fontWeight={"bold"}
           >
             Enabling Institutional Lending
@@ -540,7 +558,7 @@ const Landing1 = () => {
               and trust
             </Text>
           ) : (
-            <Text fontSize={isMobileDevice ? "14px" : undefined}>
+            <Text fontSize={{ md: "18px", lg: "20px", xl: "20px" }}>
               Institutional features to enhance on-chain lending security and
               trust
             </Text>
@@ -826,7 +844,7 @@ const Landing1 = () => {
             <Flex
               borderRadius={"12px"}
               border={"1.5px solid white"}
-              boxShadow={"0px 0px 40px -14px rgba(0,0,0,0.75)"}
+              boxShadow={"0px 4px 49px 0px rgba(0, 7, 72, 0.12)"}
               alignItems={"center"}
               flexDirection={isMobileDevice ? "column" : undefined}
               py={isMobileDevice ? 5 : 0}
@@ -841,7 +859,7 @@ const Landing1 = () => {
                   <Img w='100px' h='100px' src={azuki.src} />
                 </Flex>
               ) : (
-                <Flex alignItems={"center"}>
+                <Flex alignItems={"center"} flex={0.5}>
                   <Img w='200px' h='200px' src={droid.src} />
                   <Flex flexDirection={"column"}>
                     <Img w='200px' h='200px' src={bayc.src} />
@@ -851,11 +869,11 @@ const Landing1 = () => {
               )}
 
               <Flex
-                // flex={0.3}
-
-                ml={isMobileDevice ? 5 : 10}
+                flex={0.5}
+                // ml={isMobileDevice ? 5 : 10}
                 alignItems={"flex-start"}
                 flexDirection={"column"}
+                px={isMobileDevice ? 5 : undefined}
               >
                 <Text
                   fontWeight={"600"}
@@ -884,7 +902,7 @@ const Landing1 = () => {
             </Flex>
           </Box>
         </Flex>
-        <Flex mt={40} flexDirection='column'>
+        <Flex mt={40} flexDirection='column' alignItems={"center"}>
           <Heading
             textAlign={"center"}
             fontSize={isMobileDevice ? "24px" : "44px"}
@@ -896,6 +914,7 @@ const Landing1 = () => {
             textAlign='center'
             px={{ sm: 5 }}
             fontSize={{ base: "16px", xl: "20px" }}
+            w={{ sm: "80vw", lg: "60vw", xl: "50vw" }}
           >
             Multichainz will expand the on-chain RWA lending potential through
             tailored mechanisms for borrowers and lenders.
@@ -905,11 +924,11 @@ const Landing1 = () => {
           <Flex
             // flex={1}
             w={{ sm: "80vw", lg: "60vw", xl: "50vw" }}
-            py={6}
-            px={3}
+            // py={6}
+            // px={3}
             borderRadius={"12px"}
             border={"1.5px solid white"}
-            boxShadow={"0px 0px 40px -14px rgba(0,0,0,0.75)"}
+            boxShadow={"0px 4px 49px 0px rgba(0, 7, 72, 0.12)"}
             alignItems={"center"}
             flexDirection={isMobileDevice ? "column" : undefined}
             justifyContent={isMobileDevice ? undefined : "center"}
@@ -917,17 +936,25 @@ const Landing1 = () => {
             {isMobileDevice ? (
               <Flex flexDirection={"column"}>
                 <Flex mr={20}>
-                  <Img w='80px' mx={5} h='100px' src={dollar.src} />
-                  <Img w='80px' h='100px' src={phone.src} />
+                  <Img w='100px' mx={5} h='100px' src={dollar.src} />
+                  <Img w='100px' h='100px' src={phone.src} />
                 </Flex>
-                <Flex ml={20}>
-                  <Img w='80px' h='100px' mx={5} src={woods.src} />
-                  <Img w='80px' h='100px' src={buildings.src} />
+                <Flex ml={16}>
+                  <Img w='100px' h='100px' mx={5} src={woods.src} />
+                  <Img w='100px' h='100px' src={buildings.src} />
                 </Flex>
               </Flex>
             ) : (
-              <Flex alignItems={"center"} flex={0.5}>
-                <Flex mb={24} mr={-10} flexDirection={"column"}>
+              <Flex
+                // justifyItems={"flex-end"}
+                alignItems={"center"}
+                flex={0.5}
+              >
+                <Flex
+                  mb={24}
+                  // mr={-10}
+                  flexDirection={"column"}
+                >
                   <Img w='200px' h='200px' src={buildings.src} />
                   <Img w='200px' h='200px' src={woods.src} />
                 </Flex>
@@ -942,14 +969,19 @@ const Landing1 = () => {
               // position='absolute'
               // mb={40}
               mb={22}
-              ml={isMobileDevice ? 0 : 10}
+              // ml={isMobileDevice ? 0 : 10}
               mt={isMobileDevice ? 5 : 0}
               px={isMobileDevice ? 5 : 0}
               alignItems={"flex-start"}
               flexDirection={"column"}
-              flex={0.4}
+              flex={0.5}
+              // border='1px solid blue'
             >
-              <Flex mb={10} flexDirection={"column"}>
+              <Flex
+                mb={10}
+                flexDirection={"column"}
+                pr={isMobileDevice ? undefined : 5}
+              >
                 <Heading
                   mb={2}
                   fontWeight={"bold"}
@@ -963,7 +995,11 @@ const Landing1 = () => {
                 </Text>
               </Flex>
 
-              <Flex mb={10} flexDirection={"column"}>
+              <Flex
+                mb={10}
+                flexDirection={"column"}
+                pr={isMobileDevice ? undefined : 5}
+              >
                 <Heading
                   fontWeight={"bold"}
                   fontSize={{ sm: "24px", lg: "24px", xl: "30px" }}
@@ -976,7 +1012,10 @@ const Landing1 = () => {
                 </Text>
               </Flex>
 
-              <Flex flexDirection={"column"}>
+              <Flex
+                flexDirection={"column"}
+                pr={isMobileDevice ? undefined : 5}
+              >
                 <Heading
                   fontWeight={"bold"}
                   fontSize={{ sm: "24px", lg: "24px", xl: "30px" }}
@@ -996,10 +1035,9 @@ const Landing1 = () => {
           justifyContent='center'
           alignItems={"center"}
         >
-          <Flex h='100vh'>
+          <Flex justifyContent={"center"}>
             <Img
-              w={isMobileDevice ? "100%" : "100%"}
-              filter={"blur(2px)"}
+              w={isMobileDevice ? "100%" : "90%"}
               src={isMobileDevice ? mobileflower.src : flower.src}
             />
           </Flex>
@@ -1010,7 +1048,7 @@ const Landing1 = () => {
             flexDirection='column'
           >
             <Heading
-              fontSize={isMobileDevice ? "24px" : "44px"}
+              fontSize={{ sm: "24px", md: "26px", lg: "48px", xl: "48px" }}
               fontWeight='700'
             >
               Community Led DAO
@@ -1018,7 +1056,7 @@ const Landing1 = () => {
             <Text
               px={isMobileDevice ? 5 : 0}
               textAlign={isMobileDevice ? "center" : undefined}
-              fontSize={{ lg: "16px", xl: "18px" }}
+              fontSize={{ sm: "16px", md: "18px", lg: "20px", xl: "20px" }}
             >
               Propose protocol suggestions and improvements within seconds
               through our community forum.
@@ -1026,7 +1064,7 @@ const Landing1 = () => {
 
             <Flex
               mt={isMobileDevice ? 5 : 20}
-              w={isMobileDevice ? "80vw" : "70vw"}
+              w={{ sm: "80vw", lg: "60vw", xl: "60vw" }}
               justifyContent={"space-between"}
               alignItems={isMobileDevice ? "center" : undefined}
               flexDirection={isMobileDevice ? "column" : "row"}
@@ -1068,6 +1106,9 @@ const Landing1 = () => {
                 background={
                   "linear-gradient(90deg, rgba(73,168,252,1) 0%, rgba(104,172,253,1) 100%)"
                 }
+                _hover={{
+                  bg: "linear-gradient(90deg, rgba(73,168,252,1) 0%, rgba(104,172,253,1) 100%)",
+                }}
               >
                 Governance Forum
               </Button>
@@ -1096,13 +1137,17 @@ const Landing1 = () => {
             </>
           ) : (
             <>
-              <Heading textAlign={"center"} fontSize={"44px"} fontWeight='700'>
+              <Heading
+                textAlign={"center"}
+                fontSize={{ md: "44px", lg: "64px", xl: "64px" }}
+                fontWeight='700'
+              >
                 Treasury balance
               </Heading>
 
               <Text
                 px={isMobileDevice ? 5 : 0}
-                fontSize={{ lg: "16px", xl: "20px" }}
+                fontSize={{ sm: "16px", md: "18px", lg: "20px", xl: "20px" }}
                 textAlign={"center"}
               >
                 Multichainz has a robust ecosystem treasury reserve composed by
@@ -1115,30 +1160,46 @@ const Landing1 = () => {
             position={"relative"}
             alignItems='center'
             justifyContent={"center"}
-            my={10}
+            mt={{ sm: 0, lg: 40, xl: 40 }}
+            mb={10}
             h='600px'
           >
             <Img
-              w={isMobileDevice ? undefined : "600px"}
+              w={isMobileDevice ? undefined : "800px"}
               src={isMobileDevice ? blurelipsemobile.src : blurelipse.src}
             />
+
+            <Circle
+              boxShadow={"0px 4px 49px 0px rgba(0, 7, 72, 0.12)"}
+              position={"absolute"}
+              border='1px solid rgba(255, 255, 255, 0.12)'
+              size={"540px"}
+              mr={16}
+              mb={14}
+              display={isMobileDevice ? "none" : undefined}
+            ></Circle>
 
             <RadialMenu />
 
             <Flex
               w='100%'
               position={"absolute"}
-              bottom={-20}
+              bottom={{ sm: -10, lg: -28, xl: -28 }}
               right={{ lg: 10, xl: 10 }}
               pb={10}
               alignItems={"center"}
               flexDirection={"column"}
               justifyContent='center'
             >
-              <Text fontSize={"44px"} fontWeight='700'>
-                $X
+              <Text
+                fontSize={{ sm: "20px", lg: "55px", xl: "55px" }}
+                fontWeight='700'
+              >
+                $500K
               </Text>
-              <Text fontSize={{ lg: "16px", xl: "18px" }}>
+              <Text
+                fontSize={{ sm: "16px", md: "18px", lg: "28px", xl: "28px" }}
+              >
                 Total Ecosystem Reserve
               </Text>
             </Flex>
@@ -1400,6 +1461,7 @@ const Landing1 = () => {
               position='absolute'
             >
               <Flex
+                borderRadius='8px'
                 py={10}
                 justifyContent={"space-between"}
                 w={{ sm: "80vw", lg: "70vw", xl: "60vw" }}
@@ -1419,12 +1481,14 @@ const Landing1 = () => {
                 <Flex
                   flexDirection={isMobileDevice ? "column" : undefined}
                   border='1px solid rgba(255, 255, 255, 0.12)'
-                  py={2}
-                  px={2}
+                  py={4}
+                  borderRadius='8px'
+                  px={4}
                 >
                   <Flex
                     _hover={{
-                      border: "1px solid white",
+                      border: "2px solid white",
+                      boxShadow: "-4px 8px 9px 0px rgba(0, 0, 0, 0.45)",
                     }}
                     cursor='pointer'
                     alignItems={"center"}
@@ -1435,12 +1499,14 @@ const Landing1 = () => {
                     px={2}
                     bgColor='black'
                     borderRadius={"18px"}
+                    border='2px solid black'
                   >
                     <Img w='150px' h='30px' src={halborn.src} />
                   </Flex>
                   <Flex
                     _hover={{
-                      border: "1px solid white",
+                      border: "2px solid white",
+                      boxShadow: "-4px 8px 9px 0px rgba(0, 0, 0, 0.45)",
                     }}
                     cursor='pointer'
                     alignItems={"center"}
@@ -1453,12 +1519,14 @@ const Landing1 = () => {
                     borderRadius={"18px"}
                     mx={isMobileDevice ? 0 : 5}
                     my={isMobileDevice ? 5 : 0}
+                    border='2px solid black'
                   >
                     <Img w='150px' h='40px' src={peckshield.src} />
                   </Flex>
                   <Flex
                     _hover={{
-                      border: "1px solid white",
+                      border: "2px solid white",
+                      boxShadow: "-4px 8px 9px 0px rgba(0, 0, 0, 0.45)",
                     }}
                     cursor='pointer'
                     alignItems={"center"}
@@ -1469,11 +1537,10 @@ const Landing1 = () => {
                     px={2}
                     bgColor='black'
                     borderRadius={"18px"}
+                    border='2px solid black'
                   >
                     <Img w='150px' h='30px' src={quillhash.src} />
                   </Flex>
-                  {/* <Img src={peckshield.src} />
-                <Img src={quillhash.src} /> */}
                 </Flex>
               </Flex>
 
@@ -1483,8 +1550,9 @@ const Landing1 = () => {
                 flexDirection='column'
                 justifyContent={"space-between"}
                 w={{ sm: "80vw", lg: "70vw", xl: "60vw" }}
-                mt={isMobileDevice ? 5 : 0}
-                my={isMobileDevice ? 0 : 28}
+                // mt={isMobileDevice ? 5 : 0}
+                // my={isMobileDevice ? 0 : 28}
+                mt={{ sm: 5, md: 10, lg: 24, xl: 64 }}
                 backdropFilter={"blur(20px)"}
                 alignItems='center'
                 border='1px solid rgba(255, 255, 255, 0.12)'
@@ -1596,7 +1664,7 @@ const Landing1 = () => {
                       <Img src={okxbacked.src} />
                     </a>
                     <a>
-                      <Img src={fantombacked.src} />
+                      <Img src={arbitrumbacked.src} />
                     </a>
                     <a>
                       <Img src={ethereumbacked.src} />
@@ -1618,7 +1686,7 @@ const Landing1 = () => {
                       <Img src={okxbacked.src} />
                     </a>
                     <a>
-                      <Img src={fantombacked.src} />
+                      <Img src={arbitrumbacked.src} />
                     </a>
                     <a>
                       <Img src={ethereumbacked.src} />

@@ -1,0 +1,8 @@
+.stakeTextParent:hover .stakeText {
+  opacity: 1;
+  transition: 0.3s;
+}
+
+.stakeText {
+  opacity: 0;
+}

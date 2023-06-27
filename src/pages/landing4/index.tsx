@@ -22,6 +22,9 @@ import quillhash from "../../assets/svg/quickshill.svg";
 import halborn from "../../assets/svg/halborn.svg";
 import peckshield from "../../assets/svg/peckshield.svg";
 import Footer from "@/components/Footer";
+import videoblemish from "../../assets/videoblemish.png";
+import AnimatedPolygon from "@/components/Landing1/AnimatedPolygons";
+import styles from "./styles.module.css";
 
 export default function Landing4() {
   const [isMobileDevice] = useMediaQuery("(max-width: 750px)");
@@ -39,15 +42,34 @@ export default function Landing4() {
           {isMobileDevice ? (
             <Img src={backgroundvidpic.src} />
           ) : (
-            <video
-              height={"100vh"}
-              width='100%'
-              muted
-              autoPlay
-              loop
-              src='https://res.cloudinary.com/duzyqi3zj/video/upload/v1686834772/dao_half_vd3zvt.mp4'
-            />
+            <>
+              <Flex
+                w='100%'
+                h='100vh'
+                // h='70vh'
+                // justifyContent={"center"}
+                // background='linear-gradient(90deg, rgba(223,216,255,1) 0%, rgba(204,211,255,1) 40%, rgba(175,202,255,1) 100%)'
+              >
+                <video
+                  // height={"50px"}
+                  style={{
+                    objectFit: "cover",
+                  }}
+                  width='100% !important'
+                  height={"50% !important"}
+                  // height={"100%"}
+                  // width='1200'
+                  // height='240'
+                  muted
+                  autoPlay
+                  loop
+                  src='https://res.cloudinary.com/duzyqi3zj/video/upload/v1686834772/dao_half_vd3zvt.mp4'
+                />
+              </Flex>
+            </>
           )}
+
+          <AnimatedPolygon />
 
           <Flex
             w='100%'
@@ -58,7 +80,7 @@ export default function Landing4() {
           >
             <Heading
               fontSize={{ sm: "40px", lg: "80px", xl: "100px" }}
-              fontWeight='700'
+              fontWeight='900'
             >
               Multichainz DAO
             </Heading>
@@ -72,11 +94,16 @@ export default function Landing4() {
             <Button
               color='white'
               fontSize={"14px"}
+              px={8}
               background={
                 "linear-gradient(90deg, rgba(73,168,252,1) 0%, rgba(104,172,253,1) 100%)"
               }
+              _hover={{
+                background:
+                  "linear-gradient(90deg, rgba(73,168,252,1) 0%, rgba(104,172,253,1) 100%)",
+              }}
             >
-              Get Started
+              Go to Forum
             </Button>
           </Flex>
 
@@ -141,69 +168,87 @@ export default function Landing4() {
               </Box>
             </Flex>
           ) : (
-            <Flex
-              top='85%'
-              position={"absolute"}
-              justifyContent='center'
-              w='100%'
-            >
+            <>
               <Flex
-                w={{ sm: "80vw", lg: "70vw", xl: "60vw" }}
-                justifyContent={"center"}
+                position={"absolute"}
+                top='80%'
+                w='100%'
+                // border={"1px solid red"}
+                // borderBottom={"1px solid black"}
+                // boxShadow={"0px 42px 50px -15px rgba(0, 7, 72, 0.31)"}
               >
-                <Box
-                  boxShadow={"0px 0px 40px -14px rgba(0,0,0,0.75)"}
-                  borderRadius={"12px"}
-                  p={8}
-                  w='70vw'
-                  bgColor={"#E0EFFB"}
-                >
-                  <Flex justifyContent={"space-between"}>
-                    <Box>
-                      <Heading fontWeight={"700"} fontSize='24px'>
-                        CHAINZ, the MultichainZ Governance Token
-                      </Heading>
-
-                      <Text my={4}>
-                        Use CHAINZ to submit priority proposals, get voting
-                        powers,
-                        <br />
-                        and access exclusive benefits to govern Multichainz
-                      </Text>
-
-                      <Text fontWeight={"bold"}>Trade</Text>
-                      <Flex justifyContent={"space-between"}>
-                        <Img src={binance.src} />
-                        <Img mx={3} src={binance.src} />
-                        <Img src={binance.src} />
-                        <Divider orientation='vertical' />
-                        <Flex mx={3} mb={5} flexDirection={"column"}>
-                          <Text fontWeight={"bold"}>Learn more</Text>
-                          <Img src={cmc.src} />
-                        </Flex>
-                        <Img src={coingecko.src} />
-                      </Flex>
-                    </Box>
-
-                    <Img src={multichainz.src} />
-                  </Flex>
-                </Box>
+                <Img h='260px' w='100%' src={videoblemish.src} />
               </Flex>
-            </Flex>
+              <Flex
+                top='90%'
+                position={"absolute"}
+                justifyContent='center'
+                w='100%'
+              >
+                <Flex
+                  w={{ sm: "80vw", lg: "70vw", xl: "60vw" }}
+                  justifyContent={"center"}
+                >
+                  <Box
+                    boxShadow={"0px 4px 49px 0px rgba(0, 7, 72, 0.12)"}
+                    borderRadius={"12px"}
+                    p={8}
+                    w='70vw'
+                    bgColor={"#E0EFFB"}
+                  >
+                    <Flex justifyContent={"space-between"}>
+                      <Box>
+                        <Heading fontWeight={"700"} fontSize='24px'>
+                          CHAINZ, the MultichainZ Governance Token
+                        </Heading>
+
+                        <Text my={4}>
+                          Use CHAINZ to submit priority proposals, get voting
+                          powers,
+                          <br />
+                          and access exclusive benefits to govern Multichainz
+                        </Text>
+
+                        <Text fontWeight={"bold"}>Trade</Text>
+                        <Flex justifyContent={"space-between"}>
+                          <Img src={binance.src} />
+                          <Img mx={3} src={binance.src} />
+                          <Img src={binance.src} />
+                          <Divider orientation='vertical' />
+                          <Flex ml={12} mx={3} mb={5} flexDirection={"column"}>
+                            <Text fontWeight={"bold"}>Learn more</Text>
+                            <Img
+                              className={styles.scaleimage}
+                              cursor={"pointer"}
+                              src={cmc.src}
+                            />
+                          </Flex>
+                          <Img cursor={"pointer"} src={coingecko.src} />
+                        </Flex>
+                      </Box>
+
+                      <Img src={multichainz.src} />
+                    </Flex>
+                  </Box>
+                </Flex>
+              </Flex>
+            </>
           )}
         </Flex>
+
         <Flex
           justifyContent={"center"}
           background='linear-gradient(90deg, rgba(235,242,248,1) 0%, rgba(182,217,245,1) 100%)'
           pt={60}
           pb={40}
-          mt={isMobileDevice ? 40 : undefined}
+          mt={isMobileDevice ? 40 : 20}
         >
           <Box w={isMobileDevice ? "80vw" : "70vw"}>
             <Heading
               textAlign={"center"}
               fontWeight={"700"}
-              fontSize={isMobileDevice ? "24px" : "50px"}
+              fontSize={{ sm: "24px", lg: "54px", xl: "64px" }}
+              mt={isMobileDevice ? 20 : undefined}
             >
               The Decision Makers
             </Heading>
@@ -218,8 +263,8 @@ export default function Landing4() {
               </Text>
             ) : (
               <Heading
-                mb={10}
-                fontSize='16px'
+                py={10}
+                fontSize={{ lg: "20px", xl: "28px" }}
                 fontWeight={"700"}
                 textAlign='center'
               >
@@ -236,7 +281,7 @@ export default function Landing4() {
               justifyContent={isMobileDevice ? undefined : "space-evenly"}
             >
               <Flex
-                p={6}
+                py={10}
                 px={10}
                 cursor='pointer'
                 _hover={{
@@ -249,7 +294,7 @@ export default function Landing4() {
                 <Heading
                   fontWeight={"bold"}
                   textAlign='center'
-                  fontSize={isMobileDevice ? "40px" : "20px"}
+                  fontSize={{ sm: "40px", lg: "20px", xl: "28px" }}
                 >
                   Founding <br /> Team and <br />
                   Developers
@@ -262,7 +307,7 @@ export default function Landing4() {
                   bgColor: "#125DDE",
                   color: "#ffffff",
                 }}
-                p={6}
+                py={6}
                 px={10}
                 bgColor='#ffffff'
                 borderRadius={"6px"}
@@ -271,7 +316,7 @@ export default function Landing4() {
               >
                 <Heading
                   textAlign={"center"}
-                  fontSize={isMobileDevice ? "40px" : "20px"}
+                  fontSize={{ sm: "40px", lg: "20px", xl: "28px" }}
                   fontWeight={"bold"}
                 >
                   Investors <br /> and Advisors
@@ -284,8 +329,8 @@ export default function Landing4() {
                   bgColor: "#125DDE",
                   color: "#ffffff",
                 }}
-                p={6}
                 px={10}
+                py={10}
                 bgColor='#ffffff'
                 borderRadius={"6px"}
                 alignItems='center'
@@ -293,7 +338,7 @@ export default function Landing4() {
               >
                 <Heading
                   textAlign={"center"}
-                  fontSize={isMobileDevice ? "40px" : "20px"}
+                  fontSize={{ sm: "40px", lg: "20px", xl: "28px" }}
                   fontWeight={"bold"}
                 >
                   Community <br /> Members
@@ -306,7 +351,7 @@ export default function Landing4() {
                   bgColor: "#125DDE",
                   color: "#ffffff",
                 }}
-                p={6}
+                py={6}
                 px={10}
                 bgColor='#ffffff'
                 borderRadius={"6px"}
@@ -315,7 +360,7 @@ export default function Landing4() {
               >
                 <Heading
                   textAlign={"center"}
-                  fontSize={isMobileDevice ? "40px" : "20px"}
+                  fontSize={{ sm: "40px", lg: "20px", xl: "28px" }}
                   fontWeight={"bold"}
                 >
                   Ecosystem <br /> Partners
@@ -327,26 +372,31 @@ export default function Landing4() {
       </Flex>
       <Flex
         // background='radial-gradient(237.97% 471.1% at 108.54% -6.09%, #49A8FC 0%, #0C56DB 100%)'
-        background='linear-gradient(90deg, rgba(73,168,252,1) 0%, rgba(12,86,219,1) 53%)'
+        background='linear-gradient(39deg, rgba(73, 168, 252, 1) 0%, rgba(12, 86, 219, 1) 100%)'
         bgColor={"#0C56DB"}
         justifyContent={"center"}
       >
-        <Box w={isMobileDevice ? "80vw" : "70vw"} py={20}>
+        <Box w={{ sm: "80vw", lg: "70vw", xl: "60vw" }} py={20}>
           <Heading
             color='white'
             textAlign={"center"}
-            fontSize={isMobileDevice ? "24px" : "50px"}
+            fontSize={{ sm: "24px", lg: "54px", xl: "64px" }}
             fontWeight='700'
           >
             Submit a Proposal
           </Heading>
 
-          <Text mb={10} textAlign={"center"} color='white'>
+          <Text
+            mb={10}
+            fontSize={{ sm: "16px", lg: "18px", xl: "20px" }}
+            textAlign={"center"}
+            color='white'
+          >
             The DAO Process to submit a proposal is easy and intuitive, allowing
             everyone to submit any proposal at any time
           </Text>
 
-          <Flex color='white' flexDirection={"column"}>
+          <Flex color='white' flexDirection={"column"} alignItems='center'>
             <Flex
               borderRadius={"20px"}
               background='linear-gradient(90deg, rgba(255,255,255,0.14) 0%, rgba(75,115,255,0.15) 77.78%)'
@@ -354,16 +404,27 @@ export default function Landing4() {
               py={8}
               border='1px solid rgba(255, 255, 255, 0.2)'
               alignItems={"center"}
+              w={{ sm: "80vw", lg: "70vw", xl: "60vw" }}
             >
-              <Text mr={5} fontSize={"60px"} fontWeight='700'>
+              <Text
+                mr={5}
+                fontSize={{ sm: "60px", lg: "70px", xl: "80px" }}
+                fontWeight='700'
+              >
                 1
               </Text>
 
               <Flex flexDirection={"column"}>
-                <Heading fontSize={"24px"} fontWeight='bold'>
+                <Heading
+                  fontSize={{ sm: "24px", lg: "28px", xl: "36px" }}
+                  fontWeight='bold'
+                >
                   Sign Up to Forum
                 </Heading>
-                <Text fontWeight={"500"}>
+                <Text
+                  fontWeight={"500"}
+                  fontSize={{ sm: "16px", lg: "18px", xl: "24px" }}
+                >
                   Create an account on our forum and get <br />
                   approved to propose and comment in the interface
                 </Text>
@@ -378,16 +439,27 @@ export default function Landing4() {
               py={8}
               border='1px solid rgba(255, 255, 255, 0.2)'
               alignItems={"center"}
+              w={{ sm: "80vw", lg: "70vw", xl: "60vw" }}
             >
-              <Text mr={5} fontSize={"60px"} fontWeight='700'>
+              <Text
+                mr={5}
+                fontSize={{ sm: "60px", lg: "70px", xl: "80px" }}
+                fontWeight='700'
+              >
                 2
               </Text>
 
               <Flex flexDirection={"column"}>
-                <Heading fontSize={"24px"} fontWeight='bold'>
+                <Heading
+                  fontSize={{ sm: "24px", lg: "28px", xl: "36px" }}
+                  fontWeight='bold'
+                >
                   Submit a Forum Proposal
                 </Heading>
-                <Text fontWeight={"500"}>
+                <Text
+                  fontWeight={"500"}
+                  fontSize={{ sm: "16px", lg: "18px", xl: "24px" }}
+                >
                   Upload your proposal for improvement or suggestion to <br />{" "}
                   the forum and receive feedback and community interest
                 </Text>
@@ -402,16 +474,27 @@ export default function Landing4() {
               py={8}
               border='1px solid rgba(255, 255, 255, 0.2)'
               alignItems={"center"}
+              w={{ sm: "80vw", lg: "70vw", xl: "60vw" }}
             >
-              <Text mr={5} fontSize={"60px"} fontWeight='700'>
+              <Text
+                mr={5}
+                fontSize={{ sm: "60px", lg: "70px", xl: "80px" }}
+                fontWeight='700'
+              >
                 3
               </Text>
 
               <Flex flexDirection={"column"}>
-                <Heading fontSize={"24px"} fontWeight='bold'>
+                <Heading
+                  fontSize={{ sm: "24px", lg: "28px", xl: "36px" }}
+                  fontWeight='bold'
+                >
                   Create a Snapshot
                 </Heading>
-                <Text fontWeight={"500"}>
+                <Text
+                  fontWeight={"500"}
+                  fontSize={{ sm: "16px", lg: "18px", xl: "24px" }}
+                >
                   If the forum interest is big, connect your wallet <br /> to
                   Snapshot, and submit the proposal
                 </Text>
@@ -426,16 +509,27 @@ export default function Landing4() {
               py={8}
               border='1px solid rgba(255, 255, 255, 0.2)'
               alignItems={"center"}
+              w={{ sm: "80vw", lg: "70vw", xl: "60vw" }}
             >
-              <Text mr={5} fontSize={"60px"} fontWeight='700'>
+              <Text
+                mr={5}
+                fontSize={{ sm: "60px", lg: "70px", xl: "80px" }}
+                fontWeight='700'
+              >
                 4
               </Text>
 
               <Flex flexDirection={"column"}>
-                <Heading fontSize={"24px"} fontWeight='bold'>
+                <Heading
+                  fontSize={{ sm: "24px", lg: "28px", xl: "36px" }}
+                  fontWeight='bold'
+                >
                   Sign Up to Forum
                 </Heading>
-                <Text fontWeight={"500"}>
+                <Text
+                  fontWeight={"500"}
+                  fontSize={{ sm: "16px", lg: "18px", xl: "24px" }}
+                >
                   Once approved in Snapshot, create a Github request <br /> for
                   the proposal to be voted by all MTZ token holders
                 </Text>
@@ -519,29 +613,38 @@ export default function Landing4() {
             <Flex justifyContent={"center"}>
               <Flex
                 pl={isMobileDevice ? 2 : 4}
-                border='1px solid rgba(255, 255, 255, 0.2)'
+                border='1px solid rgba(255, 255, 255, 0.3)'
+                borderLeftRadius={"12px"}
                 alignItems={"center"}
                 justifyContent='space-between'
                 mt={40}
                 color='white'
                 w={{ sm: "80vw", lg: "70vw", xl: "60vw" }}
+                boxShadow={"0px 4px 49px 0px rgba(0, 7, 72, 0.12)"}
               >
-                <Flex flexDirection={"column"}>
+                <Flex flexDirection={"column"} py={4}>
                   <Heading
                     fontWeight={"700"}
                     fontSize={isMobileDevice ? "14px" : "18px"}
+                    mb={2}
                   >
                     Multichainz DAO Grants
                   </Heading>
                   {isMobileDevice ? (
-                    <Text fontSize={isMobileDevice ? "10px" : "12px"}>
+                    <Text
+                      color='rgba(255, 255, 255, 0.8)'
+                      fontSize={isMobileDevice ? "10px" : "12px"}
+                    >
                       If your startup or company has a proposal to
                       advance Institutional or Real-World Asset on-chain
                       lending, our DAO Grant program is interested to fund your
                       idea.
                     </Text>
                   ) : (
-                    <Text fontSize={isMobileDevice ? "10px" : "12px"}>
+                    <Text
+                      color='rgba(255, 255, 255, 0.8)'
+                      fontSize={{ lg: "12px", xl: "14px" }}
+                    >
                       If your startup or company has a proposal to
                       advance Institutional or Real-World Asset on-chain
                       lending, our DAO Grant program is interested to fund your
@@ -550,7 +653,7 @@ export default function Landing4() {
                   )}
                 </Flex>
 
-                <Flex position={"relative"}>
+                <Flex position={"relative"} h='100%'>
                   <Img
                     src={comingsoon.src}
                     // h='100px'
@@ -573,19 +676,19 @@ export default function Landing4() {
 
           <Flex justifyContent={"center"} pt={20}>
             <Flex
-              py={{ sm: 14, lg: 14, xl: 20 }}
+              py={{ sm: 14, lg: 14, xl: 14 }}
               justifyContent={"space-between"}
               w={{ sm: "80vw", lg: "70vw", xl: "60vw" }}
               backdropFilter={"blur(20px)"}
               flexDirection={isMobileDevice ? "column" : undefined}
               alignItems='center'
-              border='1px solid rgba(255, 255, 255, 0.12)'
-              px={5}
+              border='1px solid rgba(255, 255, 255, 0.3)'
+              px={12}
               borderRadius='18px'
-              boxShadow='0px 0px 40px -14px rgba(0,0,0,0.75)'
+              boxShadow={"0px 4px 49px 0px rgba(0, 7, 72, 0.12)"}
             >
               <Heading
-                fontSize={{ sm: "30px", lg: "40px", xl: "45px" }}
+                fontSize={{ sm: "30px", lg: "32px", xl: "36px" }}
                 fontWeight='bold'
                 color='white'
               >
@@ -594,10 +697,16 @@ export default function Landing4() {
               <Flex
                 flexDirection={isMobileDevice ? "column" : undefined}
                 border='1px solid rgba(255, 255, 255, 0.12)'
-                py={2}
-                px={2}
+                py={4}
+                borderRadius='8px'
+                px={4}
               >
                 <Flex
+                  _hover={{
+                    border: "2px solid white",
+                    boxShadow: "-4px 8px 9px 0px rgba(0, 0, 0, 0.45)",
+                  }}
+                  cursor='pointer'
                   alignItems={"center"}
                   justifyContent='center'
                   w={isMobileDevice ? "200px" : undefined}
@@ -606,14 +715,16 @@ export default function Landing4() {
                   px={2}
                   bgColor='black'
                   borderRadius={"18px"}
-                  cursor='pointer'
-                  _hover={{
-                    border: "1px solid white",
-                  }}
+                  border='2px solid black'
                 >
                   <Img w='150px' h='30px' src={halborn.src} />
                 </Flex>
                 <Flex
+                  _hover={{
+                    border: "2px solid white",
+                    boxShadow: "-4px 8px 9px 0px rgba(0, 0, 0, 0.45)",
+                  }}
+                  cursor='pointer'
                   alignItems={"center"}
                   justifyContent='center'
                   // py={1}
@@ -624,14 +735,16 @@ export default function Landing4() {
                   borderRadius={"18px"}
                   mx={isMobileDevice ? 0 : 5}
                   my={isMobileDevice ? 5 : 0}
-                  cursor='pointer'
-                  _hover={{
-                    border: "1px solid white",
-                  }}
+                  border='2px solid black'
                 >
                   <Img w='150px' h='40px' src={peckshield.src} />
                 </Flex>
                 <Flex
+                  _hover={{
+                    border: "2px solid white",
+                    boxShadow: "-4px 8px 9px 0px rgba(0, 0, 0, 0.45)",
+                  }}
+                  cursor='pointer'
                   alignItems={"center"}
                   justifyContent='center'
                   // py={1}
@@ -640,15 +753,12 @@ export default function Landing4() {
                   px={2}
                   bgColor='black'
                   borderRadius={"18px"}
-                  cursor='pointer'
-                  _hover={{
-                    border: "1px solid white",
-                  }}
+                  border='2px solid black'
                 >
                   <Img w='150px' h='30px' src={quillhash.src} />
                 </Flex>
               </Flex>
-            </Flex>
+            </Flex>{" "}
           </Flex>
         </Box>
       </Flex>

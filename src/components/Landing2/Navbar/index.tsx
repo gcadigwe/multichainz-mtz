@@ -10,6 +10,7 @@ import {
 import logo from "../../../assets/svg/multichainzlogo.svg";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import MobileNavbar from "./MobileNavbar";
+import styles from "./styles.module.css";
 
 const Navbar = () => {
   const [isMobileDevice] = useMediaQuery("(max-width: 750px)");
@@ -23,10 +24,10 @@ const Navbar = () => {
         justifyContent={"center"}
         zIndex={199999}
       >
-        <Box w={{ sm: "100vw", md: "70vw", lg: "80vw", xl: "80vw" }}>
+        <Box w={{ sm: "100vw", md: "70vw", lg: "80vw", xl: "70vw" }}>
           <Flex
             alignItems={"center"}
-            py={4}
+            py={{ sm: 6, lg: 4, xl: 6 }}
             px={isMobileDevice ? 5 : undefined}
             justifyContent={"space-between"}
             flex={1}
@@ -40,48 +41,33 @@ const Navbar = () => {
             ) : (
               <>
                 <Flex
-                  flex={{ lg: 0.6, xl: 0.5 }}
+                  fontSize={{ sm: "16px", md: "14px", lg: "16px", xl: "18px" }}
+                  flex={0.7}
                   justifyContent='space-between'
                   fontWeight={"700"}
                 >
                   <Text
                     cursor={"pointer"}
-                    _hover={{
-                      textDecoration: "underline",
-                      textDecorationColor: "rgba(44, 129, 237, 0.7)",
-                      textDecorationThickness: "0.2em",
-                    }}
+                    className={styles.hoverUnderlineAnimation}
                   >
                     Products
                   </Text>
                   <Text
                     cursor={"pointer"}
-                    _hover={{
-                      textDecoration: "underline",
-                      textDecorationColor: "rgba(44, 129, 237, 0.7)",
-                      textDecorationThickness: "0.2em",
-                    }}
+                    className={styles.hoverUnderlineAnimation}
                     mx={3}
                   >
                     Markets
                   </Text>
                   <Text
                     cursor={"pointer"}
-                    _hover={{
-                      textDecoration: "underline",
-                      textDecorationColor: "rgba(44, 129, 237, 0.7)",
-                      textDecorationThickness: "0.2em",
-                    }}
+                    className={styles.hoverUnderlineAnimation}
                   >
                     Governance
                   </Text>
                   <Text
                     cursor={"pointer"}
-                    _hover={{
-                      textDecoration: "underline",
-                      textDecorationColor: "rgba(44, 129, 237, 0.7)",
-                      textDecorationThickness: "0.2em",
-                    }}
+                    className={styles.hoverUnderlineAnimation}
                     mx={3}
                   >
                     Documentation
@@ -89,6 +75,7 @@ const Navbar = () => {
                 </Flex>
 
                 <Button
+                  px={10}
                   fontSize={"14px"}
                   _hover={{
                     bgColor: "#49A8FC",

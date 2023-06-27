@@ -10,6 +10,7 @@ import {
 import logo from "../../../assets/svg/multichainzlogo.svg";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import MobileNavbar from "./MobileNavbar";
+import styles from "./styles.module.css";
 
 const Navbar = () => {
   const [isMobileDevice] = useMediaQuery("(max-width: 750px)");
@@ -41,49 +42,39 @@ const Navbar = () => {
               <>
                 <Flex
                   fontSize={{ sm: "16px", md: "14px", lg: "16px", xl: "18px" }}
-                  flex={0.6}
+                  flex={0.7}
                   justifyContent='space-between'
                   fontWeight={"700"}
                 >
                   <Text
                     cursor={"pointer"}
-                    _hover={{
-                      textDecoration: "underline",
-                      textDecorationColor: "rgba(44, 129, 237, 0.7)",
-                      textDecorationThickness: "0.2em",
-                    }}
+                    className={styles.hoverUnderlineAnimation}
                   >
                     Products
                   </Text>
                   <Text
                     cursor={"pointer"}
-                    _hover={{
-                      textDecoration: "underline",
-                      textDecorationColor: "rgba(44, 129, 237, 0.7)",
-                      textDecorationThickness: "0.2em",
-                    }}
+                    className={styles.hoverUnderlineAnimation}
                     mx={3}
                   >
                     Markets
                   </Text>
                   <Text
                     cursor={"pointer"}
-                    _hover={{
-                      textDecoration: "underline",
-                      textDecorationColor: "rgba(44, 129, 237, 0.7)",
-                      textDecorationThickness: "0.2em",
-                    }}
+                    className={styles.hoverUnderlineAnimation}
                   >
                     Governance
                   </Text>
                   <Text
                     cursor={"pointer"}
-                    _hover={{
-                      textDecoration: "underline",
-                      textDecorationColor: "rgba(44, 129, 237, 0.7)",
-                      textDecorationThickness: "0.2em",
-                    }}
+                    className={styles.hoverUnderlineAnimation}
+                    // _hover={{
+                    //   textDecoration: "underline",
+                    //   textDecorationColor: "rgba(44, 129, 237, 0.7)",
+                    //   textDecorationThickness: "0.2em",
+                    // }}
                     mx={3}
+                    textDecorationThickness={"0.2em"}
                   >
                     Documentation
                   </Text>
@@ -96,6 +87,7 @@ const Navbar = () => {
                   }}
                   bgColor='#49A8FC'
                   color='white'
+                  px={10}
                 >
                   Launch App
                 </Button>

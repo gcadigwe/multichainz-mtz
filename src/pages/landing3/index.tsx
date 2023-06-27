@@ -24,7 +24,7 @@ import calculator from "../../assets/calculator.png";
 import calculatormobile from "../../assets/calculatormobile.png";
 import activebinance from "../../assets/svg/activebinance.svg";
 import inactiveethereum from "../../assets/svg/inactiveethereum.svg";
-import inactivefantom from "../../assets/svg/inactivefantom.svg";
+import arbitrum from "../../assets/svg/arbitrum.svg";
 import inactivepolygon from "../../assets/svg/inactivepolygon.svg";
 import inactiveavalanche from "../../assets/svg/inactiveavalance.svg";
 import inactiveoptimism from "../../assets/svg/inactiveoptimism.svg";
@@ -33,6 +33,7 @@ import halborn from "../../assets/svg/halborn.svg";
 import peckshield from "../../assets/svg/peckshield.svg";
 import Footer from "@/components/Footer";
 import SupportedNetwork from "@/components/Landing2/SupportedNetworks";
+import AnimatedPolygon from "@/components/Landing1/AnimatedPolygons";
 
 export default function Landing3() {
   const [isMobileDevice] = useMediaQuery("(max-width: 750px)");
@@ -43,6 +44,8 @@ export default function Landing3() {
         <Flex justifyContent={"center"}>
           <Navbar />
         </Flex>
+
+        <AnimatedPolygon earn={true} />
 
         <Flex justifyContent={"space-between"}>
           <Flex position={"absolute"} justifyContent={"center"} w='100vw'>
@@ -88,7 +91,7 @@ export default function Landing3() {
               ) : (
                 <Text
                   my={10}
-                  fontSize={"20px"}
+                  fontSize={{ lg: "20px", xl: "26px" }}
                   textAlign={isMobileDevice ? "center" : undefined}
                   fontWeight={isMobileDevice ? "700" : underline}
                 >
@@ -99,7 +102,7 @@ export default function Landing3() {
               )}
 
               <Flex
-                mt={20}
+                mt={{ lg: 40, xl: 60 }}
                 justifyContent={isMobileDevice ? "center" : "flex-start"}
               >
                 <Flex flexDirection={"column"} alignItems='center'>
@@ -107,41 +110,51 @@ export default function Landing3() {
                     <Flex flexDirection='column' alignItems={"center"}>
                       <Flex
                         justifyContent={"center"}
-                        w={{ sm: "60px", lg: "60px", xl: "80px" }}
+                        // w={{ sm: "60px", lg: "60px", xl: "80px" }}
+                        px={2}
                         borderRadius='12px'
                         bgColor='#8CDFD9'
                       >
                         <Heading
                           color={"white"}
-                          fontSize={{ sm: "40px", lg: "40px", xl: "60px" }}
+                          fontSize={{ sm: "40px", lg: "40px", xl: "48px" }}
                           fontWeight='700'
                         >
-                          $0
+                          $100
                         </Heading>
                       </Flex>
 
-                      <Heading fontSize={"20px"} fontWeight={"700"}>
+                      <Heading
+                        mt={4}
+                        fontSize={{ sm: "20px", lg: "26px", xl: "28px" }}
+                        fontWeight={"700"}
+                      >
                         Total Liquidity
                       </Heading>
                     </Flex>
 
                     <Flex ml={10} flexDirection='column' alignItems={"center"}>
                       <Flex
+                        px={2}
                         justifyContent={"center"}
-                        w={{ sm: "60px", lg: "60px", xl: "80px" }}
+                        // w={{ sm: "60px", lg: "60px", xl: "80px" }}
                         borderRadius='12px'
                         bgColor='#95ADF5'
                       >
                         <Heading
                           color={"white"}
-                          fontSize={{ sm: "40px", lg: "40px", xl: "60px" }}
+                          fontSize={{ sm: "40px", lg: "40px", xl: "48px" }}
                           fontWeight='700'
                         >
-                          $0
+                          $900
                         </Heading>
                       </Flex>
 
-                      <Heading fontSize={"20px"} fontWeight={"700"}>
+                      <Heading
+                        fontSize={{ sm: "20px", lg: "26px", xl: "28px" }}
+                        fontWeight={"700"}
+                        mt={4}
+                      >
                         Total Rewards
                       </Heading>
                     </Flex>
@@ -149,7 +162,9 @@ export default function Landing3() {
                   <Button
                     w={isMobileDevice ? "80%" : undefined}
                     mt={10}
-                    fontSize={"14px"}
+                    fontSize={{ sm: "14px", lg: "18px", xl: "18px" }}
+                    px={{ sm: 0, lg: 8, xl: 10 }}
+                    py={{ sm: 4, lg: 8, xl: 8 }}
                     bgColor='#49A8FC'
                     _hover={{
                       bgColor: "#49A8FC",
@@ -186,7 +201,10 @@ export default function Landing3() {
                 Our Pools
               </Heading>
               <Img w='200px' src={underline.src} />
-              <Text textAlign={"center"}>
+              <Text
+                textAlign={"center"}
+                fontSize={{ sm: "16px", lg: "18px", xl: "20px" }}
+              >
                 Provide liquidity and earn interests in Multichainz yield pools
               </Text>
             </Flex>
@@ -238,7 +256,7 @@ export default function Landing3() {
               number={1}
               title={"Get Verified"}
               info={
-                <Text textAlign={"center"} fontSize='14px'>
+                <Text textAlign={"center"}>
                   Submit Your KYC verification <br /> and get it approved
                 </Text>
               }
@@ -252,7 +270,7 @@ export default function Landing3() {
               number={2}
               title={"Add Liquidity"}
               info={
-                <Text textAlign={"center"} fontSize='14px'>
+                <Text textAlign={"center"}>
                   Add any amount of liquidity <br /> into any of our yield pools
                 </Text>
               }
@@ -267,7 +285,7 @@ export default function Landing3() {
               number={3}
               title={"Choose Terms"}
               info={
-                <Text textAlign={"center"} fontSize='14px'>
+                <Text textAlign={"center"}>
                   Select the time you want to <br /> lock your liquidity for
                 </Text>
               }
@@ -278,7 +296,7 @@ export default function Landing3() {
               number={4}
               title={"Earn Rewards"}
               info={
-                <Text textAlign={"center"} fontSize='14px'>
+                <Text textAlign={"center"}>
                   Redeem your interest rewards <br /> once the locked time ends
                 </Text>
               }
@@ -303,7 +321,7 @@ export default function Landing3() {
       </Flex>
 
       <Flex mt={40} justifyContent={"center"}>
-        <Box w={width}>
+        <Box w={{ sm: "80vw", md: "70vw", lg: "70vw", xl: "60vw" }}>
           <Heading
             fontSize={isMobileDevice ? "30px" : "40px"}
             textAlign={isMobileDevice ? "center" : undefined}
@@ -316,34 +334,53 @@ export default function Landing3() {
             flex={1}
             mt={10}
             flexDirection={isMobileDevice ? "column" : undefined}
-            justifyContent={"space-between"}
+            justifyContent={"space-around"}
           >
-            <Flex flex={0.4}>
-              <Box w='100%' px={8} py={6} bgColor={"white"}>
+            <Flex>
+              <Box
+                w={{ sm: "100%", lg: "400px", xl: "460px" }}
+                mr={isMobileDevice ? undefined : 40}
+                px={8}
+                py={6}
+                bgColor={"white"}
+              >
                 <Img w='50px' h='50px' src={security.src} />
-                <Heading my={3} fontWeight={"700"} fontSize={"24px"}>
+                <Heading
+                  my={3}
+                  fontWeight={"700"}
+                  fontSize={{ sm: "24px", lg: "28px", xl: "32px" }}
+                >
                   Security
                 </Heading>
                 <Img src={colorbar.src} />
 
-                <Text mt={3}>
-                  MultichainZ has institutional-grade <br /> asset custody
-                  ensuring high funds <br /> security at all times
+                <Text mt={3} fontSize={{ sm: "16px", lg: "18px", xl: "22px" }}>
+                  MultichainZ has institutional-grade asset custody ensuring
+                  high funds security at all times
                 </Text>
               </Box>
             </Flex>
 
-            <Flex flex={0.4} mt={isMobileDevice ? 10 : undefined}>
-              <Box w='100%' px={8} py={6} bgColor={"white"}>
+            <Flex mt={isMobileDevice ? 10 : undefined}>
+              <Box
+                w={{ sm: "100%", lg: "400px", xl: "460px" }}
+                px={8}
+                py={6}
+                bgColor={"white"}
+              >
                 <Img w='50px' h='50px' src={efficiency.src} />
-                <Heading my={3} fontWeight={"700"} fontSize={"24px"}>
+                <Heading
+                  fontSize={{ sm: "24px", lg: "28px", xl: "32px" }}
+                  my={3}
+                  fontWeight={"700"}
+                >
                   Efficiency
                 </Heading>
                 <Img src={colorbar.src} />
 
-                <Text mt={3}>
-                  MultichainZ has embedded risk/liquidity <br /> efficiency
-                  mechanisms to <br /> maximize returns
+                <Text mt={3} fontSize={{ sm: "16px", lg: "18px", xl: "22px" }}>
+                  MultichainZ has embedded risk/liquidity efficiency mechanisms
+                  to maximize returns
                 </Text>
               </Box>
             </Flex>
@@ -353,34 +390,53 @@ export default function Landing3() {
             flex={1}
             mt={10}
             flexDirection={isMobileDevice ? "column" : undefined}
-            justifyContent={"space-between"}
+            // justifyContent={"space-between"}
+            justifyContent={"space-around"}
           >
-            <Flex flex={0.4}>
-              <Box w='100%' px={8} py={6} bgColor={"white"}>
+            <Flex mr={isMobileDevice ? undefined : 40}>
+              <Box
+                w={{ sm: "100%", lg: "400px", xl: "460px" }}
+                px={8}
+                py={6}
+                bgColor={"white"}
+              >
                 <Img w='50px' h='50px' src={flexibility.src} />
-                <Heading my={3} fontWeight={"700"} fontSize={"24px"}>
+                <Heading
+                  my={3}
+                  fontWeight={"700"}
+                  fontSize={{ sm: "24px", lg: "28px", xl: "32px" }}
+                >
                   Flexibility
                 </Heading>
                 <Img src={colorbar.src} />
 
-                <Text mt={3}>
-                  MultichainZ Gives flexible terms to <br /> every type of
-                  investors without fixed <br /> locking commitments
+                <Text mt={3} fontSize={{ sm: "16px", lg: "18px", xl: "22px" }}>
+                  MultichainZ Gives flexible terms to every type of investors
+                  without fixed locking commitments
                 </Text>
               </Box>
             </Flex>
 
-            <Flex flex={0.4} mt={isMobileDevice ? 10 : undefined}>
-              <Box w='100%' px={8} py={6} bgColor={"white"}>
+            <Flex mt={isMobileDevice ? 10 : undefined}>
+              <Box
+                w={{ sm: "100%", lg: "400px", xl: "460px" }}
+                px={8}
+                py={6}
+                bgColor={"white"}
+              >
                 <Img w='50px' h='50px' src={diversification.src} />
-                <Heading my={3} fontWeight={"700"} fontSize={"24px"}>
+                <Heading
+                  my={3}
+                  fontWeight={"700"}
+                  fontSize={{ sm: "24px", lg: "28px", xl: "32px" }}
+                >
                   Diversification
                 </Heading>
                 <Img src={colorbar.src} />
 
-                <Text mt={3}>
-                  MultichainZ provides pools in <br /> diffferent chains to
-                  ensure liquidity <br /> diversification and returns
+                <Text fontSize={{ sm: "16px", lg: "18px", xl: "22px" }} mt={3}>
+                  MultichainZ provides pools in diffferent chains to ensure
+                  liquidity diversification and returns
                 </Text>
               </Box>
             </Flex>
@@ -390,7 +446,7 @@ export default function Landing3() {
 
       <Flex mt={40} justifyContent={"center"}>
         <Box
-          w={isMobileDevice ? "100vw" : "70vw"}
+          w={{ sm: "100vw", md: "70vw", lg: "70vw", xl: "60vw" }}
           h={isMobileDevice ? "80vh" : undefined}
         >
           <Heading
@@ -403,6 +459,7 @@ export default function Landing3() {
 
           <Flex
             mt={10}
+            flex={1}
             // flexDirection={isMobileDevice ? "column" : undefined}
             justifyContent={"space-between"}
             position={isMobileDevice ? "relative" : undefined}
@@ -411,7 +468,7 @@ export default function Landing3() {
 
             {isMobileDevice ? (
               <>
-                <Box position={"absolute"} right={0}>
+                <Box position={"absolute"} right={0} pr={6}>
                   <Flex pt={5} flexDirection={"column"}>
                     <Flex flexDirection={"column"}>
                       <Text>Amount to lock, USD</Text>
@@ -462,7 +519,7 @@ export default function Landing3() {
               </>
             ) : (
               <>
-                <Flex pt={5} flexDirection={"column"}>
+                <Flex flex={0.3} pt={5} flexDirection={"column"}>
                   <Flex flexDirection={"column"}>
                     <Text>Amount to lock, USD</Text>
                     <Input bgColor='white' />
@@ -486,7 +543,7 @@ export default function Landing3() {
                   </Button>
                 </Flex>
 
-                <Flex pt={5} flexDirection={"column"}>
+                <Flex flex={0.3} pt={5} flexDirection={"column"}>
                   <Text>Select Farming Pool</Text>
                   <Select
                     fontSize={"14px"}
@@ -496,7 +553,7 @@ export default function Landing3() {
                   </Select>
                 </Flex>
 
-                <Flex pt={5} flexDirection={"column"}>
+                <Flex flex={0.3} pt={5} flexDirection={"column"}>
                   <Text>Time Period</Text>
                   <Select
                     fontSize={"14px"}
@@ -512,194 +569,208 @@ export default function Landing3() {
       </Flex>
 
       <Flex
+        justifyContent={"center"}
         bg='linear-gradient(90deg, rgba(65,156,247,1) 0%, rgba(42,126,235,1) 100%)'
-        alignItems={"center"}
-        flexDirection='column'
-        py={10}
-        px={isMobileDevice ? 5 : undefined}
       >
-        <Heading
-          textAlign={"center"}
-          fontSize={isMobileDevice ? "30px" : "40px"}
-          fontWeight='900'
-          color='white'
-        >
-          Diversify the Capital of Your Company
-        </Heading>
-
-        <Heading
-          color='white'
-          mt={10}
-          textAlign={"center"}
-          fontSize={isMobileDevice ? "16px" : "20px"}
-          fontWeight={"700"}
-          w={{ sm: "80vw", lg: "50vw", xl: "40vw" }}
-        >
-          Multichainz Yield Farming solution is the perfect alternative to
-          low-risk capital investments for companies. Contact us to get support
-          for adding liquidity to our pools with or without a wallet.
-        </Heading>
-
         <Flex
-          my={10}
-          w={isMobileDevice ? "80%" : undefined}
-          justifyContent={"center"}
+          w={{ sm: "80vw", md: "70vw", lg: "70vw", xl: "60vw" }}
+          alignItems={"center"}
+          flexDirection='column'
+          py={10}
+          px={isMobileDevice ? 5 : undefined}
         >
-          <Button
-            w={isMobileDevice ? "100%" : undefined}
-            background={
-              "linear-gradient(90deg, rgba(225,241,255,1) 0%, rgba(208,230,255,1) 100%)"
-            }
-            color='#125EDF'
-            _hover={{
-              bgColor: "#125EDF",
-            }}
+          <Flex flexDirection={"column"}>
+            <Heading
+              textAlign={"center"}
+              fontSize={{ sm: "30px", lg: "50px", xl: "64px" }}
+              fontWeight='900'
+              color='white'
+            >
+              Diversify the Capital of Your Company
+            </Heading>
+
+            <Heading
+              color='white'
+              mt={10}
+              textAlign={"center"}
+              fontSize={{ sm: "16px", lg: "26px", xl: "32px" }}
+              fontWeight={"700"}
+            >
+              Multichainz Yield Farming solution is the perfect alternative to
+              low-risk capital investments for companies. Contact us to get
+              support for adding liquidity to our pools with or without a
+              wallet.
+            </Heading>
+          </Flex>
+
+          <Flex
+            my={10}
+            w={isMobileDevice ? "80%" : undefined}
+            justifyContent={"center"}
           >
-            Get Support
-          </Button>
-        </Flex>
-
-        <Flex
-          // bgColor={"#49a8fc"}
-          justifyContent={"center"}
-          pt={isMobileDevice ? 20 : 10}
-        >
-          <Box pb={10} w={isMobileDevice ? "80vw" : "70vw"}>
-            <Text
-              textAlign={isMobileDevice ? "center" : undefined}
-              fontWeight='700'
-              color={"#ffffff"}
-              mb={4}
-              fontSize={"18px"}
+            <Button
+              w={isMobileDevice ? "100%" : undefined}
+              background={
+                "linear-gradient(90deg, rgba(225,241,255,1) 0%, rgba(208,230,255,1) 100%)"
+              }
+              color='#125EDF'
+              _hover={{
+                bgColor: "#125EDF",
+              }}
             >
-              Supported Networks
-            </Text>
+              Get Support
+            </Button>
+          </Flex>
 
-            <Flex
-              flexWrap={isMobileDevice ? "nowrap" : "wrap"}
-              justifyContent={isMobileDevice ? "center" : "space-between"}
-              flexDirection={isMobileDevice ? "column" : undefined}
-              alignItems={isMobileDevice ? "center" : undefined}
-              my={isMobileDevice ? 5 : 10}
-            >
-              <SupportedNetwork img={activebinance.src} />
-              <SupportedNetwork img={inactiveethereum.src} />
-              <SupportedNetwork img={inactivefantom.src} />
-              <SupportedNetwork img={inactivepolygon.src} />
-            </Flex>
-
-            <Flex
-              justifyContent={isMobileDevice ? "center" : "space-between"}
-              flexDirection={isMobileDevice ? "column" : undefined}
-              alignItems={isMobileDevice ? "center" : undefined}
-              pb={20}
-            >
-              <SupportedNetwork img={inactiveavalanche.src} />
-              <SupportedNetwork img={inactiveoptimism.src} />
-
-              <Img
-                cursor={"pointer"}
-                opacity={0.6}
-                _hover={{
-                  opacity: 1,
-                }}
-                w='180px'
-                visibility={"hidden"}
-                // mx={isMobileDevice ? undefined : 4}
-                src={inactiveavalanche.src}
-              />
-              <Img
-                cursor={"pointer"}
-                visibility={"hidden"}
-                opacity={0.6}
-                _hover={{
-                  opacity: 1,
-                }}
-                w='180px'
-                src={inactiveoptimism.src}
-              />
-            </Flex>
-
-            <Flex justifyContent={"center"}>
-              <Flex
-                py={{ sm: 14, lg: 14, xl: 20 }}
-                justifyContent={"space-between"}
-                w={{ sm: "80vw", lg: "70vw", xl: "60vw" }}
-                backdropFilter={"blur(20px)"}
-                flexDirection={isMobileDevice ? "column" : undefined}
-                alignItems='center'
-                border='1px solid rgba(255, 255, 255, 0.12)'
-                px={5}
-                borderRadius='18px'
-                boxShadow='0px 0px 40px -14px rgba(0,0,0,0.75)'
+          <Flex
+            // bgColor={"#49a8fc"}
+            justifyContent={"center"}
+            pt={isMobileDevice ? 20 : 10}
+          >
+            <Box pb={10} w={{ sm: "80vw", md: "70vw", lg: "70vw", xl: "60vw" }}>
+              <Text
+                textAlign={isMobileDevice ? "center" : undefined}
+                fontWeight='700'
+                color={"#ffffff"}
+                mb={4}
+                fontSize={"18px"}
               >
-                <Heading
-                  fontSize={{ sm: "30px", lg: "40px", xl: "45px" }}
-                  fontWeight='bold'
-                  color='white'
-                >
-                  Audited and <br /> Verified by
-                </Heading>
+                Supported Networks
+              </Text>
+
+              <Flex
+                flexWrap={isMobileDevice ? "nowrap" : "wrap"}
+                justifyContent={isMobileDevice ? "center" : "space-between"}
+                flexDirection={isMobileDevice ? "column" : undefined}
+                alignItems={isMobileDevice ? "center" : undefined}
+                my={isMobileDevice ? 5 : 10}
+              >
+                <SupportedNetwork img={activebinance.src} />
+                <SupportedNetwork img={inactiveethereum.src} />
+                <SupportedNetwork img={arbitrum.src} />
+                <SupportedNetwork img={inactivepolygon.src} />
+              </Flex>
+
+              <Flex
+                justifyContent={isMobileDevice ? "center" : "space-between"}
+                flexDirection={isMobileDevice ? "column" : undefined}
+                alignItems={isMobileDevice ? "center" : undefined}
+                pb={20}
+              >
+                <SupportedNetwork img={inactiveavalanche.src} />
+                <SupportedNetwork img={inactiveoptimism.src} />
+
+                <Img
+                  cursor={"pointer"}
+                  opacity={0.6}
+                  _hover={{
+                    opacity: 1,
+                  }}
+                  w='180px'
+                  visibility={"hidden"}
+                  // mx={isMobileDevice ? undefined : 4}
+                  src={inactiveavalanche.src}
+                />
+                <Img
+                  cursor={"pointer"}
+                  visibility={"hidden"}
+                  opacity={0.6}
+                  _hover={{
+                    opacity: 1,
+                  }}
+                  w='180px'
+                  src={inactiveoptimism.src}
+                />
+              </Flex>
+
+              <Flex justifyContent={"center"}>
                 <Flex
+                  py={{ sm: 14, lg: 14, xl: 14 }}
+                  justifyContent={"space-between"}
+                  w={{ sm: "80vw", lg: "70vw", xl: "60vw" }}
+                  backdropFilter={"blur(20px)"}
                   flexDirection={isMobileDevice ? "column" : undefined}
-                  border='1px solid rgba(255, 255, 255, 0.12)'
-                  py={2}
-                  px={2}
+                  alignItems='center'
+                  border='1px solid rgba(255, 255, 255, 0.3)'
+                  px={12}
+                  borderRadius='18px'
+                  boxShadow={"0px 4px 49px 0px rgba(0, 7, 72, 0.12)"}
                 >
-                  <Flex
-                    alignItems={"center"}
-                    justifyContent='center'
-                    w={isMobileDevice ? "200px" : undefined}
-                    // py={1}
-                    h='60px'
-                    px={2}
-                    bgColor='black'
-                    borderRadius={"18px"}
-                    cursor='pointer'
-                    _hover={{
-                      border: "1px solid white",
-                    }}
+                  <Heading
+                    fontSize={{ sm: "30px", lg: "32px", xl: "36px" }}
+                    fontWeight='bold'
+                    color='white'
                   >
-                    <Img w='150px' h='30px' src={halborn.src} />
-                  </Flex>
+                    Audited and <br /> Verified by
+                  </Heading>
                   <Flex
-                    alignItems={"center"}
-                    justifyContent='center'
-                    // py={1}
-                    w={isMobileDevice ? "200px" : undefined}
-                    h='60px'
-                    px={2}
-                    bgColor='black'
-                    borderRadius={"18px"}
-                    mx={isMobileDevice ? 0 : 5}
-                    my={isMobileDevice ? 5 : 0}
-                    cursor='pointer'
-                    _hover={{
-                      border: "1px solid white",
-                    }}
+                    flexDirection={isMobileDevice ? "column" : undefined}
+                    border='1px solid rgba(255, 255, 255, 0.12)'
+                    py={4}
+                    borderRadius='8px'
+                    px={4}
                   >
-                    <Img w='150px' h='40px' src={peckshield.src} />
-                  </Flex>
-                  <Flex
-                    alignItems={"center"}
-                    justifyContent='center'
-                    // py={1}
-                    w={isMobileDevice ? "200px" : undefined}
-                    h='60px'
-                    px={2}
-                    bgColor='black'
-                    borderRadius={"18px"}
-                    cursor='pointer'
-                    _hover={{
-                      border: "1px solid white",
-                    }}
-                  >
-                    <Img w='150px' h='30px' src={quillhash.src} />
+                    <Flex
+                      _hover={{
+                        border: "2px solid white",
+                        boxShadow: "-4px 8px 9px 0px rgba(0, 0, 0, 0.45)",
+                      }}
+                      cursor='pointer'
+                      alignItems={"center"}
+                      justifyContent='center'
+                      w={isMobileDevice ? "200px" : undefined}
+                      // py={1}
+                      h='60px'
+                      px={2}
+                      bgColor='black'
+                      borderRadius={"18px"}
+                      border='2px solid black'
+                    >
+                      <Img w='150px' h='30px' src={halborn.src} />
+                    </Flex>
+                    <Flex
+                      _hover={{
+                        border: "2px solid white",
+                        boxShadow: "-4px 8px 9px 0px rgba(0, 0, 0, 0.45)",
+                      }}
+                      cursor='pointer'
+                      alignItems={"center"}
+                      justifyContent='center'
+                      // py={1}
+                      w={isMobileDevice ? "200px" : undefined}
+                      h='60px'
+                      px={2}
+                      bgColor='black'
+                      borderRadius={"18px"}
+                      mx={isMobileDevice ? 0 : 5}
+                      my={isMobileDevice ? 5 : 0}
+                      border='2px solid black'
+                    >
+                      <Img w='150px' h='40px' src={peckshield.src} />
+                    </Flex>
+                    <Flex
+                      _hover={{
+                        border: "2px solid white",
+                        boxShadow: "-4px 8px 9px 0px rgba(0, 0, 0, 0.45)",
+                      }}
+                      cursor='pointer'
+                      alignItems={"center"}
+                      justifyContent='center'
+                      // py={1}
+                      w={isMobileDevice ? "200px" : undefined}
+                      h='60px'
+                      px={2}
+                      bgColor='black'
+                      borderRadius={"18px"}
+                      border='2px solid black'
+                    >
+                      <Img w='150px' h='30px' src={quillhash.src} />
+                    </Flex>
                   </Flex>
                 </Flex>
               </Flex>
-            </Flex>
-          </Box>
+            </Box>
+          </Flex>
         </Flex>
       </Flex>
 
