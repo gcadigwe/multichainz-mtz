@@ -16,6 +16,7 @@ import coingecko from "../../assets/svg/coingecko.svg";
 import Navbar from "@/components/Landing4/Navbar";
 import GovernanceCard from "@/components/Landing4/Cards/Governance";
 import comingsoon from "../../assets/comingsoon.png";
+import comingsoonmobile from "../../assets/comingsoonmobile.png";
 import join from "../../assets/join.png";
 import backgroundvidpic from "../../assets/backgroundvidpic.png";
 import quillhash from "../../assets/svg/quickshill.svg";
@@ -25,9 +26,25 @@ import Footer from "@/components/Footer";
 import videoblemish from "../../assets/videoblemish.png";
 import AnimatedPolygon from "@/components/Landing1/AnimatedPolygons";
 import styles from "./styles.module.css";
+import FixedMenu from "@/components/Landing1/Menu/FixedMenu";
+import { useEffect, useState } from "react";
 
 export default function Landing4() {
   const [isMobileDevice] = useMediaQuery("(max-width: 750px)");
+
+  const [showElement, setShowElement] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY || window.pageYOffset;
+      setShowElement(scrollPosition > window.innerHeight);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   return (
     <Box
       color='black'
@@ -70,6 +87,8 @@ export default function Landing4() {
           )}
 
           <AnimatedPolygon />
+
+          {showElement && !isMobileDevice && <FixedMenu />}
 
           <Flex
             w='100%'
@@ -210,17 +229,26 @@ export default function Landing4() {
                         </Text>
 
                         <Text fontWeight={"bold"}>Trade</Text>
-                        <Flex justifyContent={"space-between"}>
-                          <Img src={binance.src} />
-                          <Img mx={3} src={binance.src} />
-                          <Img src={binance.src} />
-                          <Divider orientation='vertical' />
+                        <Flex
+                          justifyContent={"space-between"}
+                          alignItems='center'
+                        >
+                          <Img filter={"blur(4px)"} src={binance.src} />
+                          <Img filter={"blur(4px)"} mx={6} src={binance.src} />
+                          <Img filter={"blur(4px)"} src={binance.src} />
+                          <Divider
+                            h='50px'
+                            mx={4}
+                            borderColor='black'
+                            orientation='vertical'
+                          />
                           <Flex ml={12} mx={3} mb={5} flexDirection={"column"}>
                             <Text fontWeight={"bold"}>Learn more</Text>
                             <Img
                               className={styles.scaleimage}
                               cursor={"pointer"}
                               src={cmc.src}
+                              mr={4}
                             />
                           </Flex>
                           <Img cursor={"pointer"} src={coingecko.src} />
@@ -605,74 +633,86 @@ export default function Landing4() {
             </Flex>
           </Flex>
 
-          {isMobileDevice ? (
+          {/* {isMobileDevice ? (
             <Flex mt={20}>
               <Img src={join.src} />
             </Flex>
-          ) : (
-            <Flex justifyContent={"center"}>
+          ) : ( */}
+          <Flex justifyContent={"center"}>
+            <Flex
+              pl={isMobileDevice ? 2 : 4}
+              border='1px solid rgba(255, 255, 255, 0.3)'
+              borderLeftRadius={"12px"}
+              alignItems={"center"}
+              justifyContent='space-between'
+              mt={40}
+              color='white'
+              w={{ sm: "100%", lg: "70vw", xl: "60vw" }}
+              boxShadow={"0px 4px 49px 0px rgba(0, 7, 72, 0.12)"}
+              flex={!isMobileDevice ? undefined : 1}
+            >
               <Flex
-                pl={isMobileDevice ? 2 : 4}
-                border='1px solid rgba(255, 255, 255, 0.3)'
-                borderLeftRadius={"12px"}
-                alignItems={"center"}
-                justifyContent='space-between'
-                mt={40}
-                color='white'
-                w={{ sm: "80vw", lg: "70vw", xl: "60vw" }}
-                boxShadow={"0px 4px 49px 0px rgba(0, 7, 72, 0.12)"}
+                flex={!isMobileDevice ? undefined : 0.6}
+                flexDirection={"column"}
+                py={4}
               >
-                <Flex flexDirection={"column"} py={4}>
-                  <Heading
-                    fontWeight={"700"}
-                    fontSize={isMobileDevice ? "14px" : "18px"}
-                    mb={2}
+                <Heading
+                  fontWeight={"700"}
+                  fontSize={isMobileDevice ? "14px" : "18px"}
+                  mb={2}
+                >
+                  Multichainz DAO Grants
+                </Heading>
+                {isMobileDevice ? (
+                  <Text
+                    // color='rgba(255, 255, 255, 0.8)'
+                    fontSize={isMobileDevice ? "9px" : "12px"}
                   >
-                    Multichainz DAO Grants
-                  </Heading>
-                  {isMobileDevice ? (
-                    <Text
-                      color='rgba(255, 255, 255, 0.8)'
-                      fontSize={isMobileDevice ? "10px" : "12px"}
-                    >
-                      If your startup or company has a proposal to
-                      advance Institutional or Real-World Asset on-chain
-                      lending, our DAO Grant program is interested to fund your
-                      idea.
-                    </Text>
-                  ) : (
-                    <Text
-                      color='rgba(255, 255, 255, 0.8)'
-                      fontSize={{ lg: "12px", xl: "14px" }}
-                    >
-                      If your startup or company has a proposal to
-                      advance Institutional or Real-World Asset on-chain
-                      lending, our DAO Grant program is interested to fund your
-                      idea.
-                    </Text>
-                  )}
-                </Flex>
+                    If your startup or company has a proposal to
+                    advance Institutional or Real-World Asset on-chain lending,
+                    our DAO Grant program is interested to fund your idea.
+                  </Text>
+                ) : (
+                  <Text
+                    color='rgba(255, 255, 255, 0.8)'
+                    fontSize={{ lg: "12px", xl: "14px" }}
+                  >
+                    If your startup or company has a proposal to
+                    advance Institutional or Real-World Asset on-chain lending,
+                    our DAO Grant program is interested to fund your idea.
+                  </Text>
+                )}
+              </Flex>
 
-                <Flex position={"relative"} h='100%'>
-                  <Img
-                    src={comingsoon.src}
-                    // h='100px'
-                  />
-                  <Flex
-                    borderRadius='4px'
-                    top={"40%"}
-                    right={"10%"}
-                    bgColor='black'
-                    px={4}
-                    py={2}
-                    position={"absolute"}
-                  >
-                    <Text fontSize={"14px"}>COMING SOON</Text>
-                  </Flex>
+              <Flex
+                flex={!isMobileDevice ? undefined : 0.4}
+                position={"relative"}
+                h='100%'
+                w='100%'
+              >
+                <Img
+                  src={isMobileDevice ? comingsoonmobile.src : comingsoon.src}
+                  w='100%'
+
+                  // h='100px'
+                />
+                <Flex
+                  borderRadius='4px'
+                  top={"40%"}
+                  right={"10%"}
+                  bgColor='black'
+                  px={4}
+                  py={2}
+                  position={"absolute"}
+                >
+                  <Text fontSize={{ sm: "9px", lg: "14px", xl: "14px" }}>
+                    COMING SOON
+                  </Text>
                 </Flex>
               </Flex>
             </Flex>
-          )}
+          </Flex>
+          {/* )} */}
 
           <Flex justifyContent={"center"} pt={20}>
             <Flex

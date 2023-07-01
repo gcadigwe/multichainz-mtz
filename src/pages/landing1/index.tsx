@@ -62,13 +62,14 @@ import { useEffect, useState } from "react";
 import Footer from "@/components/Footer";
 import AnimatedPolygon from "@/components/Landing1/AnimatedPolygons";
 import web3label from "../../assets/svg/web3label.svg";
-import arbitrum from "../../assets/svg/arbitrum.svg";
+import label from "../../assets/svg/web3label.png";
+import arbitrum from "../../assets/svg/arbitrumnormal.svg";
 import binancebacked from "../../assets/svg/activebinance.svg";
 
 const Landing1 = () => {
   const firstpageRef = useRef<any>(null);
   const secondpageRef = useRef<any>(null);
-  const [currentCard, setcurrentCard] = useState<number>(0);
+  const [currentCard, setcurrentCard] = useState<number>(1);
 
   const firstcardref = useRef<any>(null);
   const secondcardref = useRef<any>(null);
@@ -206,8 +207,8 @@ const Landing1 = () => {
                 fontSize={"20px"}
                 fontWeight='400'
               >
-                Lend, borrow, and stake crypto, NFT, and tokenized real-world
-                assets in any chain
+                Lend, borrow, and stake cryptocurrencies, NFTs, and tokenized
+                real-world assets across multiple blockchain networks
               </Text>
             ) : (
               <Text
@@ -215,9 +216,10 @@ const Landing1 = () => {
                 fontFamily={"Roboto"}
                 fontSize={"30px"}
                 fontWeight='400'
+                textAlign={"center"}
               >
-                Lend, borrow, and stake crypto, NFT, and
-                <br /> tokenized real-world assets in any chain
+                Lend, borrow, and stake cryptocurrencies, NFTs, <br /> and
+                tokenized real-world assets across multiple blockchain networks
               </Text>
             )}
 
@@ -293,7 +295,7 @@ const Landing1 = () => {
               fontSize={{ sm: "20px", lg: "36px", xl: "36px" }}
               fontWeight='600'
             >
-              $0 locked in collateral to back the loans
+              $20m locked in collateral to back the loans
             </Text>
           </Flex>
 
@@ -315,7 +317,7 @@ const Landing1 = () => {
 
                 fontSize={{ sm: "20px", md: "40px", lg: "56px", xl: "56px" }}
               >
-                $0 Million+
+                $5 Million+
               </Heading>
               <Text
                 fontSize={{ sm: "16px", md: "18px", lg: "28px", xl: "28px" }}
@@ -333,7 +335,7 @@ const Landing1 = () => {
                 fontWeight={"700"}
                 fontSize={{ sm: "20px", md: "40px", lg: "56px", xl: "56px" }}
               >
-                $0
+                1M+
               </Heading>
               <Text
                 fontSize={{ sm: "16px", md: "18px", lg: "28px", xl: "28px" }}
@@ -415,7 +417,7 @@ const Landing1 = () => {
               />
 
               <Cards
-                img={fantom.src}
+                img={arbitrum.src}
                 text={
                   <Text mb={5} fontSize={{ lg: "16px", xl: "20px" }}>
                     Access speed and security in your loan transactions.
@@ -879,7 +881,8 @@ const Landing1 = () => {
                   fontWeight={"600"}
                   fontSize={isMobileDevice ? "16px" : "20px"}
                 >
-                  Unlock instant liquidity using your NFTs <br /> as collateral
+                  Unlock instant liquidity using your NFTs
+                  {!isMobileDevice && <br />} as collateral
                 </Text>
 
                 <Text
@@ -887,15 +890,16 @@ const Landing1 = () => {
                   fontWeight={"600"}
                   fontSize={isMobileDevice ? "16px" : "20px"}
                 >
-                  Access more favorable collateral terms with <br /> more
-                  valuable NFTs
+                  Access more favorable collateral terms with
+                  {!isMobileDevice && <br />}more valuable NFTs
                 </Text>
 
                 <Text
                   fontWeight={"600"}
                   fontSize={isMobileDevice ? "16px" : "20px"}
                 >
-                  Turn illiquid NFTs into valuable liquid crypto <br />
+                  Turn illiquid NFTs into valuable liquid crypto
+                  {!isMobileDevice && <br />}
                   funds to increase your leverage
                 </Text>
               </Flex>
@@ -1034,10 +1038,11 @@ const Landing1 = () => {
           position={"relative"}
           justifyContent='center'
           alignItems={"center"}
+          my={isMobileDevice ? 40 : undefined}
         >
           <Flex justifyContent={"center"}>
             <Img
-              w={isMobileDevice ? "100%" : "90%"}
+              w={isMobileDevice ? "60%" : "90%"}
               src={isMobileDevice ? mobileflower.src : flower.src}
             />
           </Flex>
@@ -1161,7 +1166,7 @@ const Landing1 = () => {
             alignItems='center'
             justifyContent={"center"}
             mt={{ sm: 0, lg: 40, xl: 40 }}
-            mb={10}
+            mb={isMobileDevice ? 10 : 40}
             h='600px'
           >
             <Img
@@ -1184,9 +1189,9 @@ const Landing1 = () => {
             <Flex
               w='100%'
               position={"absolute"}
-              bottom={{ sm: -10, lg: -28, xl: -28 }}
+              bottom={{ sm: -10, lg: -32, xl: -40 }}
               right={{ lg: 10, xl: 10 }}
-              pb={10}
+              py={10}
               alignItems={"center"}
               flexDirection={"column"}
               justifyContent='center'
@@ -1449,8 +1454,17 @@ const Landing1 = () => {
             </Flex> */}
           </Flex>
         ) : (
-          <Flex flexDirection='column' position='relative'>
-            <Img src={web3label.src} />
+          <Flex
+            flexDirection='column'
+            position='relative'
+            justifyContent={"space-between"}
+            // bgColor={"blue"}
+
+            w='100vw'
+          >
+            <Flex border='1px solid green' justifyContent={"center"}>
+              <Img w='100vw' h='100vh' src={label.src} />
+            </Flex>
 
             <Flex
               w='100%'
@@ -1460,7 +1474,7 @@ const Landing1 = () => {
               alignItems={"center"}
               position='absolute'
             >
-              <Flex
+              {/* <Flex
                 borderRadius='8px'
                 py={10}
                 justifyContent={"space-between"}
@@ -1542,17 +1556,14 @@ const Landing1 = () => {
                     <Img w='150px' h='30px' src={quillhash.src} />
                   </Flex>
                 </Flex>
-              </Flex>
+              </Flex> */}
 
               <Flex
                 py={20}
-                // position='absolute'
                 flexDirection='column'
                 justifyContent={"space-between"}
                 w={{ sm: "80vw", lg: "70vw", xl: "60vw" }}
-                // mt={isMobileDevice ? 5 : 0}
-                // my={isMobileDevice ? 0 : 28}
-                mt={{ sm: 5, md: 10, lg: 24, xl: 64 }}
+                mt={{ sm: 5, md: 5, lg: 10, xl: 10 }}
                 backdropFilter={"blur(20px)"}
                 alignItems='center'
                 border='1px solid rgba(255, 255, 255, 0.12)'
@@ -1625,12 +1636,16 @@ const Landing1 = () => {
               bottom={"20%"}
               // border='1px solid red'
             >
-              <Flex mt={isMobileDevice ? 5 : 0}>
+              <Flex
+                position={"relative"}
+                mt={isMobileDevice ? 5 : 0}
+                flexDirection='column'
+              >
                 <Flex justifyContent={"center"} w='100%'>
                   <Heading
                     fontWeight={"bold"}
                     textAlign='center'
-                    // mb={10}
+                    mb={isMobileDevice ? undefined : 20}
                     // mt={10}
                     fontSize='30px'
                     color='white'
@@ -1643,17 +1658,15 @@ const Landing1 = () => {
                 </Flex>
 
                 <Flex
+                  // left='-50%'
+                  className={styles.marquee}
+                  position={"absolute"}
                   mt={20}
                   overflow={"hidden"}
                   w='200%'
-                  className={styles.animate}
-                  position='absolute'
                 >
-                  <Flex
-                    w='50%'
-                    justifyContent={"space-around"}
-                    // className={styles.logo}
-                  >
+                  {/* <div> */}
+                  <Flex w='50%' justifyContent={"space-around"}>
                     <a>
                       <Img src={binancebacked.src} />
                     </a>
@@ -1673,8 +1686,8 @@ const Landing1 = () => {
 
                   <Flex
                     w='50%'
+                    className={styles.span}
                     justifyContent={"space-around"}
-                    // className={styles.logo}
                   >
                     <a>
                       <Img src={binancebacked.src} />
@@ -1692,6 +1705,7 @@ const Landing1 = () => {
                       <Img src={ethereumbacked.src} />
                     </a>
                   </Flex>
+                  {/* </div> */}
                 </Flex>
               </Flex>
             </Flex>
@@ -1699,7 +1713,7 @@ const Landing1 = () => {
         )}
 
         {/* Footer */}
-        <Footer />
+
         {/* <Flex
           alignItems={"center"}
           py={20}
@@ -1859,6 +1873,7 @@ const Landing1 = () => {
           )}
         </Flex> */}
       </Box>
+      <Footer />
     </Box>
   );
 };

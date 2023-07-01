@@ -16,7 +16,13 @@ interface CardProps {
   text: any;
 }
 
-const BorrowLend = () => {
+const BorrowLend = ({
+  lendingAPY,
+  borrowAPY,
+}: {
+  lendingAPY: number;
+  borrowAPY: number;
+}) => {
   const [isMobileDevice] = useMediaQuery("(max-width: 750px)");
   const [hovered, setHovered] = useState(false);
   return (
@@ -68,7 +74,7 @@ const BorrowLend = () => {
             fontWeight={"700"}
             fontSize={{ sm: "20px", lg: "20px", xl: "24px" }}
           >
-            %X
+            {borrowAPY}%
           </Text>
           <Text fontSize={{ sm: "14px", lg: "14px", xl: "16px" }} mt={4}>
             Lending APY
@@ -77,7 +83,7 @@ const BorrowLend = () => {
             fontWeight={"700"}
             fontSize={{ sm: "20px", lg: "20px", xl: "24px" }}
           >
-            %X
+            {lendingAPY}%
           </Text>
         </Flex>
       </Flex>

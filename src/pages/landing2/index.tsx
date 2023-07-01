@@ -126,7 +126,7 @@ export default function Landing2() {
           </Flex>
           <Flex
             // mx={isMobileDevice ? 10 : 0}
-            boxShadow={"0px 3px 38px 0px rgba(0, 7, 72, 0.12)"}
+            boxShadow={"0px 3px 38px 0px rgba(0, 7, 72, 0.3)"}
             mx={5}
             border='1px solid white'
             mt={isMobileDevice ? 20 : undefined}
@@ -173,7 +173,7 @@ export default function Landing2() {
                 fontSize={{ sm: "24px", md: "40px", lg: "70px", xl: "70px" }}
                 fontWeight={"700"}
               >
-                #54
+                20k
               </Heading>
               <Text
                 whiteSpace={"nowrap"}
@@ -222,9 +222,9 @@ export default function Landing2() {
               justifyContent={isMobileDevice ? "center" : "space-between"}
               flex={1}
             >
-              <BorrowLend />
-              <BorrowLend />
-              <BorrowLend />
+              <BorrowLend lendingAPY={5} borrowAPY={10} />
+              <BorrowLend lendingAPY={20} borrowAPY={13} />
+              <BorrowLend lendingAPY={12} borrowAPY={17} />
             </Flex>
 
             <Flex
@@ -233,9 +233,9 @@ export default function Landing2() {
               justifyContent={isMobileDevice ? "center" : "space-between"}
               flex={1}
             >
-              <BorrowLend />
-              <BorrowLend />
-              <BorrowLend />
+              <BorrowLend lendingAPY={8} borrowAPY={13} />
+              <BorrowLend lendingAPY={10} borrowAPY={23} />
+              <BorrowLend lendingAPY={19} borrowAPY={27} />
             </Flex>
           </Box>
         </Flex>
@@ -287,7 +287,7 @@ export default function Landing2() {
               // border='1px solid red'
               mt={10}
               w={isMobileDevice ? "100%" : undefined}
-              overflowX='hidden'
+              overflowX={isMobileDevice ? "hidden" : undefined}
               flex={isMobileDevice ? undefined : 1}
               justifyContent={isMobileDevice ? undefined : "space-between"}
               py={isMobileDevice ? undefined : 10}
@@ -601,7 +601,7 @@ export default function Landing2() {
 
           <Flex w='100%' justifyContent={"center"} py={20}>
             <Flex
-              py={{ sm: 14, lg: 14, xl: 20 }}
+              py={{ sm: 14, lg: 14, xl: 16 }}
               justifyContent={"space-between"}
               w={{ sm: "80vw", lg: "70vw", xl: "60vw" }}
               backdropFilter={"blur(20px)"}
@@ -624,6 +624,7 @@ export default function Landing2() {
                 with Multichainz continue to grow
               </Heading>
               <Flex
+                mt={{ sm: 0, lg: 4, xl: 4 }}
                 justifyContent={"center"}
                 flexDirection={isMobileDevice ? "column" : undefined}
               >
@@ -631,9 +632,9 @@ export default function Landing2() {
                   alignItems='center'
                   flexDirection={isMobileDevice ? "row" : "column"}
                 >
-                  <Img w='50px' h='50px' src={chainlinklogo.src} />
+                  <Img w='60px' h='60px' src={chainlinklogo.src} />
                   <Text
-                    fontSize={isMobileDevice ? "24px" : undefined}
+                    fontSize={{ sm: "24px", lg: "22px", xl: "22px" }}
                     ml={isMobileDevice ? 2 : undefined}
                     fontWeight={"700"}
                     color='white'
@@ -642,12 +643,12 @@ export default function Landing2() {
                   </Text>
                 </Flex>
                 <Flex
-                  mx={isMobileDevice ? undefined : 28}
+                  mx={isMobileDevice ? undefined : 40}
                   my={isMobileDevice ? 4 : undefined}
                   alignItems='center'
                   flexDirection={isMobileDevice ? "row" : "column"}
                 >
-                  <Img w='50px' h='50px' src={gemini.src} />
+                  <Img w='60px' h='60px' src={gemini.src} />
                   {isMobileDevice ? (
                     <Text
                       textAlign={"center"}
@@ -659,7 +660,12 @@ export default function Landing2() {
                       Gemini Finance
                     </Text>
                   ) : (
-                    <Text textAlign={"center"} fontWeight={"700"} color='white'>
+                    <Text
+                      fontSize={{ sm: "24px", lg: "22px", xl: "22px" }}
+                      textAlign={"center"}
+                      fontWeight={"700"}
+                      color='white'
+                    >
                       Gemini <br /> Finance
                     </Text>
                   )}
@@ -668,7 +674,7 @@ export default function Landing2() {
                   flexDirection={isMobileDevice ? "row" : "column"}
                   alignItems='center'
                 >
-                  <Img w='50px' h='50px' src={supra.src} />
+                  <Img w='60px' h='60px' src={supra.src} />
                   {isMobileDevice ? (
                     <Text
                       textAlign={"center"}
@@ -680,7 +686,12 @@ export default function Landing2() {
                       Supra Oracles
                     </Text>
                   ) : (
-                    <Text textAlign={"center"} fontWeight={"700"} color='white'>
+                    <Text
+                      textAlign={"center"}
+                      fontSize={{ sm: "24px", lg: "22px", xl: "22px" }}
+                      fontWeight={"700"}
+                      color='white'
+                    >
                       Supra <br /> Oracles
                     </Text>
                   )}

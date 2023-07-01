@@ -14,6 +14,7 @@ import activebusd from "../../../assets/svg/activebusdelipse.svg";
 import activeusdt from "../../../assets/svg/activeusdtelipse.svg";
 import activechainz from "../../../assets/svg/activechainzelipse.svg";
 import menuoutline from "../../../assets/svg/menuoutline.svg";
+import styles from "./styles.module.css";
 
 enum Tiles {
   "NONE" = 0,
@@ -50,10 +51,19 @@ export default function RadialMenu() {
             top='40%'
             position={"absolute"}
             flexDirection='column'
-            alignItems={"center"}
+            // alignItems={"center"}
           >
-            <Img src={usdclogo.src} w='30px' h='30px' />
-            <Text fontWeight={"bold"} color='white' textAlign={"center"}>
+            <Img
+              src={usdclogo.src}
+              w={{ sm: "30px", lg: "50px", xl: "50px" }}
+              h={{ sm: "30px", lg: "50px", xl: "50px" }}
+            />
+            <Text
+              fontWeight={"bold"}
+              fontSize={{ sm: "16px", lg: "16px", xl: "18px" }}
+              color='white'
+              textAlign={"center"}
+            >
               {activeTile === Tiles["FIRST"] ? "$300k" : "USDC"}
             </Text>
           </Flex>
@@ -73,10 +83,19 @@ export default function RadialMenu() {
             top='30%'
             position={"absolute"}
             flexDirection='column'
-            alignItems={"center"}
+            // alignItems={"center"}
           >
-            <Img src={chainzlogo.src} w='30px' h='30px' />
-            <Text fontWeight={"bold"} color='white' textAlign={"center"}>
+            <Img
+              src={chainzlogo.src}
+              w={{ sm: "30px", lg: "50px", xl: "50px" }}
+              h={{ sm: "30px", lg: "50px", xl: "50px" }}
+            />
+            <Text
+              fontWeight={"bold"}
+              fontSize={{ sm: "16px", lg: "16px", xl: "18px" }}
+              color='white'
+              textAlign={"center"}
+            >
               {activeTile === Tiles["SECOND"] ? "$100k" : "ChainZ"}
             </Text>
           </Flex>
@@ -98,10 +117,19 @@ export default function RadialMenu() {
             top='40%'
             position={"absolute"}
             flexDirection='column'
-            alignItems={"center"}
+            // alignItems={"center"}
           >
-            <Img src={busdlogo.src} w='30px' h='30px' />
-            <Text fontWeight={"bold"} color='white' textAlign={"center"}>
+            <Img
+              src={busdlogo.src}
+              w={{ sm: "30px", lg: "50px", xl: "50px" }}
+              h={{ sm: "30px", lg: "50px", xl: "50px" }}
+            />
+            <Text
+              fontWeight={"bold"}
+              fontSize={{ sm: "16px", lg: "16px", xl: "18px" }}
+              color='white'
+              textAlign={"center"}
+            >
               {activeTile === Tiles["THIRD"] ? "$150k" : "BUSD"}
             </Text>
           </Flex>
@@ -117,14 +145,23 @@ export default function RadialMenu() {
             src={activeTile === Tiles["FOURTH"] ? activeusdt.src : usdt.src}
           />
           <Flex
-            left='35%'
+            left='30%'
             top='30%'
             position={"absolute"}
             flexDirection='column'
-            alignItems={"center"}
+            // alignItems={"center"}
           >
-            <Img src={usdtlogo.src} w='30px' h='30px' />
-            <Text fontWeight={"bold"} color='white' textAlign={"center"}>
+            <Img
+              src={usdtlogo.src}
+              w={{ sm: "30px", lg: "50px", xl: "50px" }}
+              h={{ sm: "30px", lg: "50px", xl: "50px" }}
+            />
+            <Text
+              fontSize={{ sm: "16px", lg: "16px", xl: "18px" }}
+              fontWeight={"bold"}
+              color='white'
+              textAlign={"center"}
+            >
               {activeTile === Tiles["FOURTH"] ? "$130k" : "USDT"}
             </Text>
           </Flex>

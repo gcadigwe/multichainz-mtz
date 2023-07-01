@@ -102,7 +102,7 @@ export default function Landing3() {
               )}
 
               <Flex
-                mt={{ lg: 40, xl: 60 }}
+                mt={{ lg: 20, xl: 20 }}
                 justifyContent={isMobileDevice ? "center" : "flex-start"}
               >
                 <Flex flexDirection={"column"} alignItems='center'>
@@ -164,7 +164,7 @@ export default function Landing3() {
                     mt={10}
                     fontSize={{ sm: "14px", lg: "18px", xl: "18px" }}
                     px={{ sm: 0, lg: 8, xl: 10 }}
-                    py={{ sm: 4, lg: 8, xl: 8 }}
+                    py={{ sm: 4, lg: 6, xl: 6 }}
                     bgColor='#49A8FC'
                     _hover={{
                       bgColor: "#49A8FC",
@@ -177,13 +177,9 @@ export default function Landing3() {
               </Flex>
             </Flex>
           </Flex>
-          <Flex
-            // h={isMobileDevice ? "50vh" : undefined}
-            w='100%'
-            justifyContent={"flex-end"}
-          >
+          <Flex w='100%' justifyContent={"flex-end"}>
             <Img
-              w={isMobileDevice ? undefined : "70%"}
+              w={isMobileDevice ? undefined : "65%"}
               src={isMobileDevice ? mobileflowerbg.src : flowerbg.src}
             />
           </Flex>
@@ -444,13 +440,13 @@ export default function Landing3() {
         </Box>
       </Flex>
 
-      <Flex mt={40} justifyContent={"center"}>
+      <Flex pt={40} pb={20} justifyContent={"center"}>
         <Box
           w={{ sm: "100vw", md: "70vw", lg: "70vw", xl: "60vw" }}
           h={isMobileDevice ? "80vh" : undefined}
         >
           <Heading
-            fontSize={isMobileDevice ? "30px" : "40px"}
+            fontSize={{ sm: "30px", lg: "40px", xl: "48px" }}
             textAlign={isMobileDevice ? "center" : undefined}
             fontWeight='700'
           >
@@ -521,12 +517,24 @@ export default function Landing3() {
               <>
                 <Flex flex={0.3} pt={5} flexDirection={"column"}>
                   <Flex flexDirection={"column"}>
-                    <Text>Amount to lock, USD</Text>
+                    <Text
+                      fontWeight='700'
+                      fontSize={{ lg: "16px", xl: "18px" }}
+                      mb={2}
+                    >
+                      Amount to lock, USD
+                    </Text>
                     <Input bgColor='white' />
                   </Flex>
 
                   <Flex mt={5} flexDirection={"column"}>
-                    <Text>Your Return</Text>
+                    <Text
+                      fontWeight='700'
+                      fontSize={{ lg: "16px", xl: "18px" }}
+                      mb={2}
+                    >
+                      Your Return
+                    </Text>
                     <Input bgColor='white' />
                   </Flex>
 
@@ -544,9 +552,16 @@ export default function Landing3() {
                 </Flex>
 
                 <Flex flex={0.3} pt={5} flexDirection={"column"}>
-                  <Text>Select Farming Pool</Text>
+                  <Text
+                    mb={2}
+                    fontWeight='700'
+                    fontSize={{ lg: "16px", xl: "18px" }}
+                  >
+                    Select Farming Pool
+                  </Text>
                   <Select
-                    fontSize={"14px"}
+                    fontSize={{ lg: "14px", xl: "16px" }}
+                    fontWeight='500'
                     background='linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(148,178,228,1) 100%)'
                   >
                     <option>Farming Pool name</option>
@@ -554,9 +569,16 @@ export default function Landing3() {
                 </Flex>
 
                 <Flex flex={0.3} pt={5} flexDirection={"column"}>
-                  <Text>Time Period</Text>
+                  <Text
+                    mb={2}
+                    fontSize={{ lg: "16px", xl: "18px" }}
+                    fontWeight='700'
+                  >
+                    Time Period
+                  </Text>
                   <Select
-                    fontSize={"14px"}
+                    fontSize={{ lg: "14px", xl: "16px" }}
+                    fontWeight='500'
                     background='linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(148,178,228,1) 100%)'
                   >
                     <option>1 week</option>
@@ -576,7 +598,8 @@ export default function Landing3() {
           w={{ sm: "80vw", md: "70vw", lg: "70vw", xl: "60vw" }}
           alignItems={"center"}
           flexDirection='column'
-          py={10}
+          pt={{ sm: 10, lg: 32, xl: 32 }}
+          pb={{ sm: 10, lg: 20, xl: 20 }}
           px={isMobileDevice ? 5 : undefined}
         >
           <Flex flexDirection={"column"}>
