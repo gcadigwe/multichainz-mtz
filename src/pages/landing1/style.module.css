@@ -2,11 +2,27 @@
   animation: marquee 20s linear infinite;
 }
 
+.marqueemobile {
+  animation: marqueemobile 20s linear infinite;
+}
+
 @keyframes marquee {
   0% {
     left: 0;
   }
   100% {
     left: -100%;
+  }
+}
+
+@keyframes marqueemobile {
+  0% {
+    left: 0;
+  }
+  /* 50% {
+    left: -150vw;
+  } */
+  100% {
+    left: -200%;
   }
 }

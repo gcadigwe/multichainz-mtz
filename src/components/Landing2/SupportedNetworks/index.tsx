@@ -13,6 +13,7 @@ export default function SupportedNetwork({ img }: { img: any }) {
       alignItems='center'
       cursor={"pointer"}
       className={styles.stakeTextParent}
+      mb={isMobileDevice ? 4 : undefined}
     >
       <Img
         cursor={"pointer"}

@@ -16,6 +16,9 @@ const Cards = ({ img, text }: CardProps) => {
       flex={0.3}
       h='250px'
       maxW={"500px"}
+      boxShadow={
+        isMobileDevice ? "0px 4px 49px 0px rgba(0, 7, 72, 0.3)" : undefined
+      }
       w={{ sm: "auto", md: "500px", lg: "auto", xl: "auto" }}
       _hover={{
         boxShadow: "0px 4px 49px 0px rgba(0, 7, 72, 0.12)",

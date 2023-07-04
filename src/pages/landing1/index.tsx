@@ -14,6 +14,7 @@ import {
   Circle,
 } from "@chakra-ui/react";
 import eclipsebg from "../../assets/elipsebg.png";
+import eclipsemobilebg from "../../assets/elipsemobile.png";
 import wallet from "../../assets/svg/wallet.svg";
 import crosschain from "../../assets/svg/crosschain.svg";
 import institution from "../../assets/svg/institution.svg";
@@ -36,7 +37,7 @@ import dollar from "../../assets/svg/dollar.svg";
 import woods from "../../assets/svg/woods.svg";
 import phone from "../../assets/svg/phone.svg";
 import flower from "../../assets/svg/flower.svg";
-import mobileflower from "../../assets/svg/mobileflower.svg";
+import mobileflower from "../../assets/flowermobile.png";
 import DaoCard from "@/components/Landing1/Dao/Cards";
 import RadialMenu from "@/components/Landing1/RadialMenu";
 import styles from "./style.module.css";
@@ -70,6 +71,7 @@ const Landing1 = () => {
   const firstpageRef = useRef<any>(null);
   const secondpageRef = useRef<any>(null);
   const [currentCard, setcurrentCard] = useState<number>(1);
+  const [controlClicked, setcontrolClicked] = useState(false);
 
   const firstcardref = useRef<any>(null);
   const secondcardref = useRef<any>(null);
@@ -87,13 +89,16 @@ const Landing1 = () => {
 
   useEffect(() => {
     if (currentCard !== 0) {
-      cardsToRef[currentCard]?.current?.scrollIntoView({
-        behavior: "smooth",
-        block: "nearest",
-        inline: "center",
-      });
+      if (controlClicked) {
+        console.log("scrolling");
+        cardsToRef[currentCard]?.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "nearest",
+          inline: "center",
+        });
+      }
     }
-  }, [currentCard]);
+  }, [currentCard, controlClicked]);
 
   console.log(currentCard);
 
@@ -173,7 +178,7 @@ const Landing1 = () => {
           <Img
             w={{ sm: "100%", md: "100%", lg: "60%", xl: "55%" }}
             h={{ sm: "70vh", lg: "100%" }}
-            src={eclipsebg.src}
+            src={isMobileDevice ? eclipsemobilebg.src : eclipsebg.src}
           />
 
           <AnimatedPolygon />
@@ -287,12 +292,14 @@ const Landing1 = () => {
           <Flex
             justifyContent={isMobileDevice ? "center" : undefined}
             w={{ sm: "100vw", md: "80vw", lg: "70vw", xl: "70vw" }}
-            mb={10}
+            mb={isMobileDevice ? 4 : 10}
+            px={isMobileDevice ? 5 : undefined}
           >
             <Text
               textAlign={isMobileDevice ? "center" : undefined}
+              whiteSpace='nowrap'
               // fontSize={isMobileDevice ? "20px" : "24px"}
-              fontSize={{ sm: "20px", lg: "36px", xl: "36px" }}
+              fontSize={{ sm: "18px", lg: "36px", xl: "36px" }}
               fontWeight='600'
             >
               $20m locked in collateral to back the loans
@@ -320,7 +327,7 @@ const Landing1 = () => {
                 $5 Million+
               </Heading>
               <Text
-                fontSize={{ sm: "16px", md: "18px", lg: "28px", xl: "28px" }}
+                fontSize={{ sm: "14px", md: "18px", lg: "28px", xl: "28px" }}
               >
                 Processed Loans
               </Text>
@@ -338,7 +345,7 @@ const Landing1 = () => {
                 1M+
               </Heading>
               <Text
-                fontSize={{ sm: "16px", md: "18px", lg: "28px", xl: "28px" }}
+                fontSize={{ sm: "14px", md: "18px", lg: "28px", xl: "28px" }}
               >
                 World Users
               </Text>
@@ -356,7 +363,7 @@ const Landing1 = () => {
                 20+
               </Heading>
               <Text
-                fontSize={{ sm: "16px", md: "18px", lg: "28px", xl: "28px" }}
+                fontSize={{ sm: "14px", md: "18px", lg: "28px", xl: "28px" }}
               >
                 Reached Countries
               </Text>
@@ -367,7 +374,7 @@ const Landing1 = () => {
           <Flex
             w={{ sm: "100vw", md: "80vw", lg: "70vw", xl: "70vw" }}
             px={isMobileDevice ? 5 : undefined}
-            mt={40}
+            mt={{ sm: 20, md: 28, lg: 40, xl: 40 }}
             flexDirection={"column"}
           >
             <Heading
@@ -388,7 +395,7 @@ const Landing1 = () => {
             </Heading>
           </Flex>
         </Flex>
-        <Flex mt={20} justifyContent={"center"}>
+        <Flex mt={{ sm: 10, md: 16, lg: 20, xl: 20 }} justifyContent={"center"}>
           <Box w={{ sm: "80vw", md: "80vw", lg: "70vw", xl: "70vw" }}>
             <Flex
               // h={isMobileDevice ? undefined : "250px"}
@@ -438,7 +445,7 @@ const Landing1 = () => {
           </Box>
         </Flex>
 
-        <Flex mt={6} justifyContent={"center"}>
+        <Flex mt={isMobileDevice ? 0 : 6} justifyContent={"center"}>
           <Box
             w={{ sm: "80vw", md: "80vw", lg: "70vw", xl: "70vw" }}
             // border='1px solid red'
@@ -580,7 +587,10 @@ const Landing1 = () => {
                 p={2}
                 borderRadius='6px'
                 mr={4}
-                onClick={() => handleScrollBack()}
+                onClick={() => {
+                  setcontrolClicked(true);
+                  handleScrollBack();
+                }}
               >
                 <ChevronLeftIcon />
               </Flex>
@@ -590,18 +600,17 @@ const Landing1 = () => {
                 bgColor={"#F5F5F5"}
                 p={2}
                 borderRadius='6px'
-                onClick={() => handleScrollForward()}
+                onClick={() => {
+                  setcontrolClicked(true);
+                  handleScrollForward();
+                }}
               >
                 <ChevronRightIcon />
               </Flex>
             </Flex>
-            <Flex
-              overflowX={"hidden"}
-
-              // width='200%'
-            >
-              <Flex ref={firstpageRef}>
-                <Flex ref={firstcardref}>
+            {isMobileDevice ? (
+              <Flex overflowX={"hidden"}>
+                <Flex ref={firstcardref} w='80vw'>
                   <SlideCard
                     title='Compliant with Regulations'
                     text={
@@ -612,7 +621,7 @@ const Landing1 = () => {
                     }
                   />
                 </Flex>
-                <Flex ref={secondcardref}>
+                <Flex ref={secondcardref} w='80vw'>
                   <SlideCard
                     title='Extra Secure Asset Custody'
                     text={
@@ -623,7 +632,7 @@ const Landing1 = () => {
                     }
                   />
                 </Flex>
-                <Flex ref={thirdcardref}>
+                <Flex ref={thirdcardref} w='80vw'>
                   <SlideCard
                     title='Increased Transparency'
                     text={
@@ -634,9 +643,8 @@ const Landing1 = () => {
                     }
                   />
                 </Flex>
-              </Flex>
-              <Flex ref={secondpageRef}>
-                <Flex ref={fourthcardref}>
+
+                <Flex ref={fourthcardref} w='80vw'>
                   <SlideCard
                     title='Constantly Improved Security'
                     text={
@@ -648,7 +656,7 @@ const Landing1 = () => {
                     }
                   />
                 </Flex>
-                <Flex ref={fifthcardref}>
+                <Flex ref={fifthcardref} w='80vw'>
                   <SlideCard
                     title='Building the blocks of banking 2.0 by bringing NFT and Real-World Asset Lending on chain'
                     text={
@@ -660,7 +668,70 @@ const Landing1 = () => {
                   />
                 </Flex>
               </Flex>
-            </Flex>
+            ) : (
+              <Flex overflowX={"hidden"} ref={firstcardref}>
+                <Flex ref={firstpageRef}>
+                  <Flex ref={firstcardref}>
+                    <SlideCard
+                      title='Compliant with Regulations'
+                      text={
+                        <Text mb={2} fontSize={{ lg: "14px", xl: "18px" }}>
+                          Multichainz has on-chain Know- Your-Customer (KYC)
+                          verification for users
+                        </Text>
+                      }
+                    />
+                  </Flex>
+                  <Flex ref={secondcardref}>
+                    <SlideCard
+                      title='Extra Secure Asset Custody'
+                      text={
+                        <Text mb={2} fontSize={{ lg: "14px", xl: "18px" }}>
+                          MultichainZ has top-industry asset custody partners to
+                          increase asset protection
+                        </Text>
+                      }
+                    />
+                  </Flex>
+                  <Flex ref={thirdcardref}>
+                    <SlideCard
+                      title='Increased Transparency'
+                      text={
+                        <Text mb={2} fontSize={{ lg: "14px", xl: "18px" }}>
+                          MultichainZ enhances protocol transparency through
+                          open access of proof of reserves and funds
+                        </Text>
+                      }
+                    />
+                  </Flex>
+                </Flex>
+                <Flex ref={secondpageRef}>
+                  <Flex ref={fourthcardref}>
+                    <SlideCard
+                      title='Constantly Improved Security'
+                      text={
+                        <Text mb={2} fontSize={{ lg: "14px", xl: "18px" }}>
+                          MultichainZ partners with audit leaders of the
+                          blockchain industry to improve its smart contract
+                          robustness
+                        </Text>
+                      }
+                    />
+                  </Flex>
+                  <Flex ref={fifthcardref}>
+                    <SlideCard
+                      title='Building the blocks of banking 2.0 by bringing NFT and Real-World Asset Lending on chain'
+                      text={
+                        <Text mb={2} fontSize={{ lg: "14px", xl: "18px" }}>
+                          Multichainz enables lending of tokenized real-world
+                          assets by partnering with oracle leaders
+                        </Text>
+                      }
+                    />
+                  </Flex>
+                </Flex>
+              </Flex>
+            )}
           </Flex>
         </Flex>
 
@@ -1038,11 +1109,11 @@ const Landing1 = () => {
           position={"relative"}
           justifyContent='center'
           alignItems={"center"}
-          my={isMobileDevice ? 40 : undefined}
+          my={isMobileDevice ? 20 : undefined}
         >
           <Flex justifyContent={"center"}>
             <Img
-              w={isMobileDevice ? "60%" : "90%"}
+              w={isMobileDevice ? "100vw" : "90%"}
               src={isMobileDevice ? mobileflower.src : flower.src}
             />
           </Flex>
@@ -1106,6 +1177,7 @@ const Landing1 = () => {
             </Flex>
             <Flex mt={10} justifyContent={"center"}>
               <Button
+                w={isMobileDevice ? "80vw" : undefined}
                 color='white'
                 fontSize={"14px"}
                 background={
@@ -1226,7 +1298,7 @@ const Landing1 = () => {
               alignItems={"center"}
               // position='absolute'
             >
-              <Flex
+              {/* <Flex
                 py={10}
                 justifyContent={"space-between"}
                 w={{ sm: "80vw", lg: "70vw", xl: "60vw" }}
@@ -1300,26 +1372,28 @@ const Landing1 = () => {
                     <Img w='150px' h='30px' src={quillhash.src} />
                   </Flex>
                 </Flex>
-              </Flex>
+              </Flex> */}
 
               <Flex
-                py={20}
+                py={isMobileDevice ? 10 : 20}
                 // position='absolute'
                 flexDirection='column'
                 justifyContent={"space-between"}
                 w={{ sm: "80vw", lg: "70vw", xl: "60vw" }}
-                mt={isMobileDevice ? 20 : 0}
+                mt={isMobileDevice ? 10 : 0}
                 backdropFilter={"blur(20px)"}
                 alignItems='center'
-                border='1px solid rgba(255, 255, 255, 0.12)'
                 px={5}
+                borderRadius='16px'
+                border='1px solid rgba(255, 255, 255, 0.3) '
+                boxShadow={"0px 4px 49px 0px rgba(0, 7, 72, 0.3)"}
               >
                 <Heading
-                  fontSize={{ lg: "30px", xl: "40px" }}
+                  fontSize={{ sm: "26px", lg: "30px", xl: "40px" }}
                   fontWeight='bold'
                   color='white'
                 >
-                  Ecosystem Integration partners
+                  Ecosystem <br /> Integration partners
                 </Heading>
                 <Flex
                   py={2}
@@ -1345,7 +1419,7 @@ const Landing1 = () => {
                     justifyContent='center'
                     px={2}
                     borderRadius={"18px"}
-                    my={isMobileDevice ? 4 : 0}
+                    my={isMobileDevice ? 6 : 0}
                   >
                     <Img src={google.src} />
                   </Flex>
@@ -1364,102 +1438,143 @@ const Landing1 = () => {
                     justifyContent='center'
                     px={2}
                     borderRadius={"18px"}
-                    my={isMobileDevice ? 4 : 0}
+                    my={isMobileDevice ? 6 : 0}
                   >
                     <Img src={chainlink.src} />
                   </Flex>
                 </Flex>
               </Flex>
-            </Flex>
-            {/* 
-            <Flex
-              flexDirection={"column"}
-              w='100vw'
-              px={5}
-              zIndex={200}
-              position='absolute'
-              bottom={"20%"}
-              // border='1px solid red'
-            >
-              <Flex mt={isMobileDevice ? 5 : 0}>
-                <Flex justifyContent={"center"} w='100%'>
-                  <Heading
-                    fontWeight={"bold"}
-                    textAlign='center'
-                    // mb={10}
-                    // mt={10}
-                    fontSize='30px'
-                    color='white'
-                    // position={"absolute"}
-                    // top={-40}
-                    // left={"45%"}
-                  >
-                    Backed by
-                  </Heading>
-                </Flex>
-
+              <Flex
+                flexDirection={"column"}
+                w='100vw'
+                // px={5}
+                zIndex={200}
+                // position='absolute'
+                // bottom={"20%"}
+                py={20}
+              >
                 <Flex
-                  mt={20}
-                  overflow={"hidden"}
-                  w='600%'
-                  className={styles.animate_mobile}
-                  position='absolute'
+                  position={"relative"}
+                  mt={isMobileDevice ? 5 : 0}
+                  flexDirection='column'
                 >
-                  <Flex
-                    w='50%'
-                    justifyContent={"space-around"}
-                    // className={styles.logo}
-                  >
-                    <a>
-                      <Img mr={10} src={binancebacked.src} />
-                    </a>
-                    <a>
-                      <Img mr={10} src={polygonbacked.src} />
-                    </a>
-                    <a>
-                      <Img mx={10} src={okxbacked.src} />
-                    </a>
-                    <a>
-                      <Img ml={10} mr={10} src={fantombacked.src} />
-                    </a>
-                    <a>
-                      <Img ml={10} mr={10} src={ethereumbacked.src} />
-                    </a>
+                  <Flex justifyContent={"center"} w='100%'>
+                    <Heading
+                      fontWeight={"bold"}
+                      textAlign='center'
+                      // mb={isMobileDevice ? undefined : 20}
+                      fontSize='30px'
+                      color='white'
+                    >
+                      Backed by
+                    </Heading>
                   </Flex>
 
                   <Flex
-                    ml={10}
-                    w='50%'
-                    justifyContent={"space-around"}
-                    // className={styles.logo}
+                    // left='-50%'
+                    className={styles.marqueemobile}
+                    position={"absolute"}
+                    mt={20}
+                    overflow={"hidden"}
+                    w='400%'
                   >
-                    <a>
-                      <Img mr={10} src={binancebacked.src} />
-                    </a>
-                    <a>
-                      <Img mr={10} src={polygonbacked.src} />
-                    </a>
-                    <a>
-                      <Img mx={10} src={okxbacked.src} />
-                    </a>
-                    <a>
-                      <Img ml={10} mr={10} src={fantombacked.src} />
-                    </a>
-                    <a>
-                      <Img ml={10} src={ethereumbacked.src} />
-                    </a>
+                    <Flex w='50%'>
+                      <Flex
+                        w='50%'
+                        px={5}
+                        justifyContent={"space-between"}
+                        alignItems='center'
+                      >
+                        <Flex flex={0.3}>
+                          <a>
+                            <Img src={binancebacked.src} />
+                          </a>
+                        </Flex>
+                        <Flex flex={0.3}>
+                          <a>
+                            <Img src={polygonbacked.src} />
+                          </a>
+                        </Flex>
+
+                        <Flex flex={0.3}>
+                          <a>
+                            <Img src={okxbacked.src} />
+                          </a>
+                        </Flex>
+                      </Flex>
+
+                      <Flex
+                        w='50%'
+                        px={5}
+                        justifyContent={"space-between"}
+                        alignItems='center'
+                      >
+                        <Flex flex={0.45}>
+                          <a>
+                            <Img src={arbitrumbacked.src} />
+                          </a>
+                        </Flex>
+                        <Flex flex={0.45}>
+                          <a>
+                            <Img src={ethereumbacked.src} />
+                          </a>
+                        </Flex>
+                      </Flex>
+                    </Flex>
+
+                    <Flex w='50%'>
+                      <Flex
+                        w='50%'
+                        px={5}
+                        justifyContent={"space-between"}
+                        alignItems='center'
+                      >
+                        <Flex flex={0.3}>
+                          <a>
+                            <Img src={binancebacked.src} />
+                          </a>
+                        </Flex>
+                        <Flex flex={0.3}>
+                          <a>
+                            <Img src={polygonbacked.src} />
+                          </a>
+                        </Flex>
+
+                        <Flex flex={0.3}>
+                          <a>
+                            <Img src={okxbacked.src} />
+                          </a>
+                        </Flex>
+                      </Flex>
+
+                      <Flex
+                        w='50%'
+                        px={5}
+                        justifyContent={"space-between"}
+                        alignItems='center'
+                      >
+                        <Flex flex={0.45}>
+                          <a>
+                            <Img src={arbitrumbacked.src} />
+                          </a>
+                        </Flex>
+                        <Flex flex={0.45}>
+                          <a>
+                            <Img src={ethereumbacked.src} />
+                          </a>
+                        </Flex>
+                      </Flex>
+                    </Flex>
                   </Flex>
                 </Flex>
               </Flex>
-            </Flex> */}
+            </Flex>
           </Flex>
         ) : (
           <Flex
             flexDirection='column'
             position='relative'
             justifyContent={"space-between"}
-            // bgColor={"blue"}
-
             w='100vw'
           >
             <Flex border='1px solid green' justifyContent={"center"}>
@@ -1474,90 +1589,6 @@ const Landing1 = () => {
               alignItems={"center"}
               position='absolute'
             >
-              {/* <Flex
-                borderRadius='8px'
-                py={10}
-                justifyContent={"space-between"}
-                w={{ sm: "80vw", lg: "70vw", xl: "60vw" }}
-                backdropFilter={"blur(20px)"}
-                flexDirection={isMobileDevice ? "column" : undefined}
-                alignItems='center'
-                border='1px solid rgba(255, 255, 255, 0.12)'
-                px={5}
-              >
-                <Heading
-                  fontSize={{ lg: "30px", xl: "40px" }}
-                  fontWeight='bold'
-                  color='white'
-                >
-                  Audited and <br /> Verified by
-                </Heading>
-                <Flex
-                  flexDirection={isMobileDevice ? "column" : undefined}
-                  border='1px solid rgba(255, 255, 255, 0.12)'
-                  py={4}
-                  borderRadius='8px'
-                  px={4}
-                >
-                  <Flex
-                    _hover={{
-                      border: "2px solid white",
-                      boxShadow: "-4px 8px 9px 0px rgba(0, 0, 0, 0.45)",
-                    }}
-                    cursor='pointer'
-                    alignItems={"center"}
-                    justifyContent='center'
-                    w={isMobileDevice ? "200px" : undefined}
-                    // py={1}
-                    h='60px'
-                    px={2}
-                    bgColor='black'
-                    borderRadius={"18px"}
-                    border='2px solid black'
-                  >
-                    <Img w='150px' h='30px' src={halborn.src} />
-                  </Flex>
-                  <Flex
-                    _hover={{
-                      border: "2px solid white",
-                      boxShadow: "-4px 8px 9px 0px rgba(0, 0, 0, 0.45)",
-                    }}
-                    cursor='pointer'
-                    alignItems={"center"}
-                    justifyContent='center'
-                    // py={1}
-                    w={isMobileDevice ? "200px" : undefined}
-                    h='60px'
-                    px={2}
-                    bgColor='black'
-                    borderRadius={"18px"}
-                    mx={isMobileDevice ? 0 : 5}
-                    my={isMobileDevice ? 5 : 0}
-                    border='2px solid black'
-                  >
-                    <Img w='150px' h='40px' src={peckshield.src} />
-                  </Flex>
-                  <Flex
-                    _hover={{
-                      border: "2px solid white",
-                      boxShadow: "-4px 8px 9px 0px rgba(0, 0, 0, 0.45)",
-                    }}
-                    cursor='pointer'
-                    alignItems={"center"}
-                    justifyContent='center'
-                    // py={1}
-                    w={isMobileDevice ? "200px" : undefined}
-                    h='60px'
-                    px={2}
-                    bgColor='black'
-                    borderRadius={"18px"}
-                    border='2px solid black'
-                  >
-                    <Img w='150px' h='30px' src={quillhash.src} />
-                  </Flex>
-                </Flex>
-              </Flex> */}
-
               <Flex
                 py={20}
                 flexDirection='column'
@@ -1634,7 +1665,6 @@ const Landing1 = () => {
               zIndex={200}
               position='absolute'
               bottom={"20%"}
-              // border='1px solid red'
             >
               <Flex
                 position={"relative"}
@@ -1646,12 +1676,8 @@ const Landing1 = () => {
                     fontWeight={"bold"}
                     textAlign='center'
                     mb={isMobileDevice ? undefined : 20}
-                    // mt={10}
                     fontSize='30px'
                     color='white'
-                    // position={"absolute"}
-                    // top={-40}
-                    // left={"45%"}
                   >
                     Backed by
                   </Heading>

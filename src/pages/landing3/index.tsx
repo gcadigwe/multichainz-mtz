@@ -54,7 +54,7 @@ export default function Landing3() {
               // justifyContent='center'
 
               h='100vh'
-              w={width}
+              w={{ sm: "100vw", md: "70vw", lg: "70vw", xl: "70vw" }}
               // w='70vw'
               mt={isMobileDevice ? 40 : 40}
             >
@@ -160,7 +160,7 @@ export default function Landing3() {
                     </Flex>
                   </Flex>
                   <Button
-                    w={isMobileDevice ? "80%" : undefined}
+                    w={isMobileDevice ? "80vw" : undefined}
                     mt={10}
                     fontSize={{ sm: "14px", lg: "18px", xl: "18px" }}
                     px={{ sm: 0, lg: 8, xl: 10 }}
@@ -179,7 +179,7 @@ export default function Landing3() {
           </Flex>
           <Flex w='100%' justifyContent={"flex-end"}>
             <Img
-              w={isMobileDevice ? undefined : "65%"}
+              w={isMobileDevice ? "100%" : "65%"}
               src={isMobileDevice ? mobileflowerbg.src : flowerbg.src}
             />
           </Flex>
@@ -208,7 +208,7 @@ export default function Landing3() {
 
           <Flex
             mt={20}
-            mb={isMobileDevice ? 4 : 10}
+            mb={isMobileDevice ? 0 : 10}
             flexDirection={isMobileDevice ? "column" : undefined}
             justifyContent={"space-between"}
             // h='200px'
@@ -600,7 +600,6 @@ export default function Landing3() {
           flexDirection='column'
           pt={{ sm: 10, lg: 32, xl: 32 }}
           pb={{ sm: 10, lg: 20, xl: 20 }}
-          px={isMobileDevice ? 5 : undefined}
         >
           <Flex flexDirection={"column"}>
             <Heading
@@ -628,11 +627,11 @@ export default function Landing3() {
 
           <Flex
             my={10}
-            w={isMobileDevice ? "80%" : undefined}
+            // w={isMobileDevice ? "80%" : undefined}
             justifyContent={"center"}
           >
             <Button
-              w={isMobileDevice ? "100%" : undefined}
+              w={isMobileDevice ? "80vw" : undefined}
               background={
                 "linear-gradient(90deg, rgba(225,241,255,1) 0%, rgba(208,230,255,1) 100%)"
               }
@@ -650,7 +649,10 @@ export default function Landing3() {
             justifyContent={"center"}
             pt={isMobileDevice ? 20 : 10}
           >
-            <Box pb={10} w={{ sm: "80vw", md: "70vw", lg: "70vw", xl: "60vw" }}>
+            <Box
+              pb={{ sm: 4, lg: 10, xl: 10 }}
+              w={{ sm: "80vw", md: "70vw", lg: "70vw", xl: "60vw" }}
+            >
               <Text
                 textAlign={isMobileDevice ? "center" : undefined}
                 fontWeight='700'
@@ -666,7 +668,8 @@ export default function Landing3() {
                 justifyContent={isMobileDevice ? "center" : "space-between"}
                 flexDirection={isMobileDevice ? "column" : undefined}
                 alignItems={isMobileDevice ? "center" : undefined}
-                my={isMobileDevice ? 5 : 10}
+                my={isMobileDevice ? 0 : 10}
+                mt={isMobileDevice ? 6 : undefined}
               >
                 <SupportedNetwork img={activebinance.src} />
                 <SupportedNetwork img={inactiveethereum.src} />
@@ -678,35 +681,39 @@ export default function Landing3() {
                 justifyContent={isMobileDevice ? "center" : "space-between"}
                 flexDirection={isMobileDevice ? "column" : undefined}
                 alignItems={isMobileDevice ? "center" : undefined}
-                pb={20}
+                pb={{ sm: 6, lg: 20, xl: 20 }}
               >
                 <SupportedNetwork img={inactiveavalanche.src} />
                 <SupportedNetwork img={inactiveoptimism.src} />
 
-                <Img
-                  cursor={"pointer"}
-                  opacity={0.6}
-                  _hover={{
-                    opacity: 1,
-                  }}
-                  w='180px'
-                  visibility={"hidden"}
-                  // mx={isMobileDevice ? undefined : 4}
-                  src={inactiveavalanche.src}
-                />
-                <Img
-                  cursor={"pointer"}
-                  visibility={"hidden"}
-                  opacity={0.6}
-                  _hover={{
-                    opacity: 1,
-                  }}
-                  w='180px'
-                  src={inactiveoptimism.src}
-                />
+                {!isMobileDevice && (
+                  <Img
+                    cursor={"pointer"}
+                    opacity={0.6}
+                    _hover={{
+                      opacity: 1,
+                    }}
+                    w='180px'
+                    visibility={"hidden"}
+                    // mx={isMobileDevice ? undefined : 4}
+                    src={inactiveavalanche.src}
+                  />
+                )}
+                {!isMobileDevice && (
+                  <Img
+                    cursor={"pointer"}
+                    visibility={"hidden"}
+                    opacity={0.6}
+                    _hover={{
+                      opacity: 1,
+                    }}
+                    w='180px'
+                    src={inactiveoptimism.src}
+                  />
+                )}
               </Flex>
 
-              <Flex justifyContent={"center"}>
+              {/* <Flex justifyContent={"center"}>
                 <Flex
                   py={{ sm: 14, lg: 14, xl: 14 }}
                   justifyContent={"space-between"}
@@ -791,7 +798,7 @@ export default function Landing3() {
                     </Flex>
                   </Flex>
                 </Flex>
-              </Flex>
+              </Flex> */}
             </Box>
           </Flex>
         </Flex>

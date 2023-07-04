@@ -14,7 +14,7 @@ const SlideCard = ({ title, text }: CardProps) => {
       position={"relative"}
       flexDirection={"column"}
       justifyContent='center'
-      minW={{ sm: "300px", lg: "300px", xl: "350px" }}
+      minW={{ sm: "80vw", lg: "300px", xl: "350px" }}
       mr={isMobileDevice ? 0 : 5}
       bgColor={"white"}
       py={8}

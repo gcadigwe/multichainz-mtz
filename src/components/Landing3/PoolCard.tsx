@@ -8,7 +8,7 @@ import {
   Icon,
 } from "@chakra-ui/react";
 import roundpolygon from "../../assets/svg/roundpolygon.svg";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { IoIosArrowRoundForward } from "react-icons/io";
 
 interface CardProps {
@@ -19,6 +19,12 @@ interface CardProps {
 const PoolCard = () => {
   const [isMobileDevice] = useMediaQuery("(max-width: 750px)");
   const [hovered, setHovered] = useState(false);
+
+  useEffect(() => {
+    if (isMobileDevice) {
+      setHovered(true);
+    }
+  }, [isMobileDevice]);
   return (
     <Flex
       maxW='500px'
@@ -43,7 +49,13 @@ const PoolCard = () => {
         <Img h='24px' w='24px' src={roundpolygon.src} />
 
         <Flex visibility={hovered ? "visible" : "hidden"} alignItems={"center"}>
-          <Text color='#437EF7'>Add Liquidity</Text>
+          <Text
+            fontWeight={"600"}
+            fontSize={{ sm: "14px", lg: "16px", xl: "18px" }}
+            color='#437EF7'
+          >
+            Add Liquidity
+          </Text>
           <Icon color='#437EF7' as={IoIosArrowRoundForward} />
         </Flex>
       </Flex>

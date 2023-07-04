@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 import roundpolygon from "../../../assets/svg/roundpolygon.svg";
 import { IoIosArrowRoundForward } from "react-icons/io";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface CardProps {
   img: any;
@@ -25,6 +25,12 @@ const BorrowLend = ({
 }) => {
   const [isMobileDevice] = useMediaQuery("(max-width: 750px)");
   const [hovered, setHovered] = useState(false);
+
+  useEffect(() => {
+    if (isMobileDevice) {
+      setHovered(true);
+    }
+  }, [isMobileDevice]);
   return (
     <Flex
       maxW='500px'
@@ -44,11 +50,20 @@ const BorrowLend = ({
       flex={0.3}
       h={{ sm: "200px", lg: "200px", xl: "250px" }}
     >
-      <Flex justifyContent={"space-between"}>
+      <Flex
+        justifyContent={"space-between"}
+        mb={isMobileDevice ? 6 : undefined}
+      >
         <Img h='24px' w='24px' src={roundpolygon.src} />
 
         <Flex visibility={hovered ? "visible" : "hidden"} alignItems={"center"}>
-          <Text color='#437EF7'>Borrow/Lend</Text>
+          <Text
+            color='#437EF7'
+            fontWeight={"600"}
+            fontSize={{ sm: "14px", lg: "16px", xl: "18px" }}
+          >
+            Borrow/Lend
+          </Text>
           <Icon color='#437EF7' as={IoIosArrowRoundForward} />
         </Flex>
       </Flex>

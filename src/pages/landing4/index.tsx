@@ -57,16 +57,10 @@ export default function Landing4() {
       <Flex flexDirection='column'>
         <Flex position={"relative"} pt={10}>
           {isMobileDevice ? (
-            <Img src={backgroundvidpic.src} />
+            <Img w='100%' src={backgroundvidpic.src} />
           ) : (
             <>
-              <Flex
-                w='100%'
-                h='100vh'
-                // h='70vh'
-                // justifyContent={"center"}
-                // background='linear-gradient(90deg, rgba(223,216,255,1) 0%, rgba(204,211,255,1) 40%, rgba(175,202,255,1) 100%)'
-              >
+              <Flex w='100%' h='100vh'>
                 <video
                   // height={"50px"}
                   style={{
@@ -92,21 +86,23 @@ export default function Landing4() {
 
           <Flex
             w='100%'
-            top={"40%"}
+            top={isMobileDevice ? "30%" : "40%"}
             position='absolute'
             flexDirection={"column"}
             alignItems='center'
           >
             <Heading
-              fontSize={{ sm: "40px", lg: "80px", xl: "100px" }}
+              fontSize={{ sm: "52px", lg: "80px", xl: "100px" }}
               fontWeight='900'
+              textAlign={"center"}
             >
-              Multichainz DAO
+              Multichainz {isMobileDevice && <br />} DAO
             </Heading>
             <Text
               textAlign={isMobileDevice ? "center" : undefined}
               mb={5}
               fontSize={isMobileDevice ? "20px" : "30px"}
+              py={isMobileDevice ? 6 : undefined}
             >
               Propose, Vote, and Engage in the protocol governance system
             </Text>
@@ -114,6 +110,7 @@ export default function Landing4() {
               color='white'
               fontSize={"14px"}
               px={8}
+              w={isMobileDevice ? "80vw" : undefined}
               background={
                 "linear-gradient(90deg, rgba(73,168,252,1) 0%, rgba(104,172,253,1) 100%)"
               }
@@ -164,14 +161,21 @@ export default function Landing4() {
                       flexDirection='column'
                     >
                       <Flex w='100%' justifyContent={"space-between"}>
-                        <Img w='100px' src={binance.src} />
-                        <Img w='100px' src={binance.src} />
-                        <Img w='100px' src={binance.src} />
+                        <Img w='100px' filter={"blur(4px)"} src={binance.src} />
+                        <Img w='100px' filter={"blur(4px)"} src={binance.src} />
+                        <Img w='100px' filter={"blur(4px)"} src={binance.src} />
                       </Flex>
-                      <Divider orientation='vertical' />
+                      <Flex justifyContent={"center"}>
+                        <Divider
+                          py={4}
+                          w='70%'
+                          orientation='horizontal'
+                          borderColor={"black"}
+                        />
+                      </Flex>
 
                       <Flex mt={4}>
-                        <Flex mb={5} flexDirection={"column"}>
+                        <Flex mb={5} flexDirection={"column"} mr={6}>
                           <Text fontWeight={"bold"}>Learn more</Text>
                           <Img src={cmc.src} />
                         </Flex>
@@ -282,7 +286,7 @@ export default function Landing4() {
             </Heading>
 
             {isMobileDevice ? (
-              <Text mb={10} mt={5} fontWeight={"700"} fontSize={"14px"}>
+              <Text mb={10} mt={5} fontWeight={"700"} fontSize={"16px"}>
                 Multichainz direction, future, and present improvements are
                 determined in a decentralized way by X token holders.
                 Multichainz governance model is unique since every relevant
@@ -309,8 +313,9 @@ export default function Landing4() {
               justifyContent={isMobileDevice ? undefined : "space-evenly"}
             >
               <Flex
-                py={10}
-                px={10}
+                flex={isMobileDevice ? undefined : 0.2}
+                // py={10}
+                // px={10}
                 cursor='pointer'
                 _hover={{
                   bgColor: "#125DDE",
@@ -318,6 +323,9 @@ export default function Landing4() {
                 }}
                 bgColor='#ffffff'
                 borderRadius={"6px"}
+                h={{ sm: "240px", lg: "140px", xl: "180px" }}
+                justifyContent='center'
+                alignItems={"center"}
               >
                 <Heading
                   fontWeight={"bold"}
@@ -330,17 +338,21 @@ export default function Landing4() {
               </Flex>
 
               <Flex
+                flex={isMobileDevice ? undefined : 0.2}
                 cursor='pointer'
                 _hover={{
                   bgColor: "#125DDE",
                   color: "#ffffff",
                 }}
-                py={6}
-                px={10}
+                // w={{ sm: "80vw" }}
+                h={{ sm: "240px", lg: "140px", xl: "180px" }}
+                // py={6}
+                // px={10}
                 bgColor='#ffffff'
                 borderRadius={"6px"}
                 alignItems='center'
                 mt={isMobileDevice ? 4 : undefined}
+                justifyContent='center'
               >
                 <Heading
                   textAlign={"center"}
@@ -352,17 +364,20 @@ export default function Landing4() {
               </Flex>
 
               <Flex
+                flex={isMobileDevice ? undefined : 0.2}
                 cursor='pointer'
                 _hover={{
                   bgColor: "#125DDE",
                   color: "#ffffff",
                 }}
-                px={10}
-                py={10}
+                // px={10}
+                // py={10}
                 bgColor='#ffffff'
                 borderRadius={"6px"}
-                alignItems='center'
+                justifyContent='center'
+                alignItems={"center"}
                 mt={isMobileDevice ? 4 : undefined}
+                h={{ sm: "240px", lg: "140px", xl: "180px" }}
               >
                 <Heading
                   textAlign={"center"}
@@ -374,17 +389,20 @@ export default function Landing4() {
               </Flex>
 
               <Flex
+                flex={isMobileDevice ? undefined : 0.2}
                 cursor='pointer'
                 _hover={{
                   bgColor: "#125DDE",
                   color: "#ffffff",
                 }}
-                py={6}
-                px={10}
+                // py={6}
+                // px={10}
                 bgColor='#ffffff'
                 borderRadius={"6px"}
                 alignItems='center'
+                justifyContent={"center"}
                 mt={isMobileDevice ? 4 : undefined}
+                h={{ sm: "240px", lg: "140px", xl: "180px" }}
               >
                 <Heading
                   textAlign={"center"}
@@ -633,11 +651,6 @@ export default function Landing4() {
             </Flex>
           </Flex>
 
-          {/* {isMobileDevice ? (
-            <Flex mt={20}>
-              <Img src={join.src} />
-            </Flex>
-          ) : ( */}
           <Flex justifyContent={"center"}>
             <Flex
               pl={isMobileDevice ? 2 : 4}
@@ -714,8 +727,8 @@ export default function Landing4() {
           </Flex>
           {/* )} */}
 
-          <Flex justifyContent={"center"} pt={20}>
-            <Flex
+          {/* <Flex justifyContent={"center"} pt={20}> */}
+          {/* <Flex
               py={{ sm: 14, lg: 14, xl: 14 }}
               justifyContent={"space-between"}
               w={{ sm: "80vw", lg: "70vw", xl: "60vw" }}
@@ -798,8 +811,8 @@ export default function Landing4() {
                   <Img w='150px' h='30px' src={quillhash.src} />
                 </Flex>
               </Flex>
-            </Flex>{" "}
-          </Flex>
+            </Flex> */}
+          {/* </Flex> */}
         </Box>
       </Flex>
 

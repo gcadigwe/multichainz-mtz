@@ -40,7 +40,7 @@ export default function AnimatedPolygon({ earn }: { earn?: boolean }) {
 
         <Circle position={"absolute"} top={40} left={"30%"} size='300px'>
           <motion.div
-            transition={{ duration: 30, repeat: Infinity }}
+            transition={{ duration: 40, repeat: Infinity }}
             initial={{ rotateZ: -360 }}
             animate={{ rotateZ: 0 }}
           >
@@ -75,9 +75,9 @@ export default function AnimatedPolygon({ earn }: { earn?: boolean }) {
 
         <Circle position={"absolute"} top={40} left={"60%"} size='300px'>
           <motion.div
-            transition={{ duration: 40, repeat: Infinity }}
-            initial={{ rotateZ: -360 }}
-            animate={{ rotateZ: 0 }}
+            transition={{ duration: 60, repeat: Infinity }}
+            initial={{ rotateZ: 0 }}
+            animate={{ rotateZ: -360 }}
           >
             <Img w='50px' h='50px' src={polygon1.src} />
             <Circle size={"300px"}>
@@ -97,9 +97,9 @@ export default function AnimatedPolygon({ earn }: { earn?: boolean }) {
 
         <Circle position={"absolute"} top={"50%"} left={"20%"} size='200px'>
           <motion.div
-            transition={{ duration: 20, repeat: Infinity }}
-            initial={{ rotateZ: -360 }}
-            animate={{ rotateZ: 0 }}
+            transition={{ duration: 40, repeat: Infinity }}
+            initial={{ rotateZ: 0 }}
+            animate={{ rotateZ: -360 }}
           >
             <Img src={smallcircle.src} />
             <Circle size={"200px"}>

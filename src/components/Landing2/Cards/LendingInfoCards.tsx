@@ -32,6 +32,7 @@ export default function LendingInfoCards({
       borderTopRadius='10px'
       borderBottomRadius='10px'
       bgColor='rgba(255, 255, 255, 0.26)'
+      w={isMobileDevice ? "80vw" : undefined}
     >
       <Img borderTopRadius='10px' src={img} />
       <Flex

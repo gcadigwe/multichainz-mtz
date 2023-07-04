@@ -31,8 +31,8 @@ export default function RadialMenu() {
       position={"absolute"}
       w={isMobileDevice ? "400px" : "600px"}
       h='600px'
-      mt={{ sm: 6, lg: 0, xl: 0 }}
-      ml={{ sm: 14, lg: 0, xl: 0 }}
+      mt={{ sm: 0, lg: 0, xl: 0 }}
+      ml={{ sm: 12, lg: 0, xl: 0 }}
       alignItems='center'
     >
       <Flex flexDirection={"column"}>
