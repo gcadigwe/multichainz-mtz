@@ -232,11 +232,11 @@ export default function Landing3() {
             <PoolCard />
           </Flex>
 
-          <Flex mt={40} justifyContent='center'>
+          <Flex mt={isMobileDevice ? 24 : 40} justifyContent='center'>
             <Heading
               textAlign={isMobileDevice ? "center" : undefined}
               fontSize={isMobileDevice ? "30px" : "40px"}
-              mb={isMobileDevice ? 20 : 10}
+              mb={10}
               fontWeight='700'
             >
               Yield Farming Made Safer and Easier
@@ -299,11 +299,16 @@ export default function Landing3() {
             />
           </Flex>
 
-          <Flex mt={10} justifyContent={"center"}>
+          <Flex
+            mt={10}
+            justifyContent={"center"}
+            w={isMobileDevice ? "80vw" : undefined}
+          >
             <Button
               px={10}
               py={6}
               fontSize={"14px"}
+              w={isMobileDevice ? "80vw" : undefined}
               bgColor='#49A8FC'
               _hover={{
                 bgColor: "#49A8FC",
@@ -316,7 +321,7 @@ export default function Landing3() {
         </Box>
       </Flex>
 
-      <Flex mt={40} justifyContent={"center"}>
+      <Flex mt={isMobileDevice ? 28 : 40} justifyContent={"center"}>
         <Box w={{ sm: "80vw", md: "70vw", lg: "70vw", xl: "60vw" }}>
           <Heading
             fontSize={isMobileDevice ? "30px" : "40px"}
@@ -440,10 +445,15 @@ export default function Landing3() {
         </Box>
       </Flex>
 
-      <Flex pt={40} pb={20} justifyContent={"center"}>
+      <Flex
+        pt={isMobileDevice ? 32 : 40}
+        pb={isMobileDevice ? 20 : 20}
+        alignItems={"center"}
+        flexDirection='column'
+      >
         <Box
           w={{ sm: "100vw", md: "70vw", lg: "70vw", xl: "60vw" }}
-          h={isMobileDevice ? "80vh" : undefined}
+          // h={isMobileDevice ? "80vh" : undefined}
         >
           <Heading
             fontSize={{ sm: "30px", lg: "40px", xl: "48px" }}
@@ -495,21 +505,6 @@ export default function Landing3() {
                     >
                       <option>1 week</option>
                     </Select>
-                  </Flex>
-
-                  <Flex position={"absolute"} mt={10} left={-100}>
-                    <Button
-                      w='250px'
-                      mt={5}
-                      color='white'
-                      fontSize={"14px"}
-                      bgColor='#49A8FC'
-                      _hover={{
-                        bgColor: "#49A8FC",
-                      }}
-                    >
-                      Earn Now
-                    </Button>
                   </Flex>
                 </Box>
               </>
@@ -588,6 +583,22 @@ export default function Landing3() {
             )}
           </Flex>
         </Box>
+        {isMobileDevice && (
+          <Flex>
+            <Button
+              w='80vw'
+              mt={5}
+              color='white'
+              fontSize={"14px"}
+              bgColor='#49A8FC'
+              _hover={{
+                bgColor: "#49A8FC",
+              }}
+            >
+              Earn Now
+            </Button>
+          </Flex>
+        )}
       </Flex>
 
       <Flex

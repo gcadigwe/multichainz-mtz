@@ -177,7 +177,7 @@ const Landing1 = () => {
         <Flex position={"relative"} justifyContent={"center"}>
           <Img
             w={{ sm: "100%", md: "100%", lg: "60%", xl: "55%" }}
-            h={{ sm: "70vh", lg: "100%" }}
+            h={{ sm: "100%", lg: "100%" }}
             src={isMobileDevice ? eclipsemobilebg.src : eclipsebg.src}
           />
 
@@ -580,7 +580,7 @@ const Landing1 = () => {
             w={isMobileDevice ? "80vw" : "70vw"}
             flexDirection={"column"}
           >
-            <Flex mb={10} justifyContent={"flex-end"}>
+            <Flex mb={isMobileDevice ? 4 : 10} justifyContent={"flex-end"}>
               <Flex
                 cursor={"pointer"}
                 bgColor={"#F5F5F5"}
@@ -905,7 +905,8 @@ const Landing1 = () => {
         </Flex> */}
 
         <Heading
-          my={20}
+          mt={isMobileDevice ? 20 : 20}
+          mb={isMobileDevice ? 10 : 20}
           textAlign={"center"}
           fontSize={isMobileDevice ? "24px" : "44px"}
           fontWeight={"700"}
@@ -977,11 +978,17 @@ const Landing1 = () => {
             </Flex>
           </Box>
         </Flex>
-        <Flex mt={40} flexDirection='column' alignItems={"center"}>
+        <Flex
+          mt={isMobileDevice ? 20 : 40}
+          mb={isMobileDevice ? 6 : 40}
+          flexDirection='column'
+          alignItems={"center"}
+        >
           <Heading
             textAlign={"center"}
             fontSize={isMobileDevice ? "24px" : "44px"}
             fontWeight={"700"}
+            mb={{ sm: 4, lg: 0, xl: 0 }}
           >
             Real-World Asset Lending
           </Heading>
@@ -995,7 +1002,7 @@ const Landing1 = () => {
             tailored mechanisms for borrowers and lenders.
           </Text>
         </Flex>
-        <Flex my={20} justifyContent={"center"}>
+        <Flex mt={isMobileDevice ? 10 : 20} justifyContent={"center"}>
           <Flex
             // flex={1}
             w={{ sm: "80vw", lg: "60vw", xl: "50vw" }}
@@ -1064,7 +1071,10 @@ const Landing1 = () => {
                 >
                   For borrowers
                 </Heading>
-                <Text fontWeight={"600"} fontSize={{ lg: "16px", xl: "18px" }}>
+                <Text
+                  fontWeight={{ sm: "400", lg: "600", xl: "600" }}
+                  fontSize={{ lg: "16px", xl: "18px" }}
+                >
                   Access permissionless liquidity across multiple blockchains
                   for your fund, startup, real estate or other financial needs
                 </Text>
@@ -1076,12 +1086,16 @@ const Landing1 = () => {
                 pr={isMobileDevice ? undefined : 5}
               >
                 <Heading
+                  mb={2}
                   fontWeight={"bold"}
                   fontSize={{ sm: "24px", lg: "24px", xl: "30px" }}
                 >
                   For lenders
                 </Heading>
-                <Text fontWeight={"600"} fontSize={{ lg: "16px", xl: "18px" }}>
+                <Text
+                  fontWeight={{ sm: "400", lg: "600", xl: "600" }}
+                  fontSize={{ lg: "16px", xl: "18px" }}
+                >
                   Lend any tokenized asset to verified counter-parties to
                   support their real-life causes and initiatives
                 </Text>
@@ -1092,12 +1106,16 @@ const Landing1 = () => {
                 pr={isMobileDevice ? undefined : 5}
               >
                 <Heading
+                  mb={2}
                   fontWeight={"bold"}
                   fontSize={{ sm: "24px", lg: "24px", xl: "30px" }}
                 >
                   For institutions
                 </Heading>
-                <Text fontWeight={"600"} fontSize={{ lg: "16px", xl: "18px" }}>
+                <Text
+                  fontWeight={{ sm: "400", lg: "600", xl: "600" }}
+                  fontSize={{ lg: "16px", xl: "18px" }}
+                >
                   Borrow or lend liquid tokenized assets with institutional-
                   grade security to meet your company financial needs and goals
                 </Text>
@@ -1124,7 +1142,7 @@ const Landing1 = () => {
             flexDirection='column'
           >
             <Heading
-              fontSize={{ sm: "24px", md: "26px", lg: "48px", xl: "48px" }}
+              fontSize={{ sm: "32px", md: "26px", lg: "48px", xl: "48px" }}
               fontWeight='700'
             >
               Community Led DAO
@@ -1195,7 +1213,7 @@ const Landing1 = () => {
 
         <Flex
           mt={10}
-          pb={20}
+          pb={isMobileDevice ? undefined : 20}
           alignItems={isMobileDevice ? undefined : "center"}
           // justifyContent={"center"}
           flexDirection={isMobileDevice ? "column" : "column"}
@@ -1203,7 +1221,7 @@ const Landing1 = () => {
         >
           {isMobileDevice ? (
             <>
-              <Text textAlign={"center"} fontWeight={"700"} fontSize='24px'>
+              <Text textAlign={"center"} fontWeight={"700"} fontSize='32px'>
                 Treasury balance
               </Text>
 
@@ -1241,19 +1259,16 @@ const Landing1 = () => {
             mb={isMobileDevice ? 10 : 40}
             h='600px'
           >
-            <Img
-              w={isMobileDevice ? undefined : "800px"}
-              src={isMobileDevice ? blurelipsemobile.src : blurelipse.src}
-            />
+            <Img w={"800px"} src={blurelipse.src} />
 
             <Circle
               boxShadow={"0px 4px 49px 0px rgba(0, 7, 72, 0.12)"}
               position={"absolute"}
               border='1px solid rgba(255, 255, 255, 0.12)'
-              size={"540px"}
-              mr={16}
+              size={isMobileDevice ? "350px" : "540px"}
+              mr={isMobileDevice ? undefined : 16}
               mb={14}
-              display={isMobileDevice ? "none" : undefined}
+              // display={isMobileDevice ? "none" : undefined}
             ></Circle>
 
             <RadialMenu />
@@ -1261,7 +1276,7 @@ const Landing1 = () => {
             <Flex
               w='100%'
               position={"absolute"}
-              bottom={{ sm: -10, lg: -32, xl: -40 }}
+              bottom={{ sm: 4, lg: -32, xl: -40 }}
               right={{ lg: 10, xl: 10 }}
               py={10}
               alignItems={"center"}
@@ -1456,6 +1471,7 @@ const Landing1 = () => {
                 <Flex
                   position={"relative"}
                   mt={isMobileDevice ? 5 : 0}
+                  pb={6}
                   flexDirection='column'
                 >
                   <Flex justifyContent={"center"} w='100%'>

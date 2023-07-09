@@ -1,5 +1,5 @@
 import { ArrowForwardIcon } from "@chakra-ui/icons";
-import { Box, Flex, Heading, Img, Text } from "@chakra-ui/react";
+import { Box, Flex, Heading, Img, Text, useMediaQuery } from "@chakra-ui/react";
 
 export default function GovernanceCard({
   title,
@@ -10,6 +10,7 @@ export default function GovernanceCard({
   text: any;
   bottomText: string;
 }) {
+  const [isMobileDevice] = useMediaQuery("(max-width: 750px)");
   return (
     <Box
       cursor={"pointer"}
@@ -31,6 +32,7 @@ export default function GovernanceCard({
         // background='linear-gradient(180deg, rgba(32,114,230,1) 50%, rgba(85,155,240,1) 100%)'
         flexDirection={"column"}
         borderRadius='10px'
+        w={isMobileDevice ? "80vw" : undefined}
       >
         <Heading mb={5} fontWeight='700' fontSize={"30px"}>
           {title}

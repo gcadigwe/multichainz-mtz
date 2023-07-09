@@ -182,13 +182,17 @@ export default function Landing4() {
                         <Img src={coingecko.src} />
                       </Flex>
                     </Flex>
-
-                    <Flex position={"absolute"} top={-20} left='26%'>
-                      <Img src={multichainz.src} />
-                    </Flex>
                   </Box>
                 </Flex>
               </Box>
+              <Flex
+                w='90vw'
+                justifyContent={"center"}
+                position={"absolute"}
+                top={-20}
+              >
+                <Img src={multichainz.src} />
+              </Flex>
             </Flex>
           ) : (
             <>
@@ -594,16 +598,19 @@ export default function Landing4() {
           </Heading>
 
           <Flex
-            flex={1}
+            flex={isMobileDevice ? undefined : 1}
             justifyContent={isMobileDevice ? undefined : "space-between"}
             flexDirection={isMobileDevice ? "column" : undefined}
           >
-            <Flex flex={0.24}>
+            <Flex flex={isMobileDevice ? undefined : 0.24}>
               <GovernanceCard
                 bottomText='Go to Forum'
                 title='Our Forum'
                 text={
-                  <Text fontSize={"14px"} opacity={0.7}>
+                  <Text
+                    fontSize={{ sm: "16px", lg: "14px", xl: "14px" }}
+                    opacity={0.7}
+                  >
                     Visit our forum to know and engage with active proposals and
                     its categories
                   </Text>
@@ -611,12 +618,18 @@ export default function Landing4() {
               />
             </Flex>
 
-            <Flex flex={0.24} mt={isMobileDevice ? 4 : undefined}>
+            <Flex
+              flex={isMobileDevice ? undefined : 0.24}
+              mt={isMobileDevice ? 4 : undefined}
+            >
               <GovernanceCard
                 bottomText='Go to Guide'
                 title='Proposals'
                 text={
-                  <Text fontSize={"14px"} opacity={0.7}>
+                  <Text
+                    fontSize={{ sm: "16px", lg: "14px", xl: "14px" }}
+                    opacity={0.7}
+                  >
                     Read our process to submit proposals to our DAO and learn
                     its guidelines
                   </Text>
@@ -624,12 +637,18 @@ export default function Landing4() {
               />
             </Flex>
 
-            <Flex flex={0.24} mt={isMobileDevice ? 4 : undefined}>
+            <Flex
+              flex={isMobileDevice ? undefined : 0.24}
+              mt={isMobileDevice ? 4 : undefined}
+            >
               <GovernanceCard
                 bottomText='Go to Manual'
                 title='Voting'
                 text={
-                  <Text fontSize={"14px"} opacity={0.7}>
+                  <Text
+                    fontSize={{ sm: "16px", lg: "14px", xl: "14px" }}
+                    opacity={0.7}
+                  >
                     Learn more about voting processes, vote delegation, and vote
                     types
                   </Text>
@@ -637,12 +656,18 @@ export default function Landing4() {
               />
             </Flex>
 
-            <Flex flex={0.24} mt={isMobileDevice ? 4 : undefined}>
+            <Flex
+              flex={isMobileDevice ? undefined : 0.24}
+              mt={isMobileDevice ? 4 : undefined}
+            >
               <GovernanceCard
                 bottomText='Go to FAQs'
                 title='FAQs'
                 text={
-                  <Text fontSize={"14px"} opacity={0.7}>
+                  <Text
+                    fontSize={{ sm: "16px", lg: "14px", xl: "14px" }}
+                    opacity={0.7}
+                  >
                     Solve any questions you have about our governance model and
                     process
                   </Text>
@@ -658,7 +683,7 @@ export default function Landing4() {
               borderLeftRadius={"12px"}
               alignItems={"center"}
               justifyContent='space-between'
-              mt={40}
+              mt={isMobileDevice ? 20 : 40}
               color='white'
               w={{ sm: "100%", lg: "70vw", xl: "60vw" }}
               boxShadow={"0px 4px 49px 0px rgba(0, 7, 72, 0.12)"}

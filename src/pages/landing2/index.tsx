@@ -262,7 +262,7 @@ export default function Landing2() {
               flexDirection={"column"}
               display={isMobileDevice ? undefined : "none"}
             >
-              <Flex mb={10} justifyContent={"flex-end"}>
+              <Flex justifyContent={"flex-end"}>
                 <Flex
                   cursor={"pointer"}
                   bgColor={"#F5F5F5"}
@@ -291,7 +291,7 @@ export default function Landing2() {
           <Box w={width}>
             <Flex
               // border='1px solid red'
-              mt={10}
+              mt={isMobileDevice ? 5 : 10}
               w={isMobileDevice ? "100%" : undefined}
               overflowX={isMobileDevice ? "hidden" : undefined}
               flex={isMobileDevice ? undefined : 1}
@@ -435,7 +435,7 @@ export default function Landing2() {
                 border='1px solid white'
                 flexDirection={"column"}
                 alignItems='center'
-                pt={5}
+                py={5}
                 bgColor={"#D3E7F7"}
                 borderRadius='12px'
                 boxShadow={"0px 4px 49px 0px rgba(0, 7, 72, 0.12)"}
@@ -458,11 +458,21 @@ export default function Landing2() {
                 </Text>
 
                 <Flex mt={5} px={isMobileDevice ? 5 : undefined}>
-                  <Flex borderRadius={"10px"} py={4} bgColor={"#0C1120"}>
+                  <Flex
+                    boxShadow={"0px 4px 49px 0px rgba(0, 7, 72, 0.3)"}
+                    borderRadius={"10px"}
+                    py={4}
+                    bgColor={"#0C1120"}
+                  >
                     <Img src={halborn.src} />
                   </Flex>
 
-                  <Flex borderRadius={"10px"} ml={2} bgColor={"#0C1120"}>
+                  <Flex
+                    boxShadow={"0px 4px 49px 0px rgba(0, 7, 72, 0.3)"}
+                    borderRadius={"10px"}
+                    ml={2}
+                    bgColor={"#0C1120"}
+                  >
                     <Img src={peckshield.src} />
                   </Flex>
                 </Flex>
