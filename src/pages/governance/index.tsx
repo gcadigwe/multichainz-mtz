@@ -574,7 +574,7 @@ export default function Landing4() {
                   fontSize={{ sm: "24px", lg: "28px", xl: "36px" }}
                   fontWeight='bold'
                 >
-                  Sign Up to Forum
+                  Submit a Github Proposal
                 </Heading>
                 <Text
                   fontWeight={"500"}

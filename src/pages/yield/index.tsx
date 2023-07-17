@@ -56,7 +56,7 @@ export default function Landing3() {
               h='100vh'
               w={{ sm: "100vw", md: "70vw", lg: "70vw", xl: "70vw" }}
               // w='70vw'
-              mt={isMobileDevice ? 40 : 40}
+              mt={isMobileDevice ? 32 : 40}
             >
               {isMobileDevice ? (
                 <Heading
@@ -73,7 +73,7 @@ export default function Landing3() {
                   fontSize={{ lg: "60px", xl: "80px" }}
                   fontWeight='700'
                 >
-                  Earn <br /> In Multiple Chains
+                  Earn Interest <br /> On Multiple Chains
                 </Heading>
               )}
 
@@ -186,7 +186,7 @@ export default function Landing3() {
         </Flex>
       </Box>
 
-      <Flex justifyContent={"center"}>
+      <Flex justifyContent={"center"} mt={isMobileDevice ? 20 : undefined}>
         <Box w={width}>
           <Flex flexDirection={"column"} alignItems={"center"}>
             <Flex alignItems={"center"} flexDirection={"column"}>

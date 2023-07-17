@@ -663,7 +663,7 @@ export default function Landing2() {
                     Chainlink
                   </Text>
                 </Flex>
-                <Flex
+                {/* <Flex
                   mx={isMobileDevice ? undefined : 40}
                   my={isMobileDevice ? 4 : undefined}
                   alignItems='center'
@@ -724,7 +724,7 @@ export default function Landing2() {
                       Supra <br /> Oracles
                     </Text>
                   )}
-                </Flex>
+                </Flex> */}
               </Flex>
             </Flex>
           </Flex>

@@ -6,11 +6,13 @@ import {
   Box,
   useMediaQuery,
   useDisclosure,
+  Tooltip,
 } from "@chakra-ui/react";
 import logo from "../../../assets/svg/multichainzlogo.svg";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import MobileNavbar from "./MobileNavbar";
 import styles from "./styles.module.css";
+import Link from "next/link";
 
 const Navbar = () => {
   const [isMobileDevice] = useMediaQuery("(max-width: 750px)");
@@ -27,14 +29,16 @@ const Navbar = () => {
         <Box w={{ sm: "100vw", md: "80vw", lg: "70vw", xl: "70vw" }}>
           <Flex
             alignItems={"center"}
-            py={4}
+            py={{ sm: 4, lg: 4, xl: 6 }}
             px={isMobileDevice ? 5 : undefined}
             justifyContent={"space-between"}
             flex={1}
           >
-            <Flex>
-              <Img src={logo.src} />
-            </Flex>
+            <Link href='/'>
+              <Flex>
+                <Img src={logo.src} />
+              </Flex>
+            </Link>
 
             {isMobileDevice ? (
               <HamburgerIcon onClick={onToggle} fontSize={"24px"} />
@@ -42,42 +46,66 @@ const Navbar = () => {
               <>
                 <Flex
                   fontSize={{ sm: "16px", md: "14px", lg: "16px", xl: "18px" }}
-                  flex={0.7}
+                  flex={{ lg: 0.8, xl: 0.7 }}
                   justifyContent='space-between'
                   fontWeight={"700"}
                 >
-                  <Text
-                    cursor={"pointer"}
-                    className={styles.hoverUnderlineAnimation}
-                  >
-                    Products
-                  </Text>
-                  <Text
-                    cursor={"pointer"}
-                    className={styles.hoverUnderlineAnimation}
-                    mx={3}
-                  >
-                    Markets
-                  </Text>
-                  <Text
-                    cursor={"pointer"}
-                    className={styles.hoverUnderlineAnimation}
-                  >
-                    Governance
-                  </Text>
-                  <Text
-                    cursor={"pointer"}
-                    className={styles.hoverUnderlineAnimation}
-                    // _hover={{
-                    //   textDecoration: "underline",
-                    //   textDecorationColor: "rgba(44, 129, 237, 0.7)",
-                    //   textDecorationThickness: "0.2em",
-                    // }}
-                    mx={3}
-                    textDecorationThickness={"0.2em"}
-                  >
-                    Documentation
-                  </Text>
+                  <Tooltip label='Coming soon...' hasArrow>
+                    <Text
+                      cursor={"pointer"}
+                      className={styles.hoverUnderlineAnimation}
+                    >
+                      Products
+                    </Text>
+                  </Tooltip>
+                  <Tooltip label='Coming soon...' hasArrow>
+                    <Text
+                      cursor={"pointer"}
+                      className={styles.hoverUnderlineAnimation}
+                    >
+                      Markets
+                    </Text>
+                  </Tooltip>
+                  <Link href={"/governance"}>
+                    <Text
+                      cursor={"pointer"}
+                      className={styles.hoverUnderlineAnimation}
+                    >
+                      Governance
+                    </Text>
+                  </Link>
+                  <Tooltip label='Coming soon...' hasArrow>
+                    <Text
+                      cursor={"pointer"}
+                      className={styles.hoverUnderlineAnimation}
+                      // mx={3}
+                      textDecorationThickness={"0.2em"}
+                    >
+                      Documentation
+                    </Text>
+                  </Tooltip>
+
+                  <Link href='/lending'>
+                    <Text
+                      cursor={"pointer"}
+                      className={styles.hoverUnderlineAnimation}
+                      // mx={3}
+                      textDecorationThickness={"0.2em"}
+                    >
+                      Lending
+                    </Text>
+                  </Link>
+
+                  <Link href='/yield'>
+                    <Text
+                      cursor={"pointer"}
+                      className={styles.hoverUnderlineAnimation}
+                      // mx={3}
+                      textDecorationThickness={"0.2em"}
+                    >
+                      Yield
+                    </Text>
+                  </Link>
                 </Flex>
 
                 <Button

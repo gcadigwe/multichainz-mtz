@@ -1,6 +1,7 @@
 import { Box, Flex, Slide, Img, Text, Button } from "@chakra-ui/react";
 import logo from "../../../assets/svg/multichainzlogo.svg";
 import { CloseIcon } from "@chakra-ui/icons";
+import Link from "next/link";
 
 const MobileNavbar = ({
   isOpen,
@@ -27,8 +28,16 @@ const MobileNavbar = ({
         <Flex mt={10} flexDirection={"column"}>
           <Text>Products</Text>
           <Text my={5}>Markets</Text>
-          <Text>Governance</Text>
+          <Link href={"/governance"}>
+            <Text>Governance</Text>
+          </Link>
           <Text my={5}>Documentation</Text>
+          <Link href='/lending'>
+            <Text>Lending</Text>
+          </Link>
+          <Link href='/yield'>
+            <Text my={5}>Yield</Text>
+          </Link>
 
           <Button mt={10} fontSize={"14px"} bgColor='#49A8FC' color='white'>
             Launch App
