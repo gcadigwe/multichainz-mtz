@@ -65,7 +65,7 @@ export default function Landing3() {
                   fontSize={"40px"}
                   fontWeight='800'
                 >
-                  Earn Interest In Multiple Chains
+                  Earn Interest On Multiple Chains
                 </Heading>
               ) : (
                 <Heading
