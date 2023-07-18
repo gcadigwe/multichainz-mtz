@@ -1,13 +1,14 @@
 import { Flex, Img, Text, useMediaQuery } from "@chakra-ui/react";
 import logo from "../../assets/svg/logo.svg";
 import { HamburgerIcon } from "@chakra-ui/icons";
+import Link from "next/link";
 
 const Navbar = () => {
   const [isMobileDevice] = useMediaQuery("(max-width: 750px)");
 
   return (
     <Flex
-      zIndex={2}
+      zIndex={8}
       px={isMobileDevice ? 5 : 32}
       pt={5}
       w='100%'
@@ -15,7 +16,9 @@ const Navbar = () => {
       alignItems='center'
       justifyContent={"space-between"}
     >
-      <Img filter={"blur(4px)"} src={logo.src} />
+      <Link href={"/"}>
+        <Img src={logo.src} />
+      </Link>
 
       {/* {isMobileDevice ? (
         <HamburgerIcon color='white' boxSize={"6"} />
