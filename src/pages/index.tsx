@@ -62,6 +62,7 @@ import label from "../assets/svg/web3label.png";
 import arbitrum from "../assets/svg/arbitrumnormal.svg";
 import binancebacked from "../assets/svg/activebinance.svg";
 import Head from "next/head";
+import MarqueeContent from "@/components/MarqueeContent";
 
 const Landing1 = () => {
   const firstpageRef = useRef<any>(null);
@@ -1474,7 +1475,7 @@ const Landing1 = () => {
                   zIndex={200}
                   // position='absolute'
                   // bottom={"20%"}
-                  py={20}
+                  pt={10}
                 >
                   <Flex
                     position={"relative"}
@@ -1482,7 +1483,7 @@ const Landing1 = () => {
                     pb={6}
                     flexDirection='column'
                   >
-                    <Flex justifyContent={"center"} w='100%'>
+                    <Flex justifyContent={"center"} w='100%' mb={10}>
                       <Heading
                         fontWeight={"bold"}
                         textAlign='center'
@@ -1494,39 +1495,19 @@ const Landing1 = () => {
                       </Heading>
                     </Flex>
 
-                    <Flex
-                      // left='-50%'
-                      className={styles.marqueemobile}
-                      position={"absolute"}
-                      mt={20}
-                      overflow={"hidden"}
-                      w='400%'
+                    <MarqueeContent />
+
+                    {/* <Flex
+                      h={"60px"}
+                      position={"relative"}
+                      mt={10}
+                      overflowX={"hidden"}
                     >
-                      <Flex w='50%'>
-                        <Flex
-                          w='50%'
-                          px={5}
-                          justifyContent={"space-between"}
-                          alignItems='center'
-                        >
-                          <Flex flex={0.3}>
-                            <a>
-                              <Img src={binancebacked.src} />
-                            </a>
-                          </Flex>
-                          <Flex flex={0.3}>
-                            <a>
-                              <Img src={polygonbacked.src} />
-                            </a>
-                          </Flex>
-
-                          <Flex flex={0.3}>
-                            <a>
-                              <Img src={avalanchebacked.src} />
-                            </a>
-                          </Flex>
-                        </Flex>
-
+                      <Flex
+                        className={styles.marqueemobile}
+                        position={"absolute"}
+                        w='200%'
+                      >
                         <Flex
                           w='50%'
                           px={5}
@@ -1549,14 +1530,13 @@ const Landing1 = () => {
                             </a>
                           </Flex>
                         </Flex>
-                      </Flex>
 
-                      <Flex w='50%'>
                         <Flex
                           w='50%'
                           px={5}
                           justifyContent={"space-between"}
                           alignItems='center'
+                          // right={"-100%"}
                         >
                           <Flex flex={0.3}>
                             <a>
@@ -1575,31 +1555,8 @@ const Landing1 = () => {
                             </a>
                           </Flex>
                         </Flex>
-
-                        <Flex
-                          w='50%'
-                          px={5}
-                          justifyContent={"space-between"}
-                          alignItems='center'
-                        >
-                          <Flex flex={0.3}>
-                            <a>
-                              <Img src={arbitrumbacked.src} />
-                            </a>
-                          </Flex>
-                          <Flex flex={0.3} justifyContent='center'>
-                            <a>
-                              <Img w='40px' src={optimismbacked.src} />
-                            </a>
-                          </Flex>
-                          <Flex flex={0.3}>
-                            <a>
-                              <Img src={ethereumbacked.src} />
-                            </a>
-                          </Flex>
-                        </Flex>
                       </Flex>
-                    </Flex>
+                    </Flex> */}
                   </Flex>
                 </Flex>
               </Flex>
@@ -1717,67 +1674,69 @@ const Landing1 = () => {
                       Backed by
                     </Heading>
                   </Flex>
+                  <MarqueeContent />
 
-                  <Flex
-                    // left='-50%'
-                    className={styles.marquee}
-                    position={"absolute"}
-                    mt={20}
-                    overflow={"hidden"}
-                    w='200%'
-                  >
-                    {/* <div> */}
+                  <Flex position={"relative"} maxW='100vw' display={"none"}>
                     <Flex
-                      w='50%'
-                      justifyContent={"space-around"}
-                      alignItems='center'
+                      // left='-50%'
+                      // className={styles.marquee}
+                      position={"absolute"}
+                      mt={20}
+                      overflow={"hidden"}
+                      w='200%'
                     >
-                      <a>
-                        <Img src={binancebacked.src} />
-                      </a>
-                      <a>
-                        <Img src={polygonbacked.src} />
-                      </a>
-                      <a>
-                        <Img src={avalanchebacked.src} />
-                      </a>
-                      <a>
-                        <Img w='80px' src={optimismbacked.src} />
-                      </a>
-                      <a>
-                        <Img src={arbitrumbacked.src} />
-                      </a>
-                      <a>
-                        <Img src={ethereumbacked.src} />
-                      </a>
-                    </Flex>
+                      {/* <div> */}
+                      <Flex
+                        w='50%'
+                        justifyContent={"space-around"}
+                        alignItems='center'
+                      >
+                        <a>
+                          <Img src={binancebacked.src} />
+                        </a>
+                        <a>
+                          <Img src={polygonbacked.src} />
+                        </a>
+                        <a>
+                          <Img src={avalanchebacked.src} />
+                        </a>
+                        <a>
+                          <Img w='80px' src={optimismbacked.src} />
+                        </a>
+                        <a>
+                          <Img src={arbitrumbacked.src} />
+                        </a>
+                        <a>
+                          <Img src={ethereumbacked.src} />
+                        </a>
+                      </Flex>
 
-                    <Flex
-                      w='50%'
-                      className={styles.span}
-                      justifyContent={"space-around"}
-                      alignItems='center'
-                    >
-                      <a>
-                        <Img src={binancebacked.src} />
-                      </a>
-                      <a>
-                        <Img src={polygonbacked.src} />
-                      </a>
-                      <a>
-                        <Img src={avalanchebacked.src} />
-                      </a>
-                      <a>
-                        <Img w='80px' src={optimismbacked.src} />
-                      </a>
-                      <a>
-                        <Img src={arbitrumbacked.src} />
-                      </a>
-                      <a>
-                        <Img src={ethereumbacked.src} />
-                      </a>
+                      <Flex
+                        w='50%'
+                        className={styles.span}
+                        justifyContent={"space-around"}
+                        alignItems='center'
+                      >
+                        <a>
+                          <Img src={binancebacked.src} />
+                        </a>
+                        <a>
+                          <Img src={polygonbacked.src} />
+                        </a>
+                        <a>
+                          <Img src={avalanchebacked.src} />
+                        </a>
+                        <a>
+                          <Img w='80px' src={optimismbacked.src} />
+                        </a>
+                        <a>
+                          <Img src={arbitrumbacked.src} />
+                        </a>
+                        <a>
+                          <Img src={ethereumbacked.src} />
+                        </a>
+                      </Flex>
                     </Flex>
-                    {/* </div> */}
                   </Flex>
                 </Flex>
               </Flex>

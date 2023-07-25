@@ -50,7 +50,7 @@ const Navbar = () => {
                   justifyContent='space-between'
                   fontWeight={"700"}
                 >
-                  <Tooltip label='Coming soon...' hasArrow>
+                  {/* <Tooltip label='Coming soon...' hasArrow>
                     <Text
                       cursor={"pointer"}
                       className={styles.hoverUnderlineAnimation}
@@ -65,7 +65,7 @@ const Navbar = () => {
                     >
                       Markets
                     </Text>
-                  </Tooltip>
+                  </Tooltip> */}
                   <Link href={"/governance"}>
                     <Text
                       cursor={"pointer"}
