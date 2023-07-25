@@ -29,7 +29,6 @@
     "typescript": "5.0.4"
   },
   "devDependencies": {
-    "@types/": "fortawesome/react-fontawesome",
     "@types/react-pie-menu": "^1.0.0"
   }
 }
