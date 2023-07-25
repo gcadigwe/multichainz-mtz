@@ -1,4 +1,4 @@
-import { Box, Flex, Slide, Img, Text, Button } from "@chakra-ui/react";
+import { Box, Flex, Slide, Img, Text, Button, Tooltip } from "@chakra-ui/react";
 import logo from "../../../assets/svg/multichainzlogo.svg";
 import { CloseIcon } from "@chakra-ui/icons";
 import Link from "next/link";
@@ -20,18 +20,25 @@ const MobileNavbar = ({
         py={4}
         px={5}
       >
-        <Flex alignItems={"center"} justifyContent={"space-between"}>
+        <Flex
+          w='100vw'
+          pr={10}
+          alignItems={"center"}
+          justifyContent={"space-between"}
+        >
           <Img src={logo.src} />
           <CloseIcon onClick={toggle} />
         </Flex>
 
         <Flex mt={10} flexDirection={"column"}>
-          <Text>Products</Text>
-          <Text my={5}>Markets</Text>
+          {/* <Text>Products</Text>
+          <Text my={5}>Markets</Text> */}
           <Link href={"/governance"}>
             <Text>Governance</Text>
           </Link>
-          <Text my={5}>Documentation</Text>
+          {/* <Tooltip hasArrow label='Coming soon...' isOpen> */}
+          <Text my={5}>Documentation (Coming soon)</Text>
+          {/* </Tooltip> */}
           <Link href='/lending'>
             <Text>Lending</Text>
           </Link>
@@ -39,9 +46,22 @@ const MobileNavbar = ({
             <Text my={5}>Yield</Text>
           </Link>
 
-          <Button mt={10} fontSize={"14px"} bgColor='#49A8FC' color='white'>
-            Launch App
-          </Button>
+          <Tooltip hasArrow label='Coming soon...'>
+            <Flex justifyContent={"center"} pr={10}>
+              <Button
+                w='80vw'
+                mt={10}
+                fontSize={"14px"}
+                bgColor='#49A8FC'
+                _focus={{
+                  bgColor: "#49A8FC",
+                }}
+                color='white'
+              >
+                Launch App
+              </Button>
+            </Flex>
+          </Tooltip>
         </Flex>
       </Box>
     </Slide>

@@ -50,7 +50,7 @@ const Navbar = () => {
                   justifyContent='space-between'
                   fontWeight={"700"}
                 >
-                  <Tooltip label='Coming soon...' hasArrow>
+                  {/* <Tooltip label='Coming soon...' hasArrow>
                     <Text
                       cursor={"pointer"}
                       className={styles.hoverUnderlineAnimation}
@@ -65,7 +65,7 @@ const Navbar = () => {
                     >
                       Markets
                     </Text>
-                  </Tooltip>
+                  </Tooltip> */}
                   <Link href={"/governance"}>
                     <Text
                       cursor={"pointer"}
@@ -108,17 +108,19 @@ const Navbar = () => {
                   </Link>
                 </Flex>
 
-                <Button
-                  fontSize={"14px"}
-                  _hover={{
-                    bgColor: "#49A8FC",
-                  }}
-                  bgColor='#49A8FC'
-                  color='white'
-                  px={10}
-                >
-                  Launch App
-                </Button>
+                <Tooltip hasArrow label='Coming soon...'>
+                  <Button
+                    fontSize={"14px"}
+                    _hover={{
+                      bgColor: "#49A8FC",
+                    }}
+                    bgColor='#49A8FC'
+                    color='white'
+                    px={10}
+                  >
+                    Launch App
+                  </Button>
+                </Tooltip>
               </>
             )}
           </Flex>
